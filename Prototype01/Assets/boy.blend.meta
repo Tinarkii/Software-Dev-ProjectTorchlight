@@ -13,7 +13,12 @@ ModelImporter:
     4300000: Person
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__Head
+    second: {fileID: 2100000, guid: c8327cf050c99cc459e0efd30ffb472b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
