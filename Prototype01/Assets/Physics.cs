@@ -21,7 +21,7 @@ public class Physics : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             target.x = Input.mousePosition.x - (Screen.width/2);
-            target.z = Input.mousePosition.y - (Screen.height/2);
+            target.y = - (Input.mousePosition.y - (Screen.height/2));
 
         }
         else
@@ -31,9 +31,8 @@ public class Physics : MonoBehaviour {
 
         target.Normalize();
         target.Scale(new Vector3(power, power, power));
-
-
-        self.AddForce(target);
+        
+        self.AddRelativeForce(target);
 
         Debug.Log(Input.mousePosition.ToString());
 
