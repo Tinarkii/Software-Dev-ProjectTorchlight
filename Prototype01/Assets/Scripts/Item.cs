@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
+public abstract class Item : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	abstract public void useItem();
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
