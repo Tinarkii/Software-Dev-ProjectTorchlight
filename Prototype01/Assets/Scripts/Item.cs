@@ -16,9 +16,24 @@ public abstract class Item : MonoBehaviour
 	 */
 	private int numOfThisItem;
 
+
 	/**
 	 * Use the item
 	 */
 	abstract public void useItem ();
+
+	/**
+	 * If an Item object is lying around and the player
+	 * collides with it, remove it from the overworld and
+	 * add it to the inventory
+	 */
+    private void OnCollisionEnter (Collision col)
+    {
+        if(col.gameObject.name == "Person")
+        {
+            Debug.Log("Person has collided with an Item.");
+        }
+    }
+
 	
 }

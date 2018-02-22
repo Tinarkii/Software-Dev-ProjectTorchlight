@@ -6,15 +6,15 @@ using UnityEngine;
  * A sample Item for testing purposes
  */
 
-public class BoxItem : Item
+public class SampleItem : Item
 {
 
 	/**
-	 * Use the BoxItem
+	 * Use the SampleItem
 	 */
 	public override void useItem ()
 	{
-		print("BoxItem used");
+		Debug.Log("SampleItem used");
 	}
 	
 }

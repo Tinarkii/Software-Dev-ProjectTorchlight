@@ -34,8 +34,5 @@ public class Physics : MonoBehaviour {
         
         self.AddRelativeForce(target);
 
-        Debug.Log(Input.mousePosition.ToString());
-
-
     }
 }
