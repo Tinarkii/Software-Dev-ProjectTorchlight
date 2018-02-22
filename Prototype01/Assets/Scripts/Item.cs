@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour {
+/**
+ * An interface for items that can be picked up,
+ * put in the inventory, and used by the player
+ */
 
-	abstract public void useItem();
+public interface Item {
+
+	/**
+	 * Use the item
+	 */
+	void useItem();
 	
 }
