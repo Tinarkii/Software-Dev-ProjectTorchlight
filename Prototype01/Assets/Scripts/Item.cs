@@ -7,11 +7,18 @@ using UnityEngine;
  * put in the inventory, and used by the player
  */
 
-public interface Item {
+public abstract class Item : MonoBehaviour
+{
+
+	/**
+	 * How many of this item are in this location
+	 * This will make having multiple items in one location easy
+	 */
+	private int numOfThisItem;
 
 	/**
 	 * Use the item
 	 */
-	void useItem();
+	abstract public void useItem ();
 	
 }
