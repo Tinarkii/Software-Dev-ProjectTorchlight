@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-public class ControlTouchText : MonoBehaviour {
+public class Defense : MonoBehaviour {
 
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
@@ -10,6 +10,12 @@ public class ControlTouchText : MonoBehaviour {
 	// The constant that defines how many pixels a swipe is
 	private static class Const { public const int Delta = 2; }
 
+
+	/* Keeps track of whether the defensive phase has ended
+	 */
+	public Boolean Finished() {
+		return false;
+	}
 
 	// Initialization
 	void Start () {

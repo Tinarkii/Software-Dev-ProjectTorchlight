@@ -7,6 +7,28 @@ using UnityEngine;
  * @TODO: do we want enemies to have inventories too, so they can give/take items from the player?
  */
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
+
+	/**
+	 * Holds the items
+	 */
+	public List<Item> items;
+
+
+	/**
+	 * Initialization
+	 */
+	public void Start () {
+		items = new List<Item>();
+	}
+	
+	/**
+	 * Add an item to the inventory
+	 */
+	public void addItem (Item newItem)
+	{
+		//@TODO: needs to be implemened
+	}
 
 }

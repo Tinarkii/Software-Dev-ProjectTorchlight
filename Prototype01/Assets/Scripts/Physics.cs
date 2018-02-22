@@ -36,9 +36,7 @@ public class Physics : MonoBehaviour {
 
         if (Input.GetMouseButton(0))
         {
-            target.x = Input.mousePosition.x - (Screen.width/2);
-            target.z = - (Input.mousePosition.y - (Screen.height/2));
-
+			target = new  
         }
         else
         {
