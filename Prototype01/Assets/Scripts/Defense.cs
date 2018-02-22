@@ -18,7 +18,7 @@ public class Defense : MonoBehaviour {
 	}
 
 	// Initialization
-	void Start () {
+	void OnEnabled () {
 		tracked = new Dictionary<int, Vector2>();
 	}
 	

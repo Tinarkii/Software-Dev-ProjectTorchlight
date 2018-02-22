@@ -9,7 +9,7 @@ public class EncounterControl : MonoBehaviour {
 	private Defense defScript;
 	private Offense offScript;
 
-	// Initialization. Begin in offense mode
+	// Initialization. Begin in player offense mode
 	void Start () {
 		defScript = Camera.main.GetComponent<Defense>();
 		offScript = Camera.main.GetComponent<Offense>();
@@ -17,18 +17,18 @@ public class EncounterControl : MonoBehaviour {
 		offScript.enabled = true;
 	}
 	
+	/* This toggles the active offensive and 
+	 * defensive scripts when a phase has completed
+	 */
 	// Update is called once per frame
 	void Update () {
-		if (defScript.enabled) {
-			if (defScript.Finished()) {
-				defScript.enabled = false;
-				offScript.enabled = true;
-			}
-		} else if (offScript.enabled) {
-			if (offScript.Finished()) {
-				offScript.enabled = false;
-				defScript.enabled = true;
-			}
+		if (defScript.Finished()) {
+			defScript.enabled = false;
+			offScript.enabled = true;
+		}
+		if (offScript.Finished()) {
+			offScript.enabled = false;
+			defScript.enabled = true;
 		}
 	}
 }
