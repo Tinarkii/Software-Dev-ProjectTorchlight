@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
 		if (listItem == null)
 		{
 			items.Add (newItem);
-			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There are " + newItem.GetQuantity() + " of them in the inventory.");
+			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There is " + newItem.GetQuantity() + " of them in the inventory.");
 		}
 		else
 		{

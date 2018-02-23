@@ -73,7 +73,7 @@ public abstract class Item : MonoBehaviour
 
 		personsInventory.addItem (this);
 
-		Destroy (gameObject); //@TODO: this doesn't work properly; it needs to be fixed
+		gameObject.SetActive (false);
     }
 
 }
