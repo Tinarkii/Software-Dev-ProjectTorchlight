@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23643373667197426}
   - component: {fileID: 54794863307199716}
   - component: {fileID: 136465133079612270}
-  - component: {fileID: 114413107371628218}
+  - component: {fileID: 114973098776601202}
+  - component: {fileID: 114514654482821254}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -166,7 +167,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &114413107371628218
+--- !u!114 &114514654482821254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -174,10 +175,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1442247775588844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d839cdf5a8ce0b54ba7db4ace03ff9b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ab3669d5ab6f4babaf916389fcb481d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 30
+--- !u!114 &114973098776601202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442247775588844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7eec13b2b90df489b09ae273668201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 10
+  usedCamera: {fileID: 0}
 --- !u!136 &136465133079612270
 CapsuleCollider:
   m_ObjectHideFlags: 1
