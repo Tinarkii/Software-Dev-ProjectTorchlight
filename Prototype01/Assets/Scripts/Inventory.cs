@@ -34,17 +34,34 @@ public class Inventory : MonoBehaviour
 			return;
 		}
 
-		if (items.Contains (newItem)) //@TODO: Will this work as expected?
+		Item listItem = GetItemFromList (newItem);
+
+		if (listItem == null)
 		{
-			//@TODO: add the item
-			Debug.Log("The number of " + newItem + "s in the Inventory has increaded. There are now " + "@TODO: finish this" + " of them.");		
+			items.Add (newItem);
+			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There are " + newItem.GetQuantity() + " of them in the inventory.");
 		}
 		else
 		{
-			items.Add (newItem);
-			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There are " + newItem.Quantity() + " of them in the inventory.");
+			listItem.SetQuantity(listItem.GetQuantity () + newItem.GetQuantity ());
+			Debug.Log("The number of " + newItem + "s in the Inventory has increased. There are now " + listItem.GetQuantity () + " of them.");
 		}
 
+	}
+
+	/**
+	 * Get an Item from the items List
+	 * @TODO: is there a better way to do this?
+	 */
+	private Item GetItemFromList (Item newItem)
+	{
+		foreach (Item listItem in items)
+		{
+			if (listItem.Name () == newItem.Name ())
+				return listItem;
+		}
+
+		return null;
 	}
 
 	//@TODO: there should be a way to see and use items

@@ -10,6 +10,14 @@ public class SampleItem : Item
 {
 
 	/**
+	 * Initialization
+	 */
+	public void Start ()
+	{
+		myName = "SampleItem";
+	}
+
+	/**
 	 * Use the SampleItem
 	 */
 	public override void UseItem ()

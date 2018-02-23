@@ -11,6 +11,11 @@ public abstract class Item : MonoBehaviour
 {
 
 	/**
+	 * The name of this kind of Item
+	 */
+	protected string myName;
+
+	/**
 	 * How many of this item are in this location
 	 * This will make having multiple items in one location easy
 	 */
@@ -25,9 +30,25 @@ public abstract class Item : MonoBehaviour
 	/**
 	 * Returns the number of items of this type that are here
 	 */
-	public int Quantity ()
+	public int GetQuantity ()
 	{
 		return quantity;
+	}
+
+	/**
+	 * Returns the name of this Item
+	 */
+	public string Name ()
+	{
+		return name;
+	}
+
+	/**
+	 * Returns the number of items of this type that are here
+	 */
+	public void SetQuantity (int newQuantity)
+	{
+		quantity = newQuantity;
 	}
 
 	/**
@@ -52,7 +73,7 @@ public abstract class Item : MonoBehaviour
 
 		personsInventory.addItem (this);
 
-		Destroy (gameObject);
+		Destroy (gameObject); //@TODO: this doesn't work properly; it needs to be fixed
     }
 
 }
