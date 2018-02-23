@@ -28,10 +28,25 @@ public class Inventory : MonoBehaviour
 	 */
 	public void addItem (Item newItem)
 	{
-		Debug.Log("An Item has been added to the Inventory: " + newItem);
+		if (newItem == null)
+		{
+			Debug.LogWarning("There was an attempt to add null to Inventory");
+			return;
+		}
 
-		items.Add (newItem);
-		// @TODO: finish implementing this method (make sure there aren't duplicate items in the "items" variable and add appropriate debugging info
+		if (items.Contains (newItem)) //@TODO: Will this work as expected?
+		{
+			//@TODO: add the item
+			Debug.Log("The number of " + newItem + "s in the Inventory has increaded. There are now " + "@TODO: finish this" + " of them.");		
+		}
+		else
+		{
+			items.Add (newItem);
+			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There are " + newItem.Quantity() + " of them in the inventory.");
+		}
+
 	}
+
+	//@TODO: there should be a way to see and use items
 
 }

@@ -12,7 +12,7 @@ public class SampleItem : Item
 	/**
 	 * Use the SampleItem
 	 */
-	public override void useItem ()
+	public override void UseItem ()
 	{
 		Debug.Log("SampleItem used");
 		//@TODO: this item could do something more interesting
