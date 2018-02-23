@@ -35,7 +35,7 @@ public class OverWorldNav : MonoBehaviour {
         }
 
         Vector3 veloc = (target - self.position) * (6.0f/7.0f);
-        Debug.Log("Target: " + target + " Velocity: " + veloc);
+        //Debug.Log("Target: " + target + " Velocity: " + veloc);
 
         if (veloc.magnitude > maxSpeed)
         {

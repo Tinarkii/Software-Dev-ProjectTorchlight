@@ -29,10 +29,18 @@ public abstract class Item : MonoBehaviour
 	 */
     private void OnCollisionEnter (Collision col)
     {
-        if(col.gameObject.name == "Person")
-        {
-            Debug.Log("Person has collided with an Item.");
-        }
+		// Items don't care about collisions unless they're with the player
+        if (col.gameObject.name != "Person")
+			return;
+
+		Debug.Log("Person has collided with a " + this);
+
+		Inventory personsInventory = (Inventory)col.gameObject.GetComponent (typeof(Inventory));
+		Debug.Log ("\"Person (Inventory)\" will show here if this is working properly: " + personsInventory);
+
+		personsInventory.addItem (this);
+
+		Destroy (gameObject);
     }
 
 	

@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
 	/**
 	 * Holds the items
 	 */
-	public List<Item> items;
+	private List<Item> items;
 
 
 	/**
@@ -28,7 +28,10 @@ public class Inventory : MonoBehaviour
 	 */
 	public void addItem (Item newItem)
 	{
-		//@TODO: needs to be implemened
+		Debug.Log("An Item has been added to the Inventory: " + newItem);
+
+		items.Add (newItem);
+		// @TODO: finish implementing this method (make sure there aren't duplicate items in the "items" variable and add appropriate debugging info
 	}
 
 }

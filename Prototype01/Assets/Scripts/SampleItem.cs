@@ -15,6 +15,7 @@ public class SampleItem : Item
 	public override void useItem ()
 	{
 		Debug.Log("SampleItem used");
+		//@TODO: this item could do something more interesting
 	}
 	
 }
