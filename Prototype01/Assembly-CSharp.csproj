@@ -52,12 +52,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Defense.cs" />
+     <Compile Include="Assets\Scripts\Draggable.cs" />
+     <Compile Include="Assets\Scripts\DropZone.cs" />
      <Compile Include="Assets\Scripts\EncounterControl.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\Offense.cs" />
      <Compile Include="Assets\Scripts\OverWorldNav.cs" />
      <Compile Include="Assets\Scripts\SampleItem.cs" />
+     <Compile Include="Assets\Scripts\TracePath.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/zach/Documents/GitHub/Prototype01/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
