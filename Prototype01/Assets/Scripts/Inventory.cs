@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
 	 */
 	private List<Item> items;
 
+	public Transform prefab;
+
 
 	/**
 	 * Initialization
@@ -63,7 +65,18 @@ public class Inventory : MonoBehaviour
 
 		return null;
 	}
-
-	//@TODO: there should be a way to see and use items
+		
+	/**
+	 * Pauses the game and opens the menu. This should
+	 * be called by a button or something in the game
+	 * @TODO: see also https://gamedev.stackexchange.com/questions/116698/resuming-a-previous-scene-from-a-current-scene-using-the-unity3d
+	 * @TODO: Should this method be in another class?
+	 */
+	public void OpenMenu ()
+	{
+		Debug.Log ("OpenMenu called");
+		Time.timeScale = 0;
+		Instantiate (prefab, new Vector3(0, 0, 0), Quaternion.identity);
+	}
 
 }
