@@ -10,9 +10,17 @@ public class SampleItem : Item
 {
 
 	/**
+	 * Initialization
+	 */
+	public void Start ()
+	{
+		myName = "SampleItem";
+	}
+
+	/**
 	 * Use the SampleItem
 	 */
-	public override void useItem ()
+	public override void UseItem ()
 	{
 		Debug.Log("SampleItem used");
 		//@TODO: this item could do something more interesting

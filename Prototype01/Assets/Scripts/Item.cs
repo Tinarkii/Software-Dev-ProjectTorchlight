@@ -11,16 +11,45 @@ public abstract class Item : MonoBehaviour
 {
 
 	/**
+	 * The name of this kind of Item
+	 */
+	protected string myName;
+
+	/**
 	 * How many of this item are in this location
 	 * This will make having multiple items in one location easy
 	 */
-	private int numOfThisItem;
+	public int quantity;
 
 
 	/**
 	 * Use the item
 	 */
-	abstract public void useItem ();
+	abstract public void UseItem ();
+
+	/**
+	 * Returns the number of items of this type that are here
+	 */
+	public int GetQuantity ()
+	{
+		return quantity;
+	}
+
+	/**
+	 * Returns the name of this Item
+	 */
+	public string Name ()
+	{
+		return name;
+	}
+
+	/**
+	 * Returns the number of items of this type that are here
+	 */
+	public void SetQuantity (int newQuantity)
+	{
+		quantity = newQuantity;
+	}
 
 	/**
 	 * If an Item object is lying around and the player
@@ -36,12 +65,15 @@ public abstract class Item : MonoBehaviour
 		Debug.Log("Person has collided with a " + this);
 
 		Inventory personsInventory = (Inventory)col.gameObject.GetComponent (typeof(Inventory));
-		Debug.Log ("\"Person (Inventory)\" will show here if this is working properly: " + personsInventory);
+		
+		if (personsInventory == null) {
+			Debug.LogError ("Unable to access Inventory");
+			return;
+		}
 
 		personsInventory.addItem (this);
 
-		Destroy (gameObject);
+		gameObject.SetActive (false);
     }
 
-	
 }

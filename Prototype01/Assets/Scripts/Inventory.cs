@@ -28,10 +28,42 @@ public class Inventory : MonoBehaviour
 	 */
 	public void addItem (Item newItem)
 	{
-		Debug.Log("An Item has been added to the Inventory: " + newItem);
+		if (newItem == null)
+		{
+			Debug.LogWarning("There was an attempt to add null to Inventory");
+			return;
+		}
 
-		items.Add (newItem);
-		// @TODO: finish implementing this method (make sure there aren't duplicate items in the "items" variable and add appropriate debugging info
+		Item listItem = GetItemFromList (newItem);
+
+		if (listItem == null)
+		{
+			items.Add (newItem);
+			Debug.Log("A new Item has been added to the Inventory: " + newItem + ". There is " + newItem.GetQuantity() + " of them in the inventory.");
+		}
+		else
+		{
+			listItem.SetQuantity(listItem.GetQuantity () + newItem.GetQuantity ());
+			Debug.Log("The number of " + newItem + "s in the Inventory has increased. There are now " + listItem.GetQuantity () + " of them.");
+		}
+
 	}
+
+	/**
+	 * Get an Item from the items List
+	 * @TODO: is there a better way to do this?
+	 */
+	private Item GetItemFromList (Item newItem)
+	{
+		foreach (Item listItem in items)
+		{
+			if (listItem.Name () == newItem.Name ())
+				return listItem;
+		}
+
+		return null;
+	}
+
+	//@TODO: there should be a way to see and use items
 
 }
