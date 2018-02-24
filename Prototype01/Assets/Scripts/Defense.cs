@@ -7,24 +7,28 @@ public class Defense : MonoBehaviour {
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
 
+	// Keep track of whether this script has finished its phase
+	private bool finished;
+
 	// The constant that defines how many pixels a swipe is
 	private static class Const { public const int Delta = 2; }
 
 
 	/* Keeps track of whether the defensive phase has ended
 	 */
-	public Boolean Finished() {
-		return false;
+	public bool Finished() {
+		return finished;
 	}
 
 	// Initialization
-	void OnEnabled () {
+	void OnEnable () {
+		finished = false;
 		tracked = new Dictionary<int, Vector2>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// For testing without touch inputs
+		// For testing with keyboard inputs
 		keyInput();
 		
 		Touch[] touches = Input.touches;
@@ -41,57 +45,86 @@ public class Defense : MonoBehaviour {
 
 			if (touches[i].phase == TouchPhase.Ended){
 				Vector2 temp;
-				tracked.TryGetValue(touches[i].fingerId, out temp);//Needs error handling
+				tracked.TryGetValue(touches[i].fingerId, out temp);// @TODO: Needs error handling
 				
-				String action;
+				// Calculates whether the touch happened on the left side of the screen
+				bool side = touches[i].position.x < Screen.width/2;
+
 				// Calculate the type of input
 				if (Math.Abs(temp.x - touches[i].position.x) <= Const.Delta
 							&& Math.Abs(temp.y - touches[i].position.y) <= Const.Delta) {
-					action = "Tap ";
+					tap(side);
 				} else if (Math.Abs(temp.y - touches[i].position.y) > Math.Abs(temp.x - touches[i].position.x)) {
 					if (temp.y - touches[i].position.y > 0)
-						action = "Swipe down ";
+						shield(side);
 					else
-						action = "Swipe down ";
+						jump(side);
 				} else {
-					action = "Swipe sideways ";
+					shoot(side);
 				}
-
-				// Defines on which side of the screen the input took place
-				if (touches[i].position.x < Screen.width/2)
-					Debug.Log(action + "on left side (touch)");
-				else
-					Debug.Log(action + "on right side (touch)");
 
 				tracked.Remove(touches[i].fingerId);
 			}
 		}
 	}
 
+	// # Begin region player actions. bool leftside refers to
+	// whether the action happened on the left side or not.
+
+	private void jump(bool leftside) {
+		if (leftside)
+			Debug.Log("Swipe up on left side");
+		else
+			Debug.Log("Swipe up on right side");
+	}
+
+	private void shield(bool leftside) {
+		if (leftside)
+			Debug.Log("Swipe down on left side");
+		else
+			Debug.Log("Swipe down on right side");
+	}
+
+	private void shoot(bool leftside) {
+		if (leftside)
+			Debug.Log("Swipe sideways on left side");
+		else
+			Debug.Log("Swipe sideways on right side");
+	}
+
+	private void tap(bool leftside) {
+		if (leftside)
+			Debug.Log("Tap on left side");
+		else
+			Debug.Log("Tap on right side");
+	}
+
+	// # End region player actions
+
 	/* 
-	 * Accepts keyboard inputs instead of touch inputs,
-	 * intended for testing without the need for a touchscreen
+	 * Accepts keyboard inputs instead of touch inputs.
+	 * Intended for testing without the need for a touchscreen.
 	 */
 	private void keyInput() {
 		if (Input.GetKeyDown(KeyCode.Escape))
 			Application.Quit();
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
-			Debug.Log("Swipe up on right side (keyboard)");
+			jump(false);
 		if (Input.GetKeyDown(KeyCode.DownArrow))
-			Debug.Log("Swipe down on right side (keyboard)");
+			shield(false);
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			Debug.Log("Swipe sideways on right side (keyboard)");
+			shoot(false);
 		if (Input.GetKeyDown(KeyCode.RightArrow))
-			Debug.Log("Tap on right side (keyboard)");
+			tap(false);
 
 		if (Input.GetKeyDown(KeyCode.W))
-			Debug.Log("Swipe up on left side (keyboard)");
+			jump(true);
 		if (Input.GetKeyDown(KeyCode.S))
-			Debug.Log("Swipe down on left side (keyboard)");
+			shield(true);
 		if (Input.GetKeyDown(KeyCode.D))
-			Debug.Log("Swipe sideways on left side (keyboard)");
+			shoot(true);
 		if (Input.GetKeyDown(KeyCode.A))
-			Debug.Log("Tap on left side (keyboard)");
+			tap(true);
 	}
 }
