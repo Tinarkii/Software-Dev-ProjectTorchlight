@@ -297,10 +297,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ControlTouch.cs" />
+    <Compile Include="Assets\Scripts\Defense.cs" />
+    <Compile Include="Assets\Scripts\EncounterControl.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\LightingRoomScript.cs" />
+    <Compile Include="Assets\Scripts\Offense.cs" />
     <Compile Include="Assets\Scripts\OverWorldNav.cs" />
+    <Compile Include="Assets\Scripts\SampleItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
