@@ -15,7 +15,10 @@ public class Inventory : MonoBehaviour
 	 */
 	private List<Item> items;
 
-	public Transform prefab;
+	/**
+	 * A prefab for the items menu that will be instantiated when the inventory button is pressed
+	 */
+	public Transform itemsMenuPrefab;
 
 
 	/**
@@ -76,7 +79,7 @@ public class Inventory : MonoBehaviour
 	{
 		Debug.Log ("OpenMenu called");
 		Time.timeScale = 0;
-		Instantiate (prefab, new Vector3(0, 0, 0), Quaternion.identity);
+		Instantiate (itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 	}
 
 }
