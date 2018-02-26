@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\EncounterControl.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\LightingRoomScript.cs" />
      <Compile Include="Assets\Scripts\Offense.cs" />
      <Compile Include="Assets\Scripts\OverWorldNav.cs" />
      <Compile Include="Assets\Scripts\SampleItem.cs" />
