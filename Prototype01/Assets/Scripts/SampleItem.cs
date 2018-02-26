@@ -23,7 +23,8 @@ public class SampleItem : Item
 	public override void UseItem ()
 	{
 		Debug.Log("SampleItem used");
-		//@TODO: this item could do something more interesting
+		//@TODO: the below line doesn't work yet
+		//Instantiate (this, Camera.Main.ScreenToWorldPoint (Vector3 (250, 250, 0)), Quaternion.Identity);
 	}
 	
 }
