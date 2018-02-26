@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class EncounterControl : MonoBehaviour {
 
-	// References to Defense and Offense scripts,
-	// so they can be enable or disabled
+	// References to various scripts, so they
+	// can be enable or disabled for phase changes
 	private Defense defScript;
+	private DefAction defActScript;
 	private Offense offScript;
+
+	// Reference to the player character
+	public GameObject player;
 
 	// Initialization. Begin in player offense mode
 	void Start () {
 		defScript = Camera.main.GetComponent<Defense>();
+		defActScript = player.GetComponent<DefAction>();
 		offScript = Camera.main.GetComponent<Offense>();
 		defScript.enabled = false;
+		defActScript.enabled = false;
 		offScript.enabled = true;
 	}
 	
@@ -24,11 +30,13 @@ public class EncounterControl : MonoBehaviour {
 	void Update () {
 		if (defScript.Finished()) {
 			defScript.enabled = false;
+			defActScript.enabled = false;
 			offScript.enabled = true;
 		}
 		if (offScript.Finished()) {
 			offScript.enabled = false;
 			defScript.enabled = true;
+			defActScript.enabled = true;
 		}
 	}
 }
