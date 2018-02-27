@@ -5,3 +5,5 @@ Prototype01/.vscode/
 Prototype01/Assembly-CSharp.csproj
 Prototype01/Prototype01.userprefs
 Prototype01/Assembly-CSharp.csproj
+*.asset
+Prototype01/ProjectSettings/EditorBuildSettings.asset
