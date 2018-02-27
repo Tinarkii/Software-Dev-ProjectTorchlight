@@ -31,10 +31,12 @@ public class TestforCombat : MonoBehaviour {
 	private string newGestureName = "";
 
 	public string[] shapes = new string[4];
-	public int attack;
-	public bool forceButton;
-	public int damageToEnemy = 100;
-	public int damageDone = 0;
+	private int attack;
+	private int damageToEnemy = 100;
+	private int damageDone = 0;
+	[Tooltip("hi")]
+	public double allowedAccuracy = 0.8;
+	public bool finished = false;
 
 	void Start () {
 
@@ -58,8 +60,15 @@ public class TestforCombat : MonoBehaviour {
 
 		//StartCoroutine("AttackLoop");
 		//InvokeRepeating("NewAttack", 5.0f, 5.0f);
+		float currentTime = Time.time;
 
 	}
+
+	bool Finished()
+	{
+		return finished;
+	}
+
 	void DoDamage()
 	{
 		if (damageToEnemy <= 0)
@@ -71,6 +80,7 @@ public class TestforCombat : MonoBehaviour {
 			damageDone = UnityEngine.Random.Range(10,25);
 			damageToEnemy = (damageToEnemy - damageDone);
 		}
+		finished = true;
 	}
  /* 
 	void NewAttack()
@@ -222,6 +232,7 @@ public class TestforCombat : MonoBehaviour {
 		}
 	}
 
+
 	void OnGUI() {
   		GUI.color = new Color(1,1,1,0); 
     	GUI.Box (drawArea, "Draw Area");
@@ -248,7 +259,7 @@ public class TestforCombat : MonoBehaviour {
 			Gesture candidate = new Gesture(points.ToArray());
 			Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 			
-			if (gestureResult.Score < .8) message = "Attack Failed!";
+			if (gestureResult.Score < allowedAccuracy) message = "Attack Failed!";
 			else if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack)";
 			else 
 			{
