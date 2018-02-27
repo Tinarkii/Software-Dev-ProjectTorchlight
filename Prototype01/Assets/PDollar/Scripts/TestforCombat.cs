@@ -30,11 +30,12 @@ public class TestforCombat : MonoBehaviour {
 	private bool recognized;
 	private string newGestureName = "";
 
+	private toExit = false;
 	public string[] shapes = new string[4];
 	private int attack;
-	private int damageToEnemy = 100;
+	[Tooltip("The health of the enemy")]
+	public int damageToEnemy = 50;
 	private int damageDone = 0;
-	[Tooltip("hi")]
 	public double allowedAccuracy = 0.8;
 	public bool finished = false;
 
@@ -69,11 +70,18 @@ public class TestforCombat : MonoBehaviour {
 		return finished;
 	}
 
+	public bool ToExit()
+	{
+		return toExit;
+	}
+
+
+
 	void DoDamage()
 	{
 		if (damageToEnemy <= 0)
 		{
-			SceneManager.LoadScene("sample");
+			toExit = true;
 		}
 		else
 		{

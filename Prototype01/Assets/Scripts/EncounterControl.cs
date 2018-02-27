@@ -23,6 +23,11 @@ public class EncounterControl : MonoBehaviour {
 		TestforCombat.enabled = true;
 	}
 	
+	public void exitCombat()
+	{
+		SceneManager.LoadScene("sample");
+	}
+
 	/* This toggles the active offensive and 
 	 * defensive scripts when a phase has completed
 	 */
