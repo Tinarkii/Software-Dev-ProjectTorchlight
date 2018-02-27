@@ -30,7 +30,7 @@ public class TestforCombat : MonoBehaviour {
 	private bool recognized;
 	private string newGestureName = "";
 
-	private toExit = false;
+	private bool toExit = false;
 	public string[] shapes = new string[4];
 	private int attack;
 	[Tooltip("The health of the enemy")]
@@ -54,7 +54,7 @@ public class TestforCombat : MonoBehaviour {
 		foreach (string filePath in filePaths)
 			trainingSet.Add(GestureIO.ReadGestureFromFile(filePath));
 		
-		
+		attack = UnityEngine.Random.Range(0,3);
 		shapes[0] = "X";
 		shapes[1] = "O";
 		shapes[2] = "∆";

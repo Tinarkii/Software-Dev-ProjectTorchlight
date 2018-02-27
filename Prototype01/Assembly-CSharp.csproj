@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\draw.cs" />
      <Compile Include="Assets\PDollar\Scripts\Combat.cs" />
      <Compile Include="Assets\PDollar\Scripts\Demo.cs" />
      <Compile Include="Assets\PDollar\Scripts\PDollarGestureRecognizer\Geometry.cs" />

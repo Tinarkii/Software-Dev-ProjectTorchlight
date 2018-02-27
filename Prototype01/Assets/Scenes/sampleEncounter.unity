@@ -464,7 +464,9 @@ MonoBehaviour:
   - 
   - 
   - 
+  damageToEnemy: 50
   allowedAccuracy: 0.8
+  finished: 0
 --- !u!1001 &1032359398
 Prefab:
   m_ObjectHideFlags: 0
