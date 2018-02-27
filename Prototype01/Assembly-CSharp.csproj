@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\ShieldOfEnemy.cs" />
      <Compile Include="Assets\Scripts\ShieldOfPlayer.cs" />
      <Compile Include="Assets\Scripts\TracePath.cs" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\O-131641939422556160.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-asterisk-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-X-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-five_point_star-01.xml" />
@@ -85,16 +86,24 @@
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-arrowhead-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-T-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-D-01.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\O-131641939794932150.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\X-131641940219427730.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\∆-131641938523468370.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-six_point_star-01.xml" />
-     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\O-131641792539846290.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\X-131641940308416430.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\∆-131641938441361260.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-H-01.xml" />
-     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\X-131641792352034210.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-pitchfork-01.xml" />
-     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\Triangle-131641792961001600.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\∆-131641938363969920.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\X-131641940579021050.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\∆-131641938233909170.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\X-131641940466852780.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\O-131641939646824710.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-line-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-null-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-half_note-01.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-N-01.xml" />
+     <None Include="Assets\PDollar\Resources\GestureSet\Shapes\O-131641939537326500.xml" />
      <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-P-01.xml" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/zach/Documents/GitHub/Prototype01/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>

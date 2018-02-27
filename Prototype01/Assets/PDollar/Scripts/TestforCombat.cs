@@ -31,7 +31,7 @@ public class TestforCombat : MonoBehaviour {
 
 	public string[] shapes = new string[4];
 	public int attack;
-	public int lastAttack;
+	public bool forceButton;
 
 	void Start () {
 
@@ -51,19 +51,74 @@ public class TestforCombat : MonoBehaviour {
 		
 		shapes[0] = "X";
 		shapes[1] = "O";
-		shapes[2] = "Triangle";
-		//shapes[3] = "M";
-		StartCoroutine("NewAttack");
-	}
-	IEnumerator NewAttack() {
-		for(;;) {
-			if(lastAttack == null){
-				attack = UnityEngine.Random.Range(0,3);
-			}else if(attack == lastAttack){
-				attack = UnityEngine.Random.Range(0,3);
-			}else attack = UnityEngine.Random.Range(0,3);
+		shapes[2] = "∆";
 
+		//StartCoroutine("AttackLoop");
+		//InvokeRepeating("NewAttack", 5.0f, 5.0f);
+
+	}
+ /* 
+	void NewAttack()
+	{
+		attack = UnityEngine.Random.Range(0,3);
+		
+		recognized = true;
+		
+		Gesture candidate = new Gesture(points.ToArray());
+		Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
+
+		if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) 
+		{
+			message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack " + gestureResult.Score + ")";
+		}
+		else 
+		{
+			message = shapes[attack] + " Attack Succeeded!" + " (" + gestureResult.Score + ")";
+		}
+	//	ClearScreen();
+	}
+/* 
+	void ClearScreen()
+	{
+		if(recognized){
+			recognized = false;
+			strokeId = -1;
+
+			points.Clear();
+
+			foreach (LineRenderer lineRenderer in gestureLinesRenderer) 
+			{
+				lineRenderer.SetVertexCount(0);
+				Destroy(lineRenderer.gameObject);
+			}
+			gestureLinesRenderer.Clear();
+		}
+
+		++strokeId;
+				
+		Transform tmpGesture = Instantiate(gestureOnScreenPrefab, transform.position, transform.rotation) as Transform;
+		currentGestureLineRenderer = tmpGesture.GetComponent<LineRenderer>();
+				
+		gestureLinesRenderer.Add(currentGestureLineRenderer);
+				
+		vertexCount = 0;
+	}
+
+	void Scan()
+	{
+		points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
+
+		currentGestureLineRenderer.SetVertexCount(++vertexCount);
+		currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
+	}*/
+
+/* 
+	IEnumerator AttackLoop() {
+		for(;;) {
+			attack = UnityEngine.Random.Range(0,3);
 			yield return new WaitForSeconds(4f);
+			//forceButton = true;
+			//yield return new WaitForSeconds(4f);
 			/*newGestureName = shapes[attack];
 			if (points.Count > 0) {
 				string fileName = String.Format("{0}/{1}-{2}.xml", Application.persistentDataPath, newGestureName, DateTime.Now.ToFileTime());
@@ -71,13 +126,15 @@ public class TestforCombat : MonoBehaviour {
 				newGestureName = "";
 			}*/
 
-
+			/* 
 			recognized = true;
 			Gesture candidate = new Gesture(points.ToArray());
 			Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 			//if (gestureResult.Score < .6) message = "Attack Failed!";
 			if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack " + gestureResult.Score + ")";
 			else message = shapes[attack] + " Attack Succeeded!" + " (" + gestureResult.Score + ")";
+
+
 			recognized = false;
 			strokeId = -1;
 			points.Clear();
@@ -86,9 +143,18 @@ public class TestforCombat : MonoBehaviour {
 				Destroy(lineRenderer.gameObject);
 			}
 			gestureLinesRenderer.Clear();
-        	
+			++strokeId;
+				
+			Transform tmpGesture = Instantiate(gestureOnScreenPrefab, transform.position, transform.rotation) as Transform;
+			currentGestureLineRenderer = tmpGesture.GetComponent<LineRenderer>();
+				
+			gestureLinesRenderer.Add(currentGestureLineRenderer);
+				
+			vertexCount = 0;
 		}
-	}
+        	
+	}*/
+
 
 	void Update () {
 
@@ -144,29 +210,49 @@ public class TestforCombat : MonoBehaviour {
 	void OnGUI() {
   		GUI.color = new Color(1,1,1,0); 
     	GUI.Box (drawArea, "Draw Area");
-		GUI.color = new Color(1,1,1,1);
+		GUI.color = new Color(1,1,1,0.6f);
 		//GUI.Box(drawArea, "Draw Area");
 		GUIStyle myStyle = new GUIStyle (GUI.skin.GetStyle("label"));
         
-		myStyle.fontSize = 80;
+		myStyle.fontSize = 300;
 		myStyle.normal.textColor = Color.black;
 		GUI.Label(new Rect((Screen.width/2)-50, 50, 500, 500), shapes[attack], myStyle);
-
+		//GUI.Label(new Rect((Screen.width/2)-50, 50, 500, 500), "O", myStyle);
+		myStyle.normal.textColor = Color.white;
+		GUI.color = new Color(1,1,1,1); 
 		myStyle.fontSize = 18;
 		GUI.Label(new Rect(10, Screen.height - 40, 500, 500), message, myStyle);
 
-		/*if (GUI.Button(new Rect((Screen.width/2)-50, Screen.height - 50, 100, 30), "Send Attack!")) {
+		//GUI.color = new Color(1,1,1,1); 
+		//Rect button = new Rect((Screen.width/2)-50, Screen.height - 50, 100, 30);
+		//forceButton = GUI.Button(button, "Send Attack!")
+		if (GUI.Button(new Rect((Screen.width/2)-50, Screen.height - 50, 100, 30), "Send Attack!")) {
 
 			recognized = true;
 
 			Gesture candidate = new Gesture(points.ToArray());
 			Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 			
-			if (gestureResult.Score < .7) message = "Attack Failed!" + " (" +  gestureResult.GestureClass + " " + gestureResult.Score + ")";
-			else message = gestureResult.GestureClass + " Attack Succeeded!" + " (" + gestureResult.Score + ")";
+			if (gestureResult.Score < .9) message = "Attack Failed!" + " (" +  gestureResult.GestureClass + " " + gestureResult.Score + ")";
+			else if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack " + gestureResult.Score + ")";
+			else message = shapes[attack] + " Attack Succeeded!" + " (" + gestureResult.Score + ")";
+			//forceButton = false;
+			attack = UnityEngine.Random.Range(0,3);
+			recognized = false;
+			strokeId = -1;
+
+			points.Clear();
+
+			foreach (LineRenderer lineRenderer in gestureLinesRenderer) 
+			{
+				lineRenderer.SetVertexCount(0);
+				Destroy(lineRenderer.gameObject);
+			}
+			gestureLinesRenderer.Clear();
+		
 		}
 
-		GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
+		/*GUI.Label(new Rect(Screen.width - 200, 150, 70, 30), "Add as: ");
 		newGestureName = GUI.TextField(new Rect(Screen.width - 150, 150, 100, 30), newGestureName);
 
 		if (GUI.Button(new Rect(Screen.width - 50, 150, 50, 30), "Add") && points.Count > 0 && newGestureName != "") {
