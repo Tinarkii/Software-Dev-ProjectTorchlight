@@ -4,6 +4,9 @@ using System;
 
 public class DefAction : MonoBehaviour {
 
+	[Tooltip("A prefab of the player's shield that will be instantiated during encounters")]
+	public Transform prefabForShieldOfPlayer;
+
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
 
@@ -80,11 +83,22 @@ public class DefAction : MonoBehaviour {
 		self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
 
-	private void shield(bool leftside) {
+	/**
+	 * Creates a ShieldOfPlayer near the player
+	 * @param leftside Whether the shield should be made on the left side of the player
+	 */
+	private void shield(bool leftside)
+	{
 		if (leftside)
+		{
 			Debug.Log("Swipe down on left side");
+			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+		}
 		else
+		{
 			Debug.Log("Swipe down on right side");
+			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+		}
 	}
 
 	private void shoot(bool leftside) {
