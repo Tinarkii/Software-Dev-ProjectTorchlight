@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * A script for the shield made by the player
+ * A script for the shield made by enemies
  */
 
-public class ShieldOfPlayer : Shield
+public class ShieldOfEnemy : Shield
 {
 	/**
-	 * If a BlastBad collides with a ShieldOfPlayer, destroy them both
+	 * If a Blast collides with a ShieldOfEnemy, destroy them both
 	 */
 	protected override void OnCollisionEnter (Collision col)
-    {
+	{
 		// The player's shield doesn't care about collisions unless they're with an enemy's blasts
-        if (col.gameObject.name != "BlastBad")
+		if (col.gameObject.name != "Blast")
 			return;
 
-		Debug.Log ("ShieldOfPlayer has collided with a BlastBad");
+		Debug.Log ("ShieldOfEnemy has collided with a Blast");
 
 		Destroy (col.gameObject);
 		Destroy (this);
-    }
+	}
 
 }

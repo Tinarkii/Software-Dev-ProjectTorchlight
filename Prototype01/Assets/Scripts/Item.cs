@@ -10,16 +10,13 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
 
+	[Tooltip("How many of this item are in this location. This will make having multiple items in one location easy.")]
+	public int quantity;
+
 	/**
 	 * The name of this kind of Item
 	 */
 	protected string myName;
-
-	/**
-	 * How many of this item are in this location
-	 * This will make having multiple items in one location easy
-	 */
-	public int quantity;
 
 
 	/**
