@@ -64,7 +64,7 @@ public class TestforCombat : MonoBehaviour {
 
 	}
 
-	bool Finished()
+	public bool Finished()
 	{
 		return finished;
 	}
