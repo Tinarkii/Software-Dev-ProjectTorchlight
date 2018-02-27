@@ -56,7 +56,7 @@ public abstract class Item : MonoBehaviour
     private void OnCollisionEnter (Collision col)
     {
 		// Items don't care about collisions unless they're with the player
-        if (col.gameObject.name != "Person")
+		if (col.gameObject.name != "Person" && col.gameObject.name != "Player")
 			return;
 
 		Debug.Log("Person has collided with a " + this);
