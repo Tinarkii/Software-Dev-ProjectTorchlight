@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EncounterControl : MonoBehaviour {
 
@@ -9,7 +8,7 @@ public class EncounterControl : MonoBehaviour {
 	// can be enable or disabled for phase changes
 	private Defense defScript;
 	private DefAction defActScript;
-	private TestforCombat TestforCombat;
+	private Offense offScript;
 
 	// Reference to the player character
 	public GameObject player;
@@ -18,17 +17,12 @@ public class EncounterControl : MonoBehaviour {
 	void Start () {
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
-		TestforCombat = Camera.main.GetComponent<TestforCombat>();
+		offScript = Camera.main.GetComponent<Offense>();
 		defScript.enabled = false;
 		defActScript.enabled = false;
-		TestforCombat.enabled = true;
+		offScript.enabled = true;
 	}
 	
-	public void exitCombat()
-	{
-		SceneManager.LoadScene("sample");
-	}
-
 	/* This toggles the active offensive and 
 	 * defensive scripts when a phase has completed
 	 */
@@ -37,10 +31,10 @@ public class EncounterControl : MonoBehaviour {
 		if (defScript.Finished()) {
 			defScript.enabled = false;
 			defActScript.enabled = false;
-			TestforCombat.enabled = true;
+			offScript.enabled = true;
 		}
-		if (TestforCombat.Finished()) {
-			TestforCombat.enabled = false;
+		if (offScript.Finished()) {
+			offScript.enabled = false;
 			defScript.enabled = true;
 			defActScript.enabled = true;
 		}

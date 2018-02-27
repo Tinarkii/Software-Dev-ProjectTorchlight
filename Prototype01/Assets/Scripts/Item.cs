@@ -10,13 +10,16 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
 
-	[Tooltip("How many of this item are in this location. This will make having multiple items in one location easy.")]
-	public int quantity;
-
 	/**
 	 * The name of this kind of Item
 	 */
 	protected string myName;
+
+	/**
+	 * How many of this item are in this location
+	 * This will make having multiple items in one location easy
+	 */
+	public int quantity;
 
 
 	/**
@@ -56,7 +59,7 @@ public abstract class Item : MonoBehaviour
     private void OnCollisionEnter (Collision col)
     {
 		// Items don't care about collisions unless they're with the player
-		if (col.gameObject.name != "Person" && col.gameObject.name != "Player")
+        if (col.gameObject.name != "Person")
 			return;
 
 		Debug.Log("Person has collided with a " + this);

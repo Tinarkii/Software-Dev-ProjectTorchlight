@@ -9,13 +9,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-	[Tooltip("A prefab for the items menu that will be instantiated when the inventory button is pressed")]
-	public Transform itemsMenuPrefab;
 
 	/**
 	 * Holds the items
 	 */
 	private List<Item> items;
+
+	/**
+	 * A prefab for the items menu that will be instantiated when the inventory button is pressed
+	 */
+	public Transform itemsMenuPrefab;
 
 
 	/**

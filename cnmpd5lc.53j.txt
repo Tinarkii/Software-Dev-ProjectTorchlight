@@ -1,0 +1,22 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 2 commits.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   Baddie.cs
+#	modified:   OverWorldControl.cs
+#
+# Changes not staged for commit:
+#	modified:   ../../Assembly-CSharp.csproj
+#	modified:   ../Scenes/sample.unity
+#	modified:   OverWorldNav.cs
+#	modified:   ../../ProjectSettings/EditorBuildSettings.asset
+#
+# Untracked files:
+#	Baddie.cs.meta
+#	OverWorldControl.cs.meta
+#
+

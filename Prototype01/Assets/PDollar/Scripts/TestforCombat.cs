@@ -58,7 +58,6 @@ public class TestforCombat : MonoBehaviour {
 		shapes[0] = "X";
 		shapes[1] = "O";
 		shapes[2] = "∆";
-
 		//StartCoroutine("AttackLoop");
 		//InvokeRepeating("NewAttack", 5.0f, 5.0f);
 		float currentTime = Time.time;
