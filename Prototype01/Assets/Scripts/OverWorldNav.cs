@@ -9,10 +9,12 @@ public class OverWorldNav : MonoBehaviour {
     public int maxSpeed;
     RaycastHit hitPoint;
     public Camera usedCamera;
+    UnityEngine.AI.NavMeshAgent agent;
 
     // Use this for initialization
     void Start () {
-        target = new Vector3(0, 0, 0);
+        //target = new Vector3(0, 0, 0);
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         self = GetComponent<Rigidbody>();
 
 	}
@@ -26,7 +28,7 @@ public class OverWorldNav : MonoBehaviour {
             if (Physics.Raycast(ray, out hitPoint,500))
             {
 
-                target = hitPoint.point;
+                 agent.destination  = hitPoint.point;
 
 
 
@@ -34,7 +36,7 @@ public class OverWorldNav : MonoBehaviour {
             }
         }
 
-        Vector3 veloc = (target - self.position) * (8.0f/7.0f);
+       /* Vector3 veloc = (target - self.position) * (8.0f/7.0f);
         //Debug.Log("Target: " + target + " Velocity: " + veloc);
 
         if (veloc.magnitude > maxSpeed)
@@ -44,9 +46,8 @@ public class OverWorldNav : MonoBehaviour {
         }
 
         self.velocity = new Vector3(veloc.x, self.velocity.y, veloc.z);
-	
 
 
-
+*/
     }
 }
