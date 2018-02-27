@@ -80,7 +80,10 @@ public class DefAction : MonoBehaviour {
 			Debug.Log("Swipe up on left side");
 		else
 			Debug.Log("Swipe up on right side");
-		self.velocity = new Vector3(0, Const.jumpSpeed, 0);
+		
+		// Very hackish way to prevent jumps while in the air. Pls fix
+		if (self.velocity.y == 0)
+			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
 
 	/**
@@ -91,13 +94,13 @@ public class DefAction : MonoBehaviour {
 	{
 		if (leftside)
 		{
-			Debug.Log("Swipe down on left side");
-			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+			Debug.Log("A ShieldOfPlayer should be created on the left");
+			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(-3,0,0), Quaternion.Euler(0,90,0));
 		}
 		else
 		{
-			Debug.Log("Swipe down on right side");
-			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+			Debug.Log("A ShieldOfPlayer should be created on the right");
+			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(1,0,0), Quaternion.Euler(0,90,0));
 		}
 	}
 

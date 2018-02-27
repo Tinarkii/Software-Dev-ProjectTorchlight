@@ -69,6 +69,10 @@ public class TestforCombat : MonoBehaviour {
 		return finished;
 	}
 
+	void OnEnable () {
+		finished = false;
+	}
+
 	public bool ToExit()
 	{
 		return toExit;

@@ -24,7 +24,7 @@ public class EncounterControl : MonoBehaviour {
 		TestforCombat.enabled = true;
 	}
 	
-	public void exitCombat()
+	public void ExitCombat()
 	{
 		SceneManager.LoadScene("sample");
 	}
@@ -35,14 +35,18 @@ public class EncounterControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (defScript.Finished()) {
+			if (defScript.ToExit())
+				ExitCombat();
 			defScript.enabled = false;
 			defActScript.enabled = false;
 			TestforCombat.enabled = true;
 		}
 		if (TestforCombat.Finished()) {
+			if (TestforCombat.ToExit())
+                ExitCombat();
 			TestforCombat.enabled = false;
-			defScript.enabled = true;
-			defActScript.enabled = true;
+            defScript.enabled = true;
+            defActScript.enabled = true;
 		}
 	}
 }
