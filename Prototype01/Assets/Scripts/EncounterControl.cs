@@ -8,7 +8,7 @@ public class EncounterControl : MonoBehaviour {
 	// can be enable or disabled for phase changes
 	private Defense defScript;
 	private DefAction defActScript;
-	private Offense TestforCombat;
+	private TestforCombat TestforCombat;
 
 	// Reference to the player character
 	public GameObject player;
@@ -17,7 +17,7 @@ public class EncounterControl : MonoBehaviour {
 	void Start () {
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
-		TestforCombat = Camera.main.GetComponent<Offense>();
+		TestforCombat = Camera.main.GetComponent<TestforCombat>();
 		defScript.enabled = false;
 		defActScript.enabled = false;
 		TestforCombat.enabled = true;
