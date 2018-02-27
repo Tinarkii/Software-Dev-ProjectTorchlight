@@ -12,7 +12,7 @@ public class Baddie : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (){
-		BroadcastMessage ("initateEncounter"); 
+		//BroadcastMessage ("initateEncounter"); 
 	}
 	
 	// Update is called once per frame
