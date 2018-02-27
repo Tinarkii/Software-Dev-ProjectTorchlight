@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+public class DropZoneSpell : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+
+	public Draggable.Slot typeOfItem = Draggable.Slot.SPELL;
 
 	public void OnPointerEnter(PointerEventData eventData){
  	}
@@ -13,7 +15,10 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 	public void OnDrop(PointerEventData eventData){
 		Draggable d = eventData.pointerDrag.GetComponent<Draggable> ();
 		if (d != null) {
-			d.ParentToReturnTo = this.transform;
+			if ( typeOfItem == d.typeOfItem)
+			{
+				d.ParentToReturnTo = this.transform;
+			}
 		}
 	}
 

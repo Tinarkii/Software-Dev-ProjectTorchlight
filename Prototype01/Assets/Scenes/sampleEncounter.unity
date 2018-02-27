@@ -401,6 +401,8 @@ MonoBehaviour:
   - 
   attack: 0
   forceButton: 0
+  damageToEnemy: 100
+  damageDone: 0
 --- !u!1001 &1032359398
 Prefab:
   m_ObjectHideFlags: 0
