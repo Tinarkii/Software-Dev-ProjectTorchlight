@@ -20,6 +20,6 @@ public class OverWorldControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		initateEncounter ();
+		
 	}
 }

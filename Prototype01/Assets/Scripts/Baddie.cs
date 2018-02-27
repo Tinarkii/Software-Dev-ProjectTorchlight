@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Baddie : MonoBehaviour {
 
-	public SphereCollider collider; 
+	public Collider collider; 
 
 	// Use this for initialization
 	void Start () {
 		
 	}
 
-	void OnTriggerEnter (Collider coll){
+	void OnCollisionEnter (){
 		BroadcastMessage ("initateEncounter"); 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		OnTriggerEnter (collider); 
+		OnCollisionEnter (); 
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08701923, g: 0.046703003, b: 0.1284925, a: 1}
+  m_IndirectSpecularColor: {r: 0.087477006, g: 0.046703003, b: 0.1282104, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -254,6 +254,30 @@ CapsuleCollider:
   m_Height: 5.45
   m_Direction: 2
   m_Center: {x: 0, y: -0.13857916, z: 2.323366}
+--- !u!114 &408189547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408189541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9758c021d646494495ad501a7dfd6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 408189548}
+--- !u!135 &408189548
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408189541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.6823134
+  m_Center: {x: 0, y: -0.14575648, z: 2.3232148}
 --- !u!20 &673424843 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20706504436180046, guid: 99b0b8d8a830eb044914821c1ad84254,
@@ -351,6 +375,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e0fe1f7f602c1bb4587bcf92bab58cf3, type: 3}
+--- !u!114 &1083180917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1083180911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2bff34c7d964243bd357ad006d334f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameBaddie: {fileID: 408189541}
 --- !u!1 &1091341461
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +600,11 @@ Prefab:
       propertyPath: usedCamera
       value: 
       objectReference: {fileID: 673424843}
+    - target: {fileID: 114973098776601202, guid: 99b0b8d8a830eb044914821c1ad84254,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99b0b8d8a830eb044914821c1ad84254, type: 2}
   m_IsPrefabParent: 0

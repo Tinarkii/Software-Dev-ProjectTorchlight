@@ -44,6 +44,7 @@ public class OverWorldNav : MonoBehaviour {
         }
 
         self.velocity = new Vector3(veloc.x, self.velocity.y, veloc.z);
+	
 
 
 
