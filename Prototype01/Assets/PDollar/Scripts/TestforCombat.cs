@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 using PDollarGestureRecognizer;
 
@@ -32,6 +33,8 @@ public class TestforCombat : MonoBehaviour {
 	public string[] shapes = new string[4];
 	public int attack;
 	public bool forceButton;
+	public int damageToEnemy = 100;
+	public int damageDone = 0;
 
 	void Start () {
 
@@ -56,6 +59,18 @@ public class TestforCombat : MonoBehaviour {
 		//StartCoroutine("AttackLoop");
 		//InvokeRepeating("NewAttack", 5.0f, 5.0f);
 
+	}
+	void DoDamage()
+	{
+		if (damageToEnemy <= 0)
+		{
+			SceneManager.LoadScene("sample");
+		}
+		else
+		{
+			damageDone = UnityEngine.Random.Range(10,25);
+			damageToEnemy = (damageToEnemy - damageDone);
+		}
 	}
  /* 
 	void NewAttack()
@@ -214,7 +229,7 @@ public class TestforCombat : MonoBehaviour {
 		//GUI.Box(drawArea, "Draw Area");
 		GUIStyle myStyle = new GUIStyle (GUI.skin.GetStyle("label"));
         
-		myStyle.fontSize = 300;
+		myStyle.fontSize = (Screen.width/3);
 		myStyle.normal.textColor = Color.black;
 		GUI.Label(new Rect((Screen.width/2)-50, 50, 500, 500), shapes[attack], myStyle);
 		//GUI.Label(new Rect((Screen.width/2)-50, 50, 500, 500), "O", myStyle);
@@ -233,9 +248,13 @@ public class TestforCombat : MonoBehaviour {
 			Gesture candidate = new Gesture(points.ToArray());
 			Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 			
-			if (gestureResult.Score < .9) message = "Attack Failed!" + " (" +  gestureResult.GestureClass + " " + gestureResult.Score + ")";
-			else if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack " + gestureResult.Score + ")";
-			else message = shapes[attack] + " Attack Succeeded!" + " (" + gestureResult.Score + ")";
+			if (gestureResult.Score < .8) message = "Attack Failed!";
+			else if (gestureResult.GestureClass.CompareTo(shapes[attack]) != 0) message = shapes[attack] + " Attack Failed!" + " (You tried " +  gestureResult.GestureClass + " Attack)";
+			else 
+			{
+				DoDamage();
+				message = shapes[attack] + " Attack Succeeded!" + " (You did " + damageDone + " damage)";
+			}
 			//forceButton = false;
 			attack = UnityEngine.Random.Range(0,3);
 			recognized = false;
