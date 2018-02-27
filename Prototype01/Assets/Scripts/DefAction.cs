@@ -91,13 +91,13 @@ public class DefAction : MonoBehaviour {
 	{
 		if (leftside)
 		{
-			Debug.Log("Swipe down on left side");
-			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+			Debug.Log("A ShieldOfPlayer should be created on the left");
+			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(-3,0,0), Quaternion.Euler(0,90,0));
 		}
 		else
 		{
-			Debug.Log("Swipe down on right side");
-			//Instantiate (prefabForShieldOfPlayer, new Vector3(0,0,0), Quaternion.identity);
+			Debug.Log("A ShieldOfPlayer should be created on the right");
+			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(1,0,0), Quaternion.Euler(0,90,0));
 		}
 	}
 
