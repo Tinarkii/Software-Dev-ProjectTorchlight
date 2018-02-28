@@ -21,7 +21,7 @@ public class Defense : MonoBehaviour {
 	}
 
 	void OnEnable () {
-		time = 3f;
+		time = 4f;
 	}
 	
 	// Update is called once per frame
