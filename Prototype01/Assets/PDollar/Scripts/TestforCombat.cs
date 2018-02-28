@@ -34,7 +34,7 @@ public class TestforCombat : MonoBehaviour {
 	public string[] shapes = new string[4];
 	private int attack;
 	[Tooltip("The health of the enemy")]
-	public int damageToEnemy = 50;
+	public int damageToEnemy = 30;
 	private int damageDone = 0;
 	public double allowedAccuracy = 0.8;
 	public bool finished = false;
