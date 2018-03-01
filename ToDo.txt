@@ -1,0 +1,16 @@
+/*Universal fixes*/
+->Scene transitions & save-states
+->Slight graphical overhaul
+->Cleanup movement
+->Level Design
+->Organize Scripts in File System
+
+/*Item Management*/
+->Inventory needs to be completed
+->Item that actually do stuff
+
+/*Encounter System setup stuff*/
+->Dynamically receive info from OverWorld
+->Combat Resolution
+->Develop Defensive phase
+->Refine Offensive phase
