@@ -3,6 +3,8 @@ Library/
 obj/
 *.svd
 
+/Prototype01/.vscode
+
 !Library/*.asset
 !Library/AssetImportState
 !Library/AssetVersioning.db
