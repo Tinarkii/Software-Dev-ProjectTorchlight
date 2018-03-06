@@ -6,8 +6,16 @@ using UnityEngine;
  * A script for the shield made by enemies
  */
 
-public class ShieldOfEnemy : Shield
+public class ShieldOfEnemy : EncounterElement
 {
+
+	private void Update() {
+		if (false/* This should happen after passing the player */) {
+			Debug.Log ("ShieldOfEnemy passed player and was destroyed");
+			Destroy(gameObject);
+		}
+	}
+
 	/**
 	 * If a Blast collides with a ShieldOfEnemy, destroy them both
 	 */

@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430261fb34f144cdc82cadadd319131d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldTime: 3
+  shieldTime: 1

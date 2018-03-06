@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * An abstract script for all shields, whether the player's or enemys'
- * @TODO: Is it worth making ShieldOfPlayer and ShieldOfEnemy just instances of this class?
+ * A script for the shield made by the player
  */
 
-public abstract class Shield : MonoBehaviour
+public class ShieldOfPlayer : EncounterElement  
 {
 
 	[Tooltip("The time for which this shield will exist")]
@@ -39,8 +38,18 @@ public abstract class Shield : MonoBehaviour
 	}
 
 	/**
-	 * Every Shield will have to handle collisions somehow
+	 * If a BlastBad collides with a ShieldOfPlayer, destroy them both
 	 */
-	protected abstract void OnCollisionEnter(Collision col);
+	protected override void OnCollisionEnter (Collision col)
+    {
+		// The player's shield doesn't care about collisions unless they're with an enemy's blasts
+        if (col.gameObject.name != "BlastBad")
+			return;
+
+		Debug.Log ("ShieldOfPlayer has collided with a BlastBad");
+
+		Destroy (col.gameObject);
+		Destroy (this);
+    }
 
 }

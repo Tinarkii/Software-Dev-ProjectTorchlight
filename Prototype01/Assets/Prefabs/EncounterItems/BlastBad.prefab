@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33079526223256760}
   - component: {fileID: 23949192463650156}
   - component: {fileID: 65658828991271664}
+  - component: {fileID: 114388939620592696}
   m_Layer: 1
   m_Name: BlastBad
   m_TagString: Untagged
@@ -95,3 +96,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5489911, y: 1.5489911, z: 2.3937147}
   m_Center: {x: 0, y: 0, z: 0.0318315}
+--- !u!114 &114388939620592696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797156516492560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cc85e1f9c5af4b90a030db62797f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

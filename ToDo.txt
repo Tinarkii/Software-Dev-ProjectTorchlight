@@ -3,7 +3,6 @@
 ->Slight graphical overhaul
 ->Cleanup movement
 ->Level Design
-->Organize Scripts in File System
 ->Clean up Warnings
 
 /*Item Management*/
