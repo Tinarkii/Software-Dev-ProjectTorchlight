@@ -8,37 +8,45 @@ public class Defense : MonoBehaviour {
 	private int health;
 
 	// Amount of time before phase ends. Might remove later
-	private float timeLeft;
+	private float timePassed;
 
 	// Holds info for an incoming attack
-	private struct attack {
+	private struct Attack {
+		// Time to initiate attack
+		public float time;
+		// The type of attack
+		public enum type {Shield, Blast, Block, Tap};
+		// The side of the screen it comes from
+		public enum side {Left, Right};
 	};
 
 	// The attacks that will be produced on the enemy's turn
 	// Note: might make this a 2D array so multiple sets of attacks
 	// can be cycled through
-	private attack[] attacks;
+	private List<Attack> attacks;
 	
 	/* Keeps track of whether the defensive phase has ended
 	 */
 	public bool Finished() {
-		return timeLeft <= 0;
+		return timePassed >= 4f;
 	}
 
 	// Use this for initialization
 	void Start () {
-		health = 100;// This should come from overworld
+		// These should come from overworld
+		health = 100;
+		attacks = new List<Attack>();
+	}
+
+	// Update is called once per frame
+	void Update () {
+         timePassed += Time.deltaTime;
 	}
 
 	void OnEnable () {
-		timeLeft = 4f;
+		timePassed = 0;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-         timeLeft -= Time.deltaTime;
-	}
-
 	public bool ToExit() {
 		return health <= 0;
 	}

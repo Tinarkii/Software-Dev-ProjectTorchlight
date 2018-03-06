@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5710b9543c7d2746a3ad921ef76f75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefTestMode: 0
+  DefTestMode: 1
   player: {fileID: 1166387265}
 --- !u!114 &578362727
 MonoBehaviour:
@@ -664,6 +664,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabForShieldOfPlayer: {fileID: 4738791779270828, guid: 70a17e8d0249ae74a97aadc573d8751d,
     type: 2}
+  prefabForBlastOfPlayer: {fileID: 4746424414345418, guid: 524e30e8f26a1c84286cd02a9b2b2be1,
+    type: 2}
+  tb: {fileID: 4541479647401924, guid: 15a926f129a2ed54889e48ec17b4d5cf, type: 2}
 --- !u!54 &1166387270
 Rigidbody:
   m_ObjectHideFlags: 0

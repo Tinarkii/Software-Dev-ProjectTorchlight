@@ -7,6 +7,9 @@ public class DefAction : MonoBehaviour {
 	[Tooltip("A prefab of the player's shield that will be instantiated during encounters")]
 	public Transform prefabForShieldOfPlayer;
 
+	[Tooltip("A prefab of the player's blast that will be instantiated during encounters")]
+	public Transform prefabForBlastOfPlayer;
+
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
 
@@ -77,12 +80,7 @@ public class DefAction : MonoBehaviour {
 	// whether the action happened on the left side or not.
 
 	private void jump(bool leftside) {
-		if (leftside)
-			Debug.Log("Swipe up on left side");
-		else
-			Debug.Log("Swipe up on right side");
-		
-		// Very hackish way to prevent jumps while in the air. Pls fix
+		// Very hackish way to jump while preventing jumps in the air. Pls fix
 		if (self.velocity.y == 0)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
@@ -91,25 +89,19 @@ public class DefAction : MonoBehaviour {
 	 * Creates a ShieldOfPlayer near the player
 	 * @param leftside Whether the shield should be made on the left side of the player
 	 */
-	private void shield(bool leftside)
-	{
-		if (leftside)
-		{
-			Debug.Log("A ShieldOfPlayer should be created on the left");
+	private void shield(bool leftside) {
+		if (leftside) {
 			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(-3,0,0), Quaternion.Euler(0,90,0));
-		}
-		else
-		{
-			Debug.Log("A ShieldOfPlayer should be created on the right");
+		} else {
 			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(1,0,0), Quaternion.Euler(0,90,0));
 		}
 	}
 
 	private void shoot(bool leftside) {
 		if (leftside)
-			Debug.Log("Swipe sideways on left side");
+			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(-1,0.7f,0), Quaternion.Euler(0,270,0));
 		else
-			Debug.Log("Swipe sideways on right side");
+			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(1,0.7f,0), Quaternion.Euler(0,90,0));
 	}
 
 	private void tap(bool leftside) {

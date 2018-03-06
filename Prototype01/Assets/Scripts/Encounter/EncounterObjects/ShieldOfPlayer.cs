@@ -32,7 +32,7 @@ public class ShieldOfPlayer : EncounterElement
 	{
 		if (Time.time - shieldTime >= startTime)
 		{
-			Debug.Log ("A Shield has reached the end of its existence time and will now be destroyed");
+			// Debug.Log ("A Shield has reached the end of its existence time and will now be destroyed");
 			Destroy(gameObject);
 		}
 	}

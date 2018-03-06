@@ -11,7 +11,10 @@ public class BlastOfEnemy : EncounterElement {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		// A very hackish way to do move the object. (Also in other blast class.)
+		// If someone would be so kind as to provide a less hackish solution,
+		// it would be much appreciated.
+		transform.Translate(Vector3.forward * 5 * Time.deltaTime);
 	}
 
 	protected override void OnCollisionEnter(Collision col) {
