@@ -435,6 +435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0424df910dc894e419a2c3c7ae1545f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyShield: {fileID: 4308928835164034, guid: 6479a004c7d6b1442956ff909a679fdf,
+    type: 2}
+  enemyBlast: {fileID: 4244935554298950, guid: 28d288ec44abc14449b10e10875f1702, type: 2}
+  enemyBlock: {fileID: 4834500600301326, guid: 2840a7b4bcc245941ba3817cfa56bdc8, type: 2}
 --- !u!114 &578362729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +670,6 @@ MonoBehaviour:
     type: 2}
   prefabForBlastOfPlayer: {fileID: 4746424414345418, guid: 524e30e8f26a1c84286cd02a9b2b2be1,
     type: 2}
-  tb: {fileID: 4541479647401924, guid: 15a926f129a2ed54889e48ec17b4d5cf, type: 2}
 --- !u!54 &1166387270
 Rigidbody:
   m_ObjectHideFlags: 0

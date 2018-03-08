@@ -14,33 +14,53 @@ public class Defense : MonoBehaviour {
 	private struct Attack {
 		// Time to initiate attack
 		public float time;
+		// Where the object will be spawned
+		public int height;
 		// The type of attack
-		public enum type {Shield, Blast, Block, Tap};
+		public Transform type;
 		// The side of the screen it comes from
-		public enum side {Left, Right};
+		public bool leftSide;
 	};
 
 	// The attacks that will be produced on the enemy's turn
-	// Note: might make this a 2D array so multiple sets of attacks
-	// can be cycled through
 	private List<Attack> attacks;
+
+	// To hold the objects to be spawned
+	public Transform enemyShield;
+	public Transform enemyBlast;
+	public Transform enemyBlock;
 	
+
 	/* Keeps track of whether the defensive phase has ended
 	 */
 	public bool Finished() {
-		return timePassed >= 4f;
+		return attacks.Count == 0;
 	}
 
 	// Use this for initialization
 	void Start () {
-		// These should come from overworld
+		// These should come from overworld. These are testing values
 		health = 100;
 		attacks = new List<Attack>();
+		// The list of attacks should be parsed in from elsewhere. This is placeholder.
+		attacks.Add(new Attack{time = 0.5f, height = 0, type = enemyBlast, leftSide = true});
+		// Currently I end with a null attack to signal the end of an attack sequence.
+		// Not the prettiest way to do it, and should be rethought later on.
+		// Probably a variable that counts off a second or so after attacks.Count == 0
+		attacks.Add(new Attack{time = 1});
 	}
 
 	// Update is called once per frame
 	void Update () {
-         timePassed += Time.deltaTime;
+		timePassed += Time.deltaTime;
+
+		while (attacks.Count > 0 && attacks[0].time <= timePassed) {
+			// This needs to be finished; is test version
+			Attack att = attacks[0];
+			if (att.type != null)
+				Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
+			attacks.Remove(att);
+		}
 	}
 
 	void OnEnable () {
