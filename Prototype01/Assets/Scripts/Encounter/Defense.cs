@@ -23,7 +23,7 @@ public class Defense : MonoBehaviour {
 	};
 
 	// The attacks that will be produced on the enemy's turn
-	private List<Attack> attacks;
+	private Queue<Attack> attacks;
 
 	// To hold the objects to be spawned
 	public Transform enemyShield;
@@ -42,25 +42,24 @@ public class Defense : MonoBehaviour {
 	void Start () {
 		// These should come from overworld. These are testing values
 		health = 100;
-		attacks = new List<Attack>();
+		attacks = new Queue<Attack>();
 		// The list of attacks should be parsed in from elsewhere. This is placeholder.
-		attacks.Add(new Attack{time = 0.5f, height = 0, type = enemyBlast, leftSide = true});
+		attacks.Enqueue(new Attack{time = 0.5f, height = 0, type = enemyBlast, leftSide = true});
 		// Currently I end with a null attack to signal the end of an attack sequence.
 		// Not the prettiest way to do it, and should be rethought later on.
 		// Probably a variable that counts off a second or so after attacks.Count == 0
-		attacks.Add(new Attack{time = 1});
+		attacks.Enqueue(new Attack{time = 1});
 	}
 
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
 
-		while (attacks.Count > 0 && attacks[0].time <= timePassed) {
+		while (attacks.Count > 0 && attacks.Peek().time <= timePassed) {
 			// This needs to be finished; is test version
-			Attack att = attacks[0];
+			Attack att = attacks.Dequeue();
 			if (att.type != null)
 				Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
-			attacks.Remove(att);
 		}
 	}
 
