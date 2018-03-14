@@ -13,7 +13,7 @@ public class EncounterControl : MonoBehaviour {
 	// can be enable or disabled for phase changes
 	private Defense defScript;
 	private DefAction defActScript;
-	private TestforCombat TestforCombat;
+	private Attack attackScript;
 
 	// Reference to the player character
 	public GameObject player;
@@ -22,10 +22,10 @@ public class EncounterControl : MonoBehaviour {
 	void Start () {
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
-		TestforCombat = Camera.main.GetComponent<TestforCombat>();
+		attackScript = Camera.main.GetComponent<Attack>();
 		defScript.enabled = false^DefTestMode;
 		defActScript.enabled = false^DefTestMode;
-		TestforCombat.enabled = true^DefTestMode;
+		attackScript.enabled = true^DefTestMode;
 	}
 	
 	public void ExitCombat()
@@ -38,17 +38,19 @@ public class EncounterControl : MonoBehaviour {
 	 */
 	// Update is called once per frame
 	void Update () {
-		if (defScript.Finished()) {
+		if (defScript.Finished()) 
+		{
 			if (defScript.ToExit())
 				ExitCombat();
 			defScript.enabled = false;
 			defActScript.enabled = false;
-			TestforCombat.enabled = true;
+			attackScript.enabled = true;
 		}
-		if (TestforCombat.Finished()) {
-			if (TestforCombat.ToExit())
+		if (attackScript.Finished()) 
+		{
+			if (attackScript.ToExit())
                 ExitCombat();
-			TestforCombat.enabled = false;
+			attackScript.enabled = false;
             defScript.enabled = true;
             defActScript.enabled = true;
 		}

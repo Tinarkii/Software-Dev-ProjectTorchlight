@@ -33,7 +33,8 @@ public class Defense : MonoBehaviour {
 
 	/* Keeps track of whether the defensive phase has ended
 	 */
-	public bool Finished() {
+	public bool Finished() 
+	{
 		return attacks.Count == 0;
 	}
 

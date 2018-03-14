@@ -30,5 +30,5 @@ public class ShieldOfEnemy : EncounterElement
 		Destroy (col.gameObject);
 		Destroy (this);
 	}
-
+	
 }
