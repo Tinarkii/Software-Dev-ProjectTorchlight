@@ -33,17 +33,15 @@ public class Defense : MonoBehaviour {
 
 	/* Keeps track of whether the defensive phase has ended
 	 */
-	public bool Finished() 
-	{
-		return attacks.Count == 0;
+	public bool Finished() {
+		// Need to double check how the initialization of var attacks works with this
+		return attacks != null && attacks.Count == 0;
 	}
 
 	// Use this for initialization
 	void Start () {
-		// These should come from overworld. These are testing values
-		health = 100;
+		// These should defined by a parameter; these are testing values
 		attacks = new Queue<Attack>();
-		// The list of attacks should be parsed in from elsewhere. This is placeholder.
 		attacks.Enqueue(new Attack{time = 0.5f, height = 0, type = enemyBlast, leftSide = true});
 		// Currently I end with a null attack to signal the end of an attack sequence.
 		// Not the prettiest way to do it, and should be rethought later on.
@@ -65,6 +63,10 @@ public class Defense : MonoBehaviour {
 
 	void OnEnable () {
 		timePassed = 0;
+	}
+
+	public void SetHealth(int health) {
+		this.health = health;
 	}
 	
 	public bool ToExit() {
