@@ -38,14 +38,6 @@ public class EncounterControl : MonoBehaviour {
 	 */
 	// Update is called once per frame
 	void Update () {
-		if (defScript.Finished()) 
-		{
-			if (defScript.ToExit())
-				ExitCombat();
-			defScript.enabled = false;
-			defActScript.enabled = false;
-			attackScript.enabled = true;
-		}
 		if (attackScript.Finished()) 
 		{
 			if (attackScript.ToExit())
@@ -54,5 +46,14 @@ public class EncounterControl : MonoBehaviour {
             defScript.enabled = true;
             defActScript.enabled = true;
 		}
+		/*if (defScript.Finished()) 
+		{
+			if (defScript.ToExit())
+				ExitCombat();
+			defScript.enabled = false;
+			defActScript.enabled = false;
+			attackScript.enabled = true;
+		}*/
+
 	}
 }

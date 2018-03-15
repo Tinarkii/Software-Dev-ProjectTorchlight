@@ -14,7 +14,7 @@ public class MouseOverStuff : MonoBehaviour {
 	{
 		startcolor = GetComponent<Renderer>().material.color;
 	}
-	void OnEnable () 
+	public void AttackEnabled () 
 	{
 		GetComponent<Renderer>().material.color = Color.white;
 	}
@@ -67,7 +67,7 @@ public class MouseOverStuff : MonoBehaviour {
 	}
  	void OnMouseExit()
  	{
-  		GetComponent<Renderer>().material.color = startcolor;
+  		//GetComponent<Renderer>().material.color = startcolor;
 	}
 	// Update is called once per frame
 	void Update () 

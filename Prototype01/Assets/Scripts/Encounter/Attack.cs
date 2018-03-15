@@ -6,15 +6,22 @@ public class Attack : MonoBehaviour {
 
 	public static int touched = 0;
 	public static string[] shape = new string[6];
+	//private MouseOverStuff mos;
 
 	public static bool finished;
 
 	// Use this for initialization
-	void Start () {}
+	void Start () 
+	{
+	}
 
 	public bool Finished() 
 	{
 		return finished;
+	}
+
+	void OnEnable() {
+		//mos.AttackEnabled();
 	}
 	
 	public bool ToExit() 
