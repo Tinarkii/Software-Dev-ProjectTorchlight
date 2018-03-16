@@ -20,6 +20,7 @@ public class EncounterControl : MonoBehaviour {
 
 	// Initialization. Begin in player offense mode
 	void Start () {
+		player = GameObject.Find("Person");
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
 		attackScript = Camera.main.GetComponent<Attack>();
@@ -46,14 +47,13 @@ public class EncounterControl : MonoBehaviour {
             defScript.enabled = true;
             defActScript.enabled = true;
 		}
-		/*if (defScript.Finished()) 
+		if (defScript.Finished()) 
 		{
 			if (defScript.ToExit())
 				ExitCombat();
 			defScript.enabled = false;
 			defActScript.enabled = false;
 			attackScript.enabled = true;
-		}*/
-
+		}
 	}
 }

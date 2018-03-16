@@ -6,9 +6,9 @@ public class Attack : MonoBehaviour {
 
 	public static int touched = 0;
 	public static string[] shape = new string[6];
-	//private MouseOverStuff mos;
 
 	public static bool finished;
+	public static bool attackEnabled;
 
 	// Use this for initialization
 	void Start () 
@@ -20,8 +20,15 @@ public class Attack : MonoBehaviour {
 		return finished;
 	}
 
-	void OnEnable() {
-		//mos.AttackEnabled();
+	void OnEnable() 
+	{
+		attackEnabled = true;
+		finished = false;
+		GameObject[] GOs = GameObject.FindGameObjectsWithTag("Circles");
+		for (int i = 0; i<GOs.Length; i++)
+		{
+     		GOs[i].GetComponent<MouseOverStuff>().enabled = true;
+ 		}
 	}
 	
 	public bool ToExit() 
@@ -34,5 +41,7 @@ public class Attack : MonoBehaviour {
 	{
 		if (MouseOverStuff.box || MouseOverStuff.x || MouseOverStuff.tri)
 			finished = true;
+		if (finished)
+			attackEnabled = false;
 	}
 }

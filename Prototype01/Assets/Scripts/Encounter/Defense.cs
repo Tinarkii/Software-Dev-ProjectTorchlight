@@ -25,6 +25,8 @@ public class Defense : MonoBehaviour {
 	// The attacks that will be produced on the enemy's turn
 	private Queue<Attack> attacks;
 
+	private bool finished = false;
+
 	// To hold the objects to be spawned
 	public Transform enemyShield;
 	public Transform enemyBlast;
@@ -35,7 +37,7 @@ public class Defense : MonoBehaviour {
 	 */
 	public bool Finished() 
 	{
-		return attacks.Count == 0;
+		return finished;
 	}
 
 	// Use this for initialization
@@ -54,7 +56,7 @@ public class Defense : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
-
+		if (attacks.Count == 0) finished = true;
 		while (attacks.Count > 0 && attacks.Peek().time <= timePassed) {
 			// This needs to be finished; is test version
 			Attack att = attacks.Dequeue();

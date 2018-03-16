@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 251895760}
   m_Layer: 0
   m_Name: 3
-  m_TagString: Untagged
+  m_TagString: Circles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935538e403585400e842c2283df6bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mos: {fileID: 251895761}
 --- !u!212 &251895762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ GameObject:
   - component: {fileID: 301732343}
   m_Layer: 0
   m_Name: 5
-  m_TagString: Untagged
+  m_TagString: Circles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935538e403585400e842c2283df6bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mos: {fileID: 301732344}
 --- !u!212 &301732345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -542,7 +544,7 @@ GameObject:
   - component: {fileID: 534475493}
   m_Layer: 0
   m_Name: 1
-  m_TagString: Untagged
+  m_TagString: Circles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935538e403585400e842c2283df6bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mos: {fileID: 534475494}
 --- !u!212 &534475495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -788,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefTestMode: 0
-  player: {fileID: 1166387265}
+  player: {fileID: 0}
 --- !u!114 &578362727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,7 +1069,7 @@ GameObject:
   - component: {fileID: 1387612441}
   m_Layer: 0
   m_Name: 4
-  m_TagString: Untagged
+  m_TagString: Circles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1097,6 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935538e403585400e842c2283df6bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mos: {fileID: 1387612442}
 --- !u!212 &1387612443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1167,7 +1171,7 @@ GameObject:
   - component: {fileID: 1859759465}
   m_Layer: 0
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: Circles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,6 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935538e403585400e842c2283df6bd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mos: {fileID: 1859759466}
 --- !u!212 &1859759467
 SpriteRenderer:
   m_ObjectHideFlags: 0
