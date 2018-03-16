@@ -24,14 +24,17 @@ public class EncounterControl : MonoBehaviour {
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
 		attackScript = Camera.main.GetComponent<Attack>();
+
+		defScript.SetHealth(SceneParameters.playerHealth);
+		// Should probably instantiate enemy here
+
 		defScript.enabled = false^DefTestMode;
 		defActScript.enabled = false^DefTestMode;
 		attackScript.enabled = true^DefTestMode;
 	}
 	
-	public void ExitCombat()
-	{
-		SceneManager.LoadScene("sample");
+	public void ExitCombat() {
+		SceneManager.LoadScene(SceneParameters.retScene);
 	}
 
 	/* This toggles the active offensive and 
