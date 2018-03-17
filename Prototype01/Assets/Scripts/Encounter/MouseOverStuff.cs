@@ -22,7 +22,7 @@ public class MouseOverStuff : MonoBehaviour {
 		// Turns the cirle yellow when the cursor passes over it
 		GetComponent<Renderer>().material.color = Color.yellow;
 
-		// Logs which circle was entered into an array and increments the index
+		// Tells Attack.cs that circle was touched, and which circle this is
 		beingTouched = true;
 		thisObject = gameObject;
 	}

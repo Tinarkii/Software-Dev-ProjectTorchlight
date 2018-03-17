@@ -82,9 +82,10 @@ public class Attack : MonoBehaviour {
 	}
 
 
-
+	// Handles a circle being touched by the cursor
 	public void CircleTouched(GameObject x)
 	{
+		// Logs which circle was entered into an array and increments the index
 		shape[touched] = x.name;
 		touched++;
 
@@ -133,6 +134,7 @@ public class Attack : MonoBehaviour {
 
 
 
+	// Checks for a box when called
 	private bool CheckBox()
 	{
 		return string.Join("", shape).CompareTo("123451") == 0 ||
@@ -147,12 +149,14 @@ public class Attack : MonoBehaviour {
 			string.Join("", shape).CompareTo("543215") == 0;
 	}
 
+	// Checks for an X when called
 	private bool CheckX()
 	{
 		return string.Join("", shape).CompareTo("14325") == 0 ||
 			string.Join("", shape).CompareTo("52341") == 0;
 	}
 
+	// Checks for a triangle when called
 	private bool CheckTriangle()
 	{
 		return string.Join("", shape).CompareTo("1351") == 0 ||			
