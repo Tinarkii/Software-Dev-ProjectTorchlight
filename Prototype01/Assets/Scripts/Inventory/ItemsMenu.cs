@@ -16,31 +16,26 @@ public class ItemsMenu : MonoBehaviour
 
     private Inventory inventory;
 
-	// Should run when the ItemsMenuCanvas is instantiated
-	public void Awake ()
-	{
-		Button button = GameObject.Find ("ResumeButton").GetComponent<Button>();
-		button.GetComponentInChildren<Text>().text = "text changed";
-		button.onClick.AddListener(delegate { ResumeGame(); });
-	}
-
     public void UpdateInventory(List<Item> inv)
     {
-        Debug.Log(inv[0]);
+        //Debug.Log(inv[0]);
         //  inventory = inv;
         Debug.Log("Start Method Begins");
-        List<Item> itemList = inv;
-        Debug.Log(itemList[0]);
+        //List<Item> itemList = inv;
+        //Debug.Log(itemList[0]);
 
-        Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
+        //Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
 
-        int j = 0;
-        foreach (Item i in itemList)
+        //int j = 0;
+        foreach (Item i in inv)
         {
-            Debug.Log(i);
-            Debug.Log("foreach");
-            Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
-            j++;
+            //Debug.Log(i);
+            //Debug.Log("foreach");
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity); ////WARNING: not working yet
+			Button button = t.gameObject.GetComponent<Button> ();
+			button.GetComponentInChildren<Text>().text = i.Name();
+			button.onClick.AddListener(delegate { i.UseItem(); });
+            //j++;
         }
 
         ////Debug.Log(itemList[0]);
