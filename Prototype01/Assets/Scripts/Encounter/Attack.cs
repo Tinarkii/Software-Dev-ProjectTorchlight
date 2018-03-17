@@ -5,13 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour {
 
 	// How many circles have been used in this shape & index for shape[]
-	public static int touched = 0;
+	private int touched = 0;
 
 	// The order in which the circles are passed through
-	public static string[] shape = new string[6];
+	private string[] shape = new string[6];
 
 	// Whether or not the attack phase is done
-	public static bool finished;
+	private bool finished;
 
 	// An array that stores the intances of combat circle prefab
 	GameObject[] circles = new GameObject[5];
@@ -22,6 +22,8 @@ public class Attack : MonoBehaviour {
 	{
 		CircleConstructor();
 	}
+
+
 
 	// Sets up each of our combat circles
 	void CircleConstructor()
@@ -45,6 +47,8 @@ public class Attack : MonoBehaviour {
          }
 	}
 
+
+
 	// Called by EncounterControl to check if Attack phase is over
 	public bool Finished() 
 	{
@@ -57,15 +61,12 @@ public class Attack : MonoBehaviour {
 
 				// Make the circles invisible
 				circles[i].GetComponent<Renderer>().material.color = Color.clear;
-
-				// Reset shape check
-				MouseOverStuff.box = false;
-				MouseOverStuff.tri = false;
-				MouseOverStuff.x = false;
 			}
 		}
 		return finished;
 	}
+
+
 
 	void OnEnable() 
 	{
@@ -79,7 +80,19 @@ public class Attack : MonoBehaviour {
 			if(circles[i] != null) circles[i].GetComponent<Renderer>().material.color = Color.white;
  		}
 	}
+
+
+
+	public void CircleTouched(GameObject x)
+	{
+		shape[touched] = x.name;
+		touched++;
+
+		Debug.Log(string.Join("", shape));
+	}
 	
+
+
 	// Sets all values in the shape array to null and resets the index
 	void ClearShape()
 	{
@@ -90,25 +103,66 @@ public class Attack : MonoBehaviour {
 		touched = 0;
 	}
 
+
+
 	// I will create the exit function later...
 	public bool ToExit() 
 	{
 		return false;
 	}
 
+
+
 	// Method to prevent accdentally hitting a circle more than once
 	void NoRepeats()
 	{
+		// Prevents any null pointer exceptions
 		if (touched > 1 && shape != null)
 		{
+			// Checks last two entries to shape array
 			if (shape[touched-1].CompareTo(shape[touched - 2]) == 0)
 			{
-				shape[touched] = null;
+				// Removes the most recent and decrements the index
+				shape[touched - 1] = null;
 				touched--;
 			}
 		}
+		// If no repeats, do nothing
 		else return;
 	}
+
+
+
+	private bool CheckBox()
+	{
+		return string.Join("", shape).CompareTo("123451") == 0 ||
+			string.Join("", shape).CompareTo("154321") == 0 ||
+			string.Join("", shape).CompareTo("234512") == 0 || 
+			string.Join("", shape).CompareTo("215432") == 0 || 
+			string.Join("", shape).CompareTo("345123") == 0 || 
+			string.Join("", shape).CompareTo("321543") == 0 || 
+			string.Join("", shape).CompareTo("451234") == 0 ||
+			string.Join("", shape).CompareTo("432154") == 0 || 
+			string.Join("", shape).CompareTo("512345") == 0 ||
+			string.Join("", shape).CompareTo("543215") == 0;
+	}
+
+	private bool CheckX()
+	{
+		return string.Join("", shape).CompareTo("14325") == 0 ||
+			string.Join("", shape).CompareTo("52341") == 0;
+	}
+
+	private bool CheckTriangle()
+	{
+		return string.Join("", shape).CompareTo("1351") == 0 ||			
+			string.Join("", shape).CompareTo("1531") == 0 ||
+			string.Join("", shape).CompareTo("3513") == 0 ||
+			string.Join("", shape).CompareTo("3153") == 0 ||
+			string.Join("", shape).CompareTo("5135") == 0 ||
+			string.Join("", shape).CompareTo("5315") == 0;
+	}
+
 	
 	// Update is called once per frame
 	void Update () 
@@ -116,21 +170,28 @@ public class Attack : MonoBehaviour {
 		// Prevents accidentally double hitting a circle
 		NoRepeats();
 
+		// Handles a circle being touched
+		if (MouseOverStuff.beingTouched) 
+		{
+			CircleTouched(MouseOverStuff.thisObject);
+			MouseOverStuff.beingTouched = false;
+		}
+
 		// Check if a shape has been drawn, and handles it
-		if (MouseOverStuff.box) 
+		if (CheckBox()) 
 		{
 			print("That's a box.");
 			ClearShape();
 			finished = true;
 
 		}
-		else if (MouseOverStuff.x) 
+		else if (CheckX()) 
 		{
 			print("That's an X.");
 			ClearShape();		
 			finished = true;
 		}
-		else if (MouseOverStuff.tri) 
+		else if (CheckTriangle()) 
 		{
 			print("That's a triangle.");
 			ClearShape();		
