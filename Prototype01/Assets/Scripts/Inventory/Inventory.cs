@@ -75,6 +75,8 @@ public class Inventory : MonoBehaviour
 	 */
     public void OpenMenu()
     {
+		Debug.Log(items[0]); ////just here for testing
+
         Debug.Log("OpenMenu called");
         Time.timeScale = 0;
         Transform t = Instantiate(itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
