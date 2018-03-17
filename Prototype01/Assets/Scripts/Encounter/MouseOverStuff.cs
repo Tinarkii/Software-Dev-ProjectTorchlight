@@ -29,10 +29,15 @@ public class MouseOverStuff : MonoBehaviour {
 
 		// Checks the above array for any recognized shapes and toggles any relevant boolean
 		box = string.Join("", Attack.shape).CompareTo("123451") == 0 ||
+			string.Join("", Attack.shape).CompareTo("154321") == 0 ||
 			string.Join("", Attack.shape).CompareTo("234512") == 0 || 
+			string.Join("", Attack.shape).CompareTo("215432") == 0 || 
 			string.Join("", Attack.shape).CompareTo("345123") == 0 || 
-			string.Join("", Attack.shape).CompareTo("451234") == 0 || 
-			string.Join("", Attack.shape).CompareTo("512345") == 0;
+			string.Join("", Attack.shape).CompareTo("321543") == 0 || 
+			string.Join("", Attack.shape).CompareTo("451234") == 0 ||
+			string.Join("", Attack.shape).CompareTo("432154") == 0 || 
+			string.Join("", Attack.shape).CompareTo("512345") == 0 ||
+			string.Join("", Attack.shape).CompareTo("543215") == 0;
 
 		x = string.Join("", Attack.shape).CompareTo("14325") == 0 ||
 			string.Join("", Attack.shape).CompareTo("52341") == 0;
