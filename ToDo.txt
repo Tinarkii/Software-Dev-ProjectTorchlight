@@ -7,10 +7,13 @@
 
 /*Item Management*/
 ->Inventory needs to be completed
-->Item that actually do stuff
+->Item that actually does stuff
 
 /*Encounter System setup stuff*/
 ->Dynamically receive info from OverWorld
 ->Combat Resolution
 ->Develop Defensive phase
 ->Refine Offensive phase
+
+/*Other*/
+->Make save-lamps and save system (saving should be set up by Wednesday)
