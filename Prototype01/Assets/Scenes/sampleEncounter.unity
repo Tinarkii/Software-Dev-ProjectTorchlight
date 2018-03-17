@@ -512,6 +512,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cd7a89ba37247a5b4cf444b3d3f733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacksCompleted: 0
+  roundsPassed: 0
+  time: 3
 --- !u!1001 &1032359398
 Prefab:
   m_ObjectHideFlags: 0
