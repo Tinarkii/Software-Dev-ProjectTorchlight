@@ -13,6 +13,6 @@ public static class SceneParameters {
 	public static int playerHealth = 100;
 
 	// The unique identifier of the enemy entering combat
-	public static int enemyID;
+	public static int enemyID = 0;
 
 }
