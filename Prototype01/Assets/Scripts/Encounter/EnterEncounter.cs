@@ -15,7 +15,7 @@ public class EnterEncounter : MonoBehaviour {
 	/// touching another rigidbody/collider.
 	/// </summary>
 	/// <param name="other">The Collision data associated with this collision.</param>
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
 		 if (other.gameObject.tag == "Player")
 		 	SceneManager.LoadScene("sampleEncounter");
