@@ -19,8 +19,6 @@ public class ItemsMenu : MonoBehaviour
 	// Should run when the ItemsMenuCanvas is instantiated
 	public void Awake ()
 	{
-		Debug.Log ("Awake called in ItemsMenu script");
-
 		Button button = GameObject.Find ("ResumeButton").GetComponent<Button>();
 		button.GetComponentInChildren<Text>().text = "text changed";
 		button.onClick.AddListener(delegate { ResumeGame(); });

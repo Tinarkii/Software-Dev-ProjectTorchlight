@@ -77,7 +77,8 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log("OpenMenu called");
         Time.timeScale = 0;
-        Instantiate(itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Transform t = Instantiate(itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+		t.gameObject.GetComponent<ItemsMenu> ().UpdateInventory (items);
     }
 
 }
