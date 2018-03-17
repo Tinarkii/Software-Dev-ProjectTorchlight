@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * Regulates phase changes and exiting combat in
+ * the encounter system
+ */
 public class EncounterControl : MonoBehaviour {
 
 	// Allows encounters to begin with Defense mode for testing
@@ -18,7 +22,7 @@ public class EncounterControl : MonoBehaviour {
 	// Reference to the player character
 	public GameObject player;
 
-	// Initialization. Begin in player offense mode
+	/* Initialization of scripts, begin in player offense mode. */
 	void Start () {
 		player = GameObject.Find("Person");
 		defScript = Camera.main.GetComponent<Defense>();
@@ -33,6 +37,7 @@ public class EncounterControl : MonoBehaviour {
 		attackScript.enabled = true^DefTestMode;
 	}
 	
+	/* On combat completion, return to previous scene */
 	public void ExitCombat() {
 		SceneManager.LoadScene(SceneParameters.retScene);
 	}
@@ -42,16 +47,14 @@ public class EncounterControl : MonoBehaviour {
 	 */
 	// Update is called once per frame
 	void Update () {
-		if (attackScript.Finished()) 
-		{
+		if (attackScript.Finished()) {
 			if (attackScript.ToExit())
                 ExitCombat();
 			attackScript.enabled = false;
             defScript.enabled = true;
             defActScript.enabled = true;
 		}
-		if (defScript.Finished()) 
-		{
+		if (defScript.Finished()) {
 			if (defScript.ToExit())
 				ExitCombat();
 			defScript.enabled = false;

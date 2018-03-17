@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Holds the parameters used in scene changes */
 public static class SceneParameters {
 
 	// Defines the scene to return to on combat completion

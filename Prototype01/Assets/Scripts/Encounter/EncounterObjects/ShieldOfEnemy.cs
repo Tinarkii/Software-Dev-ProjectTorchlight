@@ -10,10 +10,6 @@ public class ShieldOfEnemy : EncounterElement
 {
 
 	private void Update() {
-		if (false/* This should happen after passing the player */) {
-			Debug.Log ("ShieldOfEnemy passed player and was destroyed");
-			Destroy(gameObject);
-		}
 	}
 
 	/**
