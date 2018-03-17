@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour {
 
+	private float timePassed;
+
 	// How many circles have been used in this shape & index for shape[]
 	private int touched = 0;
 
@@ -16,10 +18,16 @@ public class Attack : MonoBehaviour {
 	// An array that stores the intances of combat circle prefab
 	GameObject[] circles = new GameObject[5];
 
+	public int attacksCompleted = 0;
+	public int roundsPassed = 0;
+
+	public float timeAllotted;
+
 
 	// Use this for initialization
 	void Start () 
 	{
+		timeAllotted = 3;
 		CircleConstructor();
 	}
 
@@ -61,17 +69,39 @@ public class Attack : MonoBehaviour {
 
 				// Make the circles invisible
 				circles[i].GetComponent<Renderer>().material.color = Color.clear;
+
+				// Get rid of garbage in the shapes array
+				ClearShape();
 			}
 		}
 		return finished;
+	}
+
+	public bool ToExit()
+	{
+		if(attacksCompleted >= 4)
+		{
+			print("You have beaten the opponent");
+			return true;
+		}
+
+		if(roundsPassed >= 8)
+		{
+			print("You lost to the opponent");
+			return true;
+		}
+		else return false;
 	}
 
 
 
 	void OnEnable() 
 	{
-		// Unsets finished flag
+		// Sets flags
 		finished = false;
+		timePassed = 0;
+		timeAllotted = 3;
+		roundsPassed++;
 
 		// Enable the scripts in circles and turns them white
 		for (int i = 0; i < 5; i++)
@@ -102,14 +132,6 @@ public class Attack : MonoBehaviour {
 			shape[i] = null;
 		}
 		touched = 0;
-	}
-
-
-
-	// I will create the exit function later...
-	public bool ToExit() 
-	{
-		return false;
 	}
 
 
@@ -181,7 +203,6 @@ public class Attack : MonoBehaviour {
 			string.Join("", shape).CompareTo("352") == 0 ||
 			string.Join("", shape).CompareTo("353") == 0 ||
 			string.Join("", shape).CompareTo("354") == 0 || 
-			string.Join("", shape).CompareTo("14") == 0 || 
 			string.Join("", shape).CompareTo("121") == 0 || 
 			string.Join("", shape).CompareTo("124") == 0 || 
 			string.Join("", shape).CompareTo("125") == 0 ||
@@ -224,6 +245,8 @@ public class Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
+		timePassed += Time.deltaTime;
+
 		// Prevents accidentally double hitting a circle
 		NoRepeats();
 
@@ -239,19 +262,21 @@ public class Attack : MonoBehaviour {
 		{
 			print("That's a box.");
 			ClearShape();
+			attacksCompleted++;
 			finished = true;
-
 		}
 		else if (CheckX()) 
 		{
 			print("That's an X.");
-			ClearShape();		
+			ClearShape();	
+			attacksCompleted++;	
 			finished = true;
 		}
 		else if (CheckTriangle()) 
 		{
 			print("That's a triangle.");
-			ClearShape();		
+			ClearShape();
+			attacksCompleted++;		
 			finished = true;
 		}
 		else if (WrongShape())
@@ -273,5 +298,6 @@ public class Attack : MonoBehaviour {
 				circles[i].GetComponent<Renderer>().material.color = Color.white;
 			}
 		}	
+		finished = (timeAllotted - timePassed) <= 0;
 	}
 }
