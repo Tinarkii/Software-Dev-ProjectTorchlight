@@ -31,14 +31,14 @@ public class ItemsMenu : MonoBehaviour
         {
             //Debug.Log(i);
             //Debug.Log("foreach");
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity); ////WARNING: not working yet
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity); //WARNING: not working properly yet - It shows up in the hierarchy, but not under the canvas (where it should be), so adding it to the canvas may fix it
 			Button button = t.gameObject.GetComponent<Button> ();
 			button.GetComponentInChildren<Text>().text = i.Name();
 			button.onClick.AddListener(delegate { i.UseItem(); });
             //j++;
         }
 
-        ////Debug.Log(itemList[0]);
+        //Debug.Log(itemList[0]);
     }
 
     /**
