@@ -6,10 +6,6 @@ public class Defense : MonoBehaviour {
 
 	// Whether the phase has completed
 	private bool finished;
-
-	// Keep track of whether this script has finished its phase
-	private int health;
-
 	// Amount of time before phase ends. Might remove later
 	private float timePassed;
 
@@ -26,17 +22,18 @@ public class Defense : MonoBehaviour {
 	
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		seqenceNum = 0;
+	}
 
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
 
 		while (attacks.Count > 0 && attacks.Peek().time <= timePassed) {
-			// This needs to be finished; is test version
 			Sequence.Attack att = attacks.Dequeue();
 			if (att.type != null)
-				Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
+				Create(att);
 		}
 
 		if (attacks.Count == 0)
@@ -46,19 +43,23 @@ public class Defense : MonoBehaviour {
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
-		attacks = Sequence.getRef().getMoves(SceneParameters.enemyID, 0/*seqenceNum++*/);
+		attacks = Sequence.getRef().getMoves(SceneParameters.enemyID, seqenceNum);
+		// Should increment sequenceNum, but I need to make it work in Sequence.cs first
 	}
 
-	public void SetHealth(int health) {
-		this.health = health;
-	}
-	
+	/* Exit scene when player runs out of health */
 	public bool ToExit() {
-		return health <= 0;
+		return SceneParameters.playerHealth <= 0;
 	}
 
 	/* Keeps track of whether the defensive phase has ended */
 	public bool Finished() {
 		return finished;
+	}
+
+	/* Create game objects representing the enemy's moves */
+	private void Create(Sequence.Attack att) {
+		// This needs to be finished, creating each object at the correct position and orientation
+		Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
 	}
 }
