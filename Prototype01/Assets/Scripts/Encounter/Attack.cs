@@ -95,10 +95,27 @@ public class Attack : MonoBehaviour {
 	{
 		return false;
 	}
+
+	// Method to prevent accdentally hitting a circle more than once
+	void NoRepeats()
+	{
+		if (touched > 1 && shape != null)
+		{
+			if (shape[touched-1].CompareTo(shape[touched - 2]) == 0)
+			{
+				shape[touched] = null;
+				touched--;
+			}
+		}
+		else return;
+	}
 	
 	// Update is called once per frame
 	void Update () 
 	{	
+		// Prevents accidentally double hitting a circle
+		NoRepeats();
+
 		// Check if a shape has been drawn, and handles it
 		if (MouseOverStuff.box) 
 		{
