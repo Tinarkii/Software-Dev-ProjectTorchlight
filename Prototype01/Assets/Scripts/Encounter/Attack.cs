@@ -21,13 +21,15 @@ public class Attack : MonoBehaviour {
 	public int attacksCompleted = 0;
 	public int roundsPassed = 0;
 
-	public float timeAllotted;
+	private float timeAllotted;
+
+	public float time = 3;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		timeAllotted = 3;
+		timeAllotted = time;
 		CircleConstructor();
 	}
 
@@ -100,7 +102,7 @@ public class Attack : MonoBehaviour {
 		// Sets flags
 		finished = false;
 		timePassed = 0;
-		timeAllotted = 3;
+		timeAllotted = time;
 		roundsPassed++;
 
 		// Enable the scripts in circles and turns them white
