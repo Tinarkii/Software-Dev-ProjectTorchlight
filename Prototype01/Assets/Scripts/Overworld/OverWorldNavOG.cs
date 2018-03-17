@@ -6,13 +6,15 @@ using System;
 public class OverWorldNavOG : MonoBehaviour {
     Rigidbody self;
     Vector3 target;
-    public int maxSpeed;
+	public int maxSpeed;
     RaycastHit hitPoint;
 	public Camera usedCamera;
+	private Vector3 veloc;
 
     // Use this for initialization
     void Start () {
-        target = new Vector3(0, 0, 0);
+		target = transform.position;
+		veloc = new Vector3 (0, 0, 0);
         self = GetComponent<Rigidbody>();
 
 	}
@@ -23,29 +25,28 @@ public class OverWorldNavOG : MonoBehaviour {
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
         if (Input.GetMouseButton(0))
         {
-            if (Physics.Raycast(ray, out hitPoint,500))
+			if (Physics.Raycast(ray, out hitPoint,1000,(1 << 9)))
             {
-
                 target = hitPoint.point;
-
-
-
-
             }
         }
 
-        Vector3 veloc = (target - self.position) * (6.5f/7.0f);
-        //Debug.Log("Target: " + target + " Velocity: " + veloc);
+		veloc = (target - self.position) * (6.5f/7.0f);
 
-        if (veloc.magnitude > maxSpeed)
-        {
-            veloc = (veloc.normalized);
-            veloc = Vector3.Scale(veloc, new Vector3(maxSpeed, 0, maxSpeed));
-        }
-        self.velocity = new Vector3(veloc.x, self.velocity.y, veloc.z);
-		Vector3 lookto = new Vector3 (target.x, self.position.y, target.z);
-		self.transform.LookAt (lookto);
+		float speed = Mathf.Min (maxSpeed, veloc.magnitude);
+           
+		veloc = (veloc.normalized);
+           
+		veloc = Vector3.Scale (veloc, new Vector3 (speed, 0, speed));
 
+		self.velocity = new Vector3 (veloc.x, self.velocity.y, veloc.z);
+		if (veloc.magnitude > .1) {
+			Vector3 lookto = new Vector3 (target.x, self.position.y, target.z);
+			self.transform.LookAt (lookto);
+		} else {
+			target = transform.position;
+			self.velocity = new Vector3(0,0,0);
+		}
 
     }
 }
