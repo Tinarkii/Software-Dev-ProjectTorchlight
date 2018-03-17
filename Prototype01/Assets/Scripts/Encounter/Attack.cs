@@ -4,65 +4,58 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour {
 
+	// How many circles have been used in this shape & index for shape[]
 	public static int touched = 0;
+
+	// The order in which the circles are passed through
 	public static string[] shape = new string[6];
 
+	// Whether or not the attack phase is done
 	public static bool finished;
 
+	// An array that stores the intances of combat circle prefab
 	GameObject[] circles = new GameObject[5];
-	GameObject One;
-	GameObject Two;
-	GameObject Three;
-	GameObject Four;
-	GameObject Five;
+
 
 	// Use this for initialization
 	void Start () 
 	{
-		// Initialize and constuct the circles
-
-		One = (GameObject)Instantiate(Resources.Load("Circle"));
-		One.transform.position = new Vector3(-2, 0.5f, 0);
-		One.GetComponent<Renderer>().material.color = Color.white;
-		One.name = "1";
-		circles[0] = One;
-
-		Two = (GameObject)Instantiate(Resources.Load("Circle"));
-		Two.transform.position = new Vector3(-2, 3, 0);
-		Two.GetComponent<Renderer>().material.color = Color.white;
-		Two.name = "2";
-		circles[1] = Two;			
-
-		Three = (GameObject)Instantiate(Resources.Load("Circle"));
-		Three.transform.position = new Vector3(0, 3, 0);
-		Three.GetComponent<Renderer>().material.color = Color.white;
-		Three.name = "3";
-		circles[2] = Three;
-
-		Four = (GameObject)Instantiate(Resources.Load("Circle"));
-		Four.transform.position = new Vector3(2, 3, 0);
-		Four.GetComponent<Renderer>().material.color = Color.white;
-		Four.name = "4";
-		circles[3] = Four;
-
-		Five = (GameObject)Instantiate(Resources.Load("Circle"));
-		Five.transform.position = new Vector3(2, 0.5f, 0);
-		Five.GetComponent<Renderer>().material.color = Color.white;
-		Five.name = "5";
-		circles[4] = Five;
+		CircleConstructor();
 	}
 
+	// Sets up each of our combat circles
+	void CircleConstructor()
+	{
+		for (int i = 0; i < 5; i++)
+         {
+			 // Instantiates the circle prefab, makes it white, and names it using i
+             GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
+			 circle.GetComponent<Renderer>().material.color = Color.white;
+             circle.name = (i+1).ToString();
+			 // Stores each instance in the array circles
+			 circles[i] = circle;
+
+			 // Positions each circle
+			 if (i == 0) circle.transform.position = new Vector3(-2, 0.5f, 0);
+			 if (i == 1) circle.transform.position = new Vector3(-2, 3, 0);
+			 if (i == 2) circle.transform.position = new Vector3(0, 3, 0);
+			 if (i == 3) circle.transform.position = new Vector3(2, 3, 0);
+			 if (i == 4) circle.transform.position = new Vector3(2, 0.5f, 0);
+         }
+	}
+
+	// Called by EncounterControl to check if Attack phase is over
 	public bool Finished() 
 	{
 		if(finished)
 		{
-			for (int i = 0; i<=4; i++)
+			for (int i = 0; i < 5; i++)
 			{
+				// Disables the MouseOverStuff script
+				MouseOverStuff.isEnabled = false;
+
 				// Make the circles invisible
 				circles[i].GetComponent<Renderer>().material.color = Color.clear;
-
-				// Disable the circle scripts
-				circles[i].GetComponent<MouseOverStuff>().enabled = false;
 
 				// Reset shape check
 				MouseOverStuff.box = false;
@@ -78,21 +71,22 @@ public class Attack : MonoBehaviour {
 		// Unsets finished flag
 		finished = false;
 
-		// Enable the scripts in circles
-		for (int i = 0; i<=4; i++)
+		// Enable the scripts in circles and turns them white
+		for (int i = 0; i < 5; i++)
 		{
-     		circles[i].GetComponent<MouseOverStuff>().enabled = true;
+			MouseOverStuff.isEnabled = true;
 			circles[i].GetComponent<Renderer>().material.color = Color.white;
  		}
 	}
 	
-	// Sets all values in the shape array to null
+	// Sets all values in the shape array to null and resets the index
 	void ClearShape()
 	{
 		for(int i=0; i < 6; i++)
 		{
 			shape[i] = null;
 		}
+		touched = 0;
 	}
 
 	// I will create the exit function later...
@@ -104,34 +98,32 @@ public class Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
-		// Check if a shape has been drawn
+		// Check if a shape has been drawn, and handles it
 		if (MouseOverStuff.box) 
 		{
-			ClearShape();
-			Attack.touched = 0;
 			print("That's a box.");
+			ClearShape();
 			finished = true;
+
 		}
 		else if (MouseOverStuff.x) 
 		{
-			ClearShape();
-			Attack.touched = 0;
 			print("That's an X.");
+			ClearShape();		
 			finished = true;
 		}
 		else if (MouseOverStuff.tri) 
 		{
-			ClearShape();
-			Attack.touched = 0;
 			print("That's a triangle.");
+			ClearShape();		
 			finished = true;
 		}
+		// If no shape was drawn, reset everything to how it was
 		else if(touched>=6)
 		{
-			ClearShape();
-			touched = 0;
 			print("That's a not a shape.");
-			for (int i = 0; i<=4; i++)
+			ClearShape();
+			for (int i = 0; i<5; i++)
 			{
 				circles[i].GetComponent<Renderer>().material.color = Color.white;
 			}
