@@ -29,7 +29,6 @@ public class EncounterControl : MonoBehaviour {
 		defActScript = player.GetComponent<DefAction>();
 		attackScript = Camera.main.GetComponent<Attack>();
 
-		defScript.SetHealth(SceneParameters.playerHealth);
 		// Should probably instantiate enemy here
 
 		defScript.enabled = false^DefTestMode;
