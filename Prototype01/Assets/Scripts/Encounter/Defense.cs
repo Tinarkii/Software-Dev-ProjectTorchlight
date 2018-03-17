@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Defense : MonoBehaviour {
 
+	private bool finished;
+
 	// Keep track of whether this script has finished its phase
 	private int health;
 
@@ -35,14 +37,14 @@ public class Defense : MonoBehaviour {
 	 */
 	public bool Finished() {
 		// Need to double check how the initialization of var attacks works with this
-		return attacks != null && attacks.Count == 0;
+		return finished;
 	}
 
 	// Use this for initialization
 	void Start () {
 		// These should defined by a parameter; these are testing values
 		attacks = new Queue<Attack>();
-		attacks.Enqueue(new Attack{time = 0.5f, height = 0, type = enemyBlast, leftSide = true});
+		attacks.Enqueue(new Attack{time = 2, height = 0, type = enemyBlast, leftSide = true});
 		// Currently I end with a null attack to signal the end of an attack sequence.
 		// Not the prettiest way to do it, and should be rethought later on.
 		// Probably a variable that counts off a second or so after attacks.Count == 0
@@ -59,9 +61,12 @@ public class Defense : MonoBehaviour {
 			if (att.type != null)
 				Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
 		}
+
+		finished = (2 - timePassed) <= 0;
 	}
 
 	void OnEnable () {
+		finished = false;
 		timePassed = 0;
 	}
 

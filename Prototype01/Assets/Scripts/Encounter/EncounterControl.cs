@@ -46,12 +46,14 @@ public class EncounterControl : MonoBehaviour {
 		{
 			if (attackScript.ToExit())
                 ExitCombat();
+			Debug.Log("Disabling attackScript");
 			attackScript.enabled = false;
             defScript.enabled = true;
             defActScript.enabled = true;
 		}
 		if (defScript.Finished()) 
 		{
+			Debug.Log("Defensive script is showing up as finished");
 			if (defScript.ToExit())
 				ExitCombat();
 			defScript.enabled = false;

@@ -32,6 +32,7 @@ public class Attack : MonoBehaviour {
              GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
 			 circle.GetComponent<Renderer>().material.color = Color.white;
              circle.name = (i+1).ToString();
+
 			 // Stores each instance in the array circles
 			 circles[i] = circle;
 
@@ -49,6 +50,7 @@ public class Attack : MonoBehaviour {
 	{
 		if(finished)
 		{
+			Debug.Log("finished was true");
 			for (int i = 0; i < 5; i++)
 			{
 				// Disables the MouseOverStuff script
@@ -56,12 +58,14 @@ public class Attack : MonoBehaviour {
 
 				// Make the circles invisible
 				circles[i].GetComponent<Renderer>().material.color = Color.clear;
+				Debug.Log("Circles were made invisible");
 
 				// Reset shape check
 				MouseOverStuff.box = false;
 				MouseOverStuff.tri = false;
 				MouseOverStuff.x = false;
 			}
+			Debug.Log("finished is about to be passed to EncounterControl as true");
 		}
 		return finished;
 	}
@@ -75,7 +79,7 @@ public class Attack : MonoBehaviour {
 		for (int i = 0; i < 5; i++)
 		{
 			MouseOverStuff.isEnabled = true;
-			circles[i].GetComponent<Renderer>().material.color = Color.white;
+			if(circles[i] != null) circles[i].GetComponent<Renderer>().material.color = Color.white;
  		}
 	}
 	

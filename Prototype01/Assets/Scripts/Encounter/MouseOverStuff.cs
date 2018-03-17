@@ -10,6 +10,7 @@ public class MouseOverStuff : MonoBehaviour {
 	public static bool x;
 	public static bool tri;
 
+	// Determines if script is enabled. Controlled by Attack.cs
 	public static bool isEnabled;
 
  	void OnMouseEnter()
