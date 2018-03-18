@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Circles
+  - ItemButton
   layers:
   - Default
   - TransparentFX

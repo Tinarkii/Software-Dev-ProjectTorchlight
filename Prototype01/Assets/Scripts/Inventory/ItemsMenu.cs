@@ -28,20 +28,31 @@ public class ItemsMenu : MonoBehaviour
 
 	/**
 	 * Sets the on-screen menu to match what's in the inventory
-	 * @TODO: WARNING this will not refresh properly yet, it doesn't delete any of the buttons from when it was called previously
 	 */
 	public void UpdateInventoryMenu()
 	{
+		// Makes sure all the old buttons are gone before making new ones
+		GameObject[] oldButtons = GameObject.FindGameObjectsWithTag("ItemButton");
+		foreach (GameObject variableName in oldButtons)
+			;//Destroy (variableName); //@TODO: doesn't work. variableName.SetActive(false) doesn't work either
+
+		// This list may contain null Items, because Items will Destroy themselves when they reach 0 quantity
+		items.RemoveAll(Item => Item == null);
+
+		int zPosition = 0;
 		foreach (Item i in items)
 		{
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition+=100), Quaternion.identity);
+			t.tag = "ItemButton";
+
 			Button button = t.gameObject.GetComponent<Button> ();
-			button.transform.SetParent(this.gameObject.GetComponent<Canvas>().transform,false);
 
 			button.GetComponentInChildren<Text>().text = i.Name() + " (" + i.GetQuantity() + ")";
 
 			button.onClick.AddListener(delegate { i.UseItem(); });
 			button.onClick.AddListener(delegate { UpdateInventoryMenu(); }); // so that the inventory is kept up-to-date while items are being used
+
+			button.transform.SetParent(this.gameObject.GetComponent<Canvas>().transform,false);
 		}
 	}
 

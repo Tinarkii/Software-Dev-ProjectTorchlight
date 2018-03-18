@@ -53,12 +53,15 @@ public class Inventory : MonoBehaviour
 
     /**
 	 * Get an Item from the items List
-	 * @TODO: is there a better way to do this?
 	 */
     private Item GetItemFromList(Item newItem)
     {
+		// This list may contain null Items, because Items will Destroy themselves when they reach 0 quantity
+		items.RemoveAll(Item => Item == null);
+
         foreach (Item listItem in items)
         {
+
             if (listItem.Name() == newItem.Name())
                 return listItem;
         }
