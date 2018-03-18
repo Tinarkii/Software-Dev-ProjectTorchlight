@@ -9,37 +9,41 @@ using UnityEngine.UI;
 
 public class ItemsMenu : MonoBehaviour
 {
-
+	[Tooltip("A prefab for buttons for items in the inventory")]
     public Transform useItemButton;
 
-    // public Transform textBox;
+	/**
+	 * Stores a reference to the inventory list so it can be updated as needed
+	 */
+	private List<Item> items;
 
-    private Inventory inventory;
-
-    public void UpdateInventory(List<Item> inv)
+	/**
+	 * Called when the inventory menu is first opened
+	 */
+    public void StartInventoryMenu(List<Item> inv)
     {
-        //Debug.Log(inv[0]);
-        //  inventory = inv;
-        Debug.Log("Start Method Begins");
-        //List<Item> itemList = inv;
-        //Debug.Log(itemList[0]);
-
-        //Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
-
-        //int j = 0;
-        foreach (Item i in inv)
-        {
-            //Debug.Log(i);
-            //Debug.Log("foreach");
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity); //WARNING: not working properly yet - It shows up in the hierarchy, but not under the canvas (where it should be), so adding it to the canvas may fix it
-			Button button = t.gameObject.GetComponent<Button> ();
-			button.GetComponentInChildren<Text>().text = i.Name();
-			button.onClick.AddListener(delegate { i.UseItem(); });
-            //j++;
-        }
-
-        //Debug.Log(itemList[0]);
+		items = inv;
+		UpdateInventoryMenu ();
     }
+
+	/**
+	 * Sets the on-screen menu to match what's in the inventory
+	 * @TODO: WARNING this will not refresh properly yet, it doesn't delete any of the buttons from when it was called previously
+	 */
+	public void UpdateInventoryMenu()
+	{
+		foreach (Item i in items)
+		{
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, 0), Quaternion.identity);
+			Button button = t.gameObject.GetComponent<Button> ();
+			button.transform.SetParent(this.gameObject.GetComponent<Canvas>().transform,false);
+
+			button.GetComponentInChildren<Text>().text = i.Name() + " (" + i.GetQuantity() + ")";
+
+			button.onClick.AddListener(delegate { i.UseItem(); });
+			button.onClick.AddListener(delegate { UpdateInventoryMenu(); }); // so that the inventory is kept up-to-date while items are being used
+		}
+	}
 
     /**
 	 * Resume the game. Should be called by a button being pressed.
