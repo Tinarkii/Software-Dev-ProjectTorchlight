@@ -40,6 +40,16 @@ public class Defense : MonoBehaviour {
 			finished = true;
 	}
 
+	/* Create game objects representing the enemy's moves */
+	private void Create(Sequence.Attack att) {
+		int rev = (att.velocity > 0) ? 1 : -1;
+		float adjust = (att.type == enemyShield) ? 0.5f : 0;// Not a fan of this, but it works
+		// Too many magic numbers. I know this is a fantasy game, but still.
+		Transform t = Instantiate(att.type, new Vector3(rev*-11, (6.25f/4)*(att.height + adjust) + 0.2f, -3),
+					Quaternion.Euler(0, 90*rev, 0));
+		// use t for velocity?
+	}
+
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
@@ -55,13 +65,5 @@ public class Defense : MonoBehaviour {
 	/* Keeps track of whether the defensive phase has ended */
 	public bool Finished() {
 		return finished;
-	}
-
-	/* Create game objects representing the enemy's moves */
-	private void Create(Sequence.Attack att) {
-		// This needs correct position, orientation, and velocity
-		Transform t = Instantiate(att.type, new Vector3(11*((att.velocity > 0) ? -1 : 1),
-				0, 3*att.height), Quaternion.Euler(0, 90*((att.velocity > 0) ? 1 : -1), 0));
-		// use t for velocity?
 	}
 }
