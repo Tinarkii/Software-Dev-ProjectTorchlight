@@ -16,7 +16,7 @@ public class DefAction : MonoBehaviour {
 	/* The various constants used */
 	private static class Const {
 		// The upward velocity added for a jump
-		public const float jumpSpeed = 6;
+		public const float jumpSpeed = 12.5f;
 		// The constant that defines how many pixels a swipe is
 		public const int Delta = 2;
 	}
