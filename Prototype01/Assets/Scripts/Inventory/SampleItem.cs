@@ -25,9 +25,9 @@ public class SampleItem : Item
 
 		Instantiate ((GameObject)Resources.Load("SampleItemResource", typeof(GameObject)), new Vector3 (0, 1, 0), Quaternion.identity);
 
-		if (quantity > 1)
-			quantity--;
-		else
+		quantity--;
+
+		if (quantity <= 0)
 			Destroy (this);
 	}
 	
