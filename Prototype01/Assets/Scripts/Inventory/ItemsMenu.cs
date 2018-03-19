@@ -33,8 +33,8 @@ public class ItemsMenu : MonoBehaviour
 	{
 		// Makes sure all the old buttons are gone before making new ones
 		GameObject[] oldButtons = GameObject.FindGameObjectsWithTag("ItemButton");
-		foreach (GameObject variableName in oldButtons)
-			;//Destroy (variableName); //@TODO: doesn't work. variableName.SetActive(false) doesn't work either
+		foreach (GameObject button in oldButtons)
+			Destroy (button);
 
 		// This list may contain null Items, because Items will Destroy themselves when they reach 0 quantity
 		items.RemoveAll(Item => Item == null);
@@ -42,7 +42,12 @@ public class ItemsMenu : MonoBehaviour
 		int zPosition = 0;
 		foreach (Item i in items)
 		{
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition+=100), Quaternion.identity);
+			// @TODO: For some reason, Items that should have been Destroyed (they have quantity == 0) still get buttons.
+			// This is a temporary fix to keep that from happening, but the root cause should be addressed.
+			if (i.GetQuantity () <= 0)
+				continue;
+
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition-=1), Quaternion.identity);
 			t.tag = "ItemButton";
 
 			Button button = t.gameObject.GetComponent<Button> ();

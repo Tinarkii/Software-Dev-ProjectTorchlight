@@ -29,7 +29,7 @@ public abstract class Item : MonoBehaviour
 	 */
 	public string Name ()
 	{
-		return name;
+		return myName;
 	}
 
 	/**
