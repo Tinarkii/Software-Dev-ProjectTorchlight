@@ -59,7 +59,9 @@ public class Defense : MonoBehaviour {
 
 	/* Create game objects representing the enemy's moves */
 	private void Create(Sequence.Attack att) {
-		// This needs to be finished, creating each object at the correct position and orientation
-		Instantiate(att.type, new Vector3(0, 0, 0), Quaternion.identity);
+		// This needs correct position, orientation, and velocity
+		Transform t = Instantiate(att.type, new Vector3(11*((att.velocity > 0) ? -1 : 1),
+				0, 3*att.height), Quaternion.Euler(0, 90*((att.velocity > 0) ? 1 : -1), 0));
+		// use t for velocity?
 	}
 }

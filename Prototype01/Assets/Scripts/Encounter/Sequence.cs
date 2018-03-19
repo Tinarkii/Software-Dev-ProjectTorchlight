@@ -15,8 +15,8 @@ public class Sequence {
 		public int height;
 		// The type of attack
 		public Transform type;
-		// The side of the screen it comes from
-		public bool leftSide;
+		// Speed of object; also determines which side of screen
+		public float velocity;
 	};
 	
 	// To hold the objects to be spawned
@@ -63,9 +63,9 @@ public class Sequence {
 
 	private Queue<Attack> ID0() {
 		Queue<Attack> attacks = new Queue<Attack>();
-		attacks.Enqueue(new Attack{time = 0.75f, height = 0, type = enemyBlast, leftSide = true});
-		attacks.Enqueue(new Attack{time = 0.85f, height = 0, type = enemyBlock, leftSide = true});
-		attacks.Enqueue(new Attack{time = 0.95f, height = 0, type = enemyShield, leftSide = true});
+		attacks.Enqueue(new Attack{time = 0.75f, height = 0, type = enemyBlast, velocity = 5});
+		//attacks.Enqueue(new Attack{time = 0.85f, height = 0, type = enemyBlock, velocity = 5});
+		//attacks.Enqueue(new Attack{time = 0.95f, height = 0, type = enemyShield, velocity = 5});
 		attacks.Enqueue(new Attack{time = 2});
 
 		return attacks;
