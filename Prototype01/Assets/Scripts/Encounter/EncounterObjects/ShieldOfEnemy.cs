@@ -27,14 +27,14 @@ public class ShieldOfEnemy : EncounterElement
 	 */
 	protected override void OnCollisionEnter (Collision col)
 	{
-		// The player's shield doesn't care about collisions unless they're with an enemy's blasts
-		if (col.gameObject.name != "Blast")
+		// The enemy's shield doesn't care about collisions unless they're with a player's blast
+		if (col.gameObject.name != "Blast(Clone)")
 			return;
 
 		Debug.Log ("ShieldOfEnemy has collided with a Blast");
 
 		Destroy (col.gameObject);
-		Destroy (this);
+		Destroy (transform.gameObject);
 	}
 	
 }
