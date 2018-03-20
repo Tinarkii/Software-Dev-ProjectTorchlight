@@ -18,6 +18,8 @@ public class BlastOfEnemy : EncounterElement {
 	}
 
 	protected override void OnCollisionEnter(Collision col) {
-
+		Debug.Log("col");
+		if (col.gameObject.name == "Shield")
+			Destroy(this);
 	}
 }

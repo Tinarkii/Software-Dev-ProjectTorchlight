@@ -76,6 +76,10 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
+	protected void OnCollisionEnter(Collision col) {
+
+	}
+
 	// # Begin region player actions. bool leftside refers to
 	// whether the action happened on the left side or not.
 
@@ -90,18 +94,13 @@ public class DefAction : MonoBehaviour {
 	 * @param leftside Whether the shield should be made on the left side of the player
 	 */
 	private void shield(bool leftside) {
-		if (leftside) {
-			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(-3,0,0), Quaternion.Euler(0,90,0));
-		} else {
-			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(1,0,0), Quaternion.Euler(0,90,0));
-		}
+		int rev = leftside ? -1 : 1;
+		Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(rev*1,0,0), Quaternion.Euler(0,rev*90,0));
 	}
 
 	private void shoot(bool leftside) {
-		if (leftside)
-			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(-1,0.7f,0), Quaternion.Euler(0,270,0));
-		else
-			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(1,0.7f,0), Quaternion.Euler(0,90,0));
+		int rev = leftside ? -1 : 1;
+		Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(rev*1,0.7f,0), Quaternion.Euler(0,rev*90,0));
 	}
 
 	private void tap(bool leftside) {
