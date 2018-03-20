@@ -66,7 +66,7 @@ public class Baddie : MonoBehaviour
 
             if (veloc.magnitude > .1)
             {
-                Vector3 lookto = new Vector3(target.x, self.position.y, target.z);
+                Vector3 lookto = new Vector3(target.x, self.position.y + angle, target.z);
                 self.transform.LookAt(lookto);
             }
         }
