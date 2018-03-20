@@ -94,7 +94,6 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlock, 4.3f, 0, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 4.6f, 0, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 4.9f, 0, 5));
-		/*
 		attacks.Enqueue(new Attack(enemyBlock, 5.2f, 1, -5));
 		attacks.Enqueue(new Attack(enemyBlock, 5.5f, 1, -5));
 		attacks.Enqueue(new Attack(enemyBlock, 5.8f, 1, -5));
@@ -103,9 +102,8 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlock, 6.7f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 7.0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 7.3f, 2, 5));
-		*/
 
-		attacks.Enqueue(new Attack(9));
+		attacks.Enqueue(new Attack(12));
 		return attacks;
 	}
 

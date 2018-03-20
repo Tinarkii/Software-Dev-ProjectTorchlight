@@ -23,6 +23,8 @@ public class DefAction : MonoBehaviour {
 
 	private Rigidbody self;
 
+	private bool canJump;
+
 
 	// Initialization
 	void Start () {
@@ -77,7 +79,18 @@ public class DefAction : MonoBehaviour {
 	}
 
 	protected void OnCollisionEnter(Collision col) {
+		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)")
+			Debug.Log("Hit!");
+	}
 
+	protected void OnCollisionStay(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
+			canJump = true;
+	}
+
+	protected void OnCollisionExit(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad")
+			canJump = false;
 	}
 
 	// # Begin region player actions. bool leftside refers to
@@ -85,7 +98,8 @@ public class DefAction : MonoBehaviour {
 
 	private void jump(bool leftside) {
 		// Very hackish way to jump while preventing jumps in the air. Pls fix
-		if (self.velocity.y == 0)
+		//if (self.velocity.y == 0)
+		if (canJump)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
 
