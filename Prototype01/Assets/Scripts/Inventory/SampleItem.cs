@@ -23,7 +23,7 @@ public class SampleItem : Item
 	{
 		Debug.Log("SampleItem used");
 
-		Instantiate ((GameObject)Resources.Load("SampleItemResource", typeof(GameObject)), new Vector3 (0, 1, 0), Quaternion.identity);
+		Instantiate ((GameObject)Resources.Load("SampleItemResource", typeof(GameObject)), new Vector3 (Random.Range(-15,15), 1, Random.Range(-15,15)), Quaternion.identity);
 
 		quantity--;
 
