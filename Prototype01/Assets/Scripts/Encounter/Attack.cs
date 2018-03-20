@@ -79,6 +79,8 @@ public class Attack : MonoBehaviour {
 		return finished;
 	}
 
+
+
 	public bool ToExit()
 	{
 		if(attacksCompleted >= 4)
@@ -112,6 +114,7 @@ public class Attack : MonoBehaviour {
 			if(circles[i] != null) circles[i].GetComponent<Renderer>().material.color = Color.white;
  		}
 	}
+
 
 
 	// Handles a circle being touched by the cursor
