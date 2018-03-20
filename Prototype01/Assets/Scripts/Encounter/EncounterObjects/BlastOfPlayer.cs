@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlastOfPlayer : EncounterElement {
 
+    private int time = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +17,12 @@ public class BlastOfPlayer : EncounterElement {
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.
 		transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+        time++;
+        if(time >= 200)
+        {
+            Destroy(transform.gameObject);
+            time = 0;
+        }
 	}
 
 	protected override void OnCollisionEnter(Collision col) {

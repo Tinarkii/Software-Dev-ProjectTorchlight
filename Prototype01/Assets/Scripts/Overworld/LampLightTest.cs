@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class LampLightTest : MonoBehaviour {
 
-    public Light myLight; 
+    public Light myLight;
+    private bool on = false; 
+    
 
 	// Use this for initialization
 	void Start () {
-        myLight.enabled = false;
+        myLight.enabled = on;
     }
 
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            myLight.enabled = true; 
+            myLight.enabled = true;
+            on = true; 
         }
             
     }

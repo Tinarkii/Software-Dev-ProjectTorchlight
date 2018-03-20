@@ -124,18 +124,18 @@ public class DefAction : MonoBehaviour {
 			jump(false);
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 			shield(false);
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			shoot(false);
 		if (Input.GetKeyDown(KeyCode.RightArrow))
+			shoot(false);
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
 			tap(false);
 
 		if (Input.GetKeyDown(KeyCode.W))
 			jump(true);
 		if (Input.GetKeyDown(KeyCode.S))
 			shield(true);
-		if (Input.GetKeyDown(KeyCode.D))
-			shoot(true);
 		if (Input.GetKeyDown(KeyCode.A))
+			shoot(true);
+		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
 }
