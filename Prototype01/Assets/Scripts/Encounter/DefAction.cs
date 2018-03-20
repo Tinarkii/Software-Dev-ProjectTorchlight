@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;// Remove this when UI is removed
 
 public class DefAction : MonoBehaviour {
 
@@ -78,10 +79,16 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
+	public Text t;// Very bad practice, just need it to work for now
 	protected void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
 			Destroy(col.gameObject);
-			// Player's health should go down here
+			SceneParameters.playerHealth -= 15;
+
+			// This should be done elsewhere
+			if (SceneParameters.playerHealth < 0)
+				SceneParameters.playerHealth = 0;
+			t.text = SceneParameters.playerHealth.ToString();
 		}
 	}
 
@@ -99,8 +106,6 @@ public class DefAction : MonoBehaviour {
 	// whether the action happened on the left side or not.
 
 	private void jump(bool leftside) {
-		// Very hackish way to jump while preventing jumps in the air. Pls fix
-		//if (self.velocity.y == 0)
 		if (canJump)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
