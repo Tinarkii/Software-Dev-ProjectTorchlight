@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 15
+=======
+# Visual Studio 2017
+>>>>>>> ab0949cdf275c8012bbb00de490b3c0c5cf48104
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype01", "Prototype01.csproj", "{82F88846-35BB-702B-E7A8-261B00295AF5}"
 EndProject
 Global

@@ -41,8 +41,8 @@ public class ShieldOfPlayer : EncounterElement
 	 */
 	protected override void OnCollisionEnter (Collision col)
     {
-		// The player's shield doesn't care about collisions unless they're with an enemy's blasts
-        if (col.gameObject.name != "BlastBad")
+        // The player's shield doesn't care about collisions unless they're with an enemy's blasts
+        if (col.gameObject.name != "BlastBad(Clone)")
 			return;
 
 		Debug.Log ("ShieldOfPlayer has collided with a BlastBad");
