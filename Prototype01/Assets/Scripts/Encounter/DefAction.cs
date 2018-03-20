@@ -79,8 +79,10 @@ public class DefAction : MonoBehaviour {
 	}
 
 	protected void OnCollisionEnter(Collision col) {
-		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)")
-			Debug.Log("Hit!");
+		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
+			Destroy(col.gameObject);
+			// Player's health should go down here
+		}
 	}
 
 	protected void OnCollisionStay(Collision col) {

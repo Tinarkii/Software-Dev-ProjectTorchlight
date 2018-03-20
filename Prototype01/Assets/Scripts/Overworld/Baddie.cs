@@ -8,9 +8,8 @@ public class Baddie : MonoBehaviour
     Rigidbody self;
     public Rigidbody boy;
     Vector3 target;
-    public int maxSpeed;
-    public int minSpeed;
-    public int speed; 
+    public int speed;
+    public int angle; 
     bool go; 
 
     // Use this for initialization
@@ -64,6 +63,12 @@ public class Baddie : MonoBehaviour
             veloc *= speed;
 
             self.velocity = veloc;
+
+            if (veloc.magnitude > .1)
+            {
+                Vector3 lookto = new Vector3(target.x, self.position.y + angle, target.z);
+                self.transform.LookAt(lookto);
+            }
         }
     }
 }

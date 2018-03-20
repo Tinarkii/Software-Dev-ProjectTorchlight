@@ -26,6 +26,13 @@ public class BlastOfPlayer : EncounterElement {
 	}
 
 	protected override void OnCollisionEnter(Collision col) {
+        //A player's blast doesn't care about collisions that are not an enemy's shield
+        if (col.gameObject.name != "ShieldBad(Clone)")
+            return;
 
-	}
+        Debug.Log("BlastOfPlayer has collided with a ShieldBad");
+
+        Destroy(col.gameObject);
+        Destroy(transform.gameObject);
+    }
 }
