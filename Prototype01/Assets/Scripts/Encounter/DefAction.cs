@@ -89,7 +89,7 @@ public class DefAction : MonoBehaviour {
 	}
 
 	protected void OnCollisionExit(Collision col) {
-		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad")
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
 			canJump = false;
 	}
 
