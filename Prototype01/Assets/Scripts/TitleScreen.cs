@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * Script for controlling what happens in the TitleScreen scene
@@ -13,7 +14,7 @@ public class TitleScreen : MonoBehaviour
 	 */
 	public void NewGame()
 	{
-		Debug.Log("NewGame called");
+		SceneManager.LoadScene("sample");
 	}
 
 	/**
@@ -21,6 +22,6 @@ public class TitleScreen : MonoBehaviour
 	 */
 	public void ResumeGame()
 	{
-		Debug.Log("ResumeGame called");
+		Debug.LogWarning("@TODO: ResumeGame has not yet been implemented");
 	}
 }
