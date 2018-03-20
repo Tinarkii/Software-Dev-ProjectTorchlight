@@ -297,7 +297,6 @@
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\EncounterElement.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfEnemy.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfPlayer.cs" />
-    <Compile Include="Assets\Scripts\Encounter\EnterEncounter.cs" />
     <Compile Include="Assets\Scripts\Encounter\MouseOverStuff.cs" />
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -306,6 +305,7 @@
     <Compile Include="Assets\Scripts\Inventory\SampleItem.cs" />
     <Compile Include="Assets\Scripts\LightingRoomScript.cs" />
     <Compile Include="Assets\Scripts\Overworld\AnchorTo.cs" />
+    <Compile Include="Assets\Scripts\Overworld\Baddie.cs" />
     <Compile Include="Assets\Scripts\Overworld\LampLightTest.cs" />
     <Compile Include="Assets\Scripts\Overworld\MoveToClickPoint.cs" />
     <Compile Include="Assets\Scripts\Overworld\OverworldCameraMovement.cs" />
