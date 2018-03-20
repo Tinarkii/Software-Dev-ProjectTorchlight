@@ -23,6 +23,8 @@ public class DefAction : MonoBehaviour {
 
 	private Rigidbody self;
 
+	private bool canJump;
+
 
 	// Initialization
 	void Start () {
@@ -76,12 +78,28 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
+	protected void OnCollisionEnter(Collision col) {
+		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)")
+			Debug.Log("Hit!");
+	}
+
+	protected void OnCollisionStay(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
+			canJump = true;
+	}
+
+	protected void OnCollisionExit(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
+			canJump = false;
+	}
+
 	// # Begin region player actions. bool leftside refers to
 	// whether the action happened on the left side or not.
 
 	private void jump(bool leftside) {
 		// Very hackish way to jump while preventing jumps in the air. Pls fix
-		if (self.velocity.y == 0)
+		//if (self.velocity.y == 0)
+		if (canJump)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
 
@@ -90,18 +108,13 @@ public class DefAction : MonoBehaviour {
 	 * @param leftside Whether the shield should be made on the left side of the player
 	 */
 	private void shield(bool leftside) {
-		if (leftside) {
-			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(-3,0,0), Quaternion.Euler(0,90,0));
-		} else {
-			Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(1,0,0), Quaternion.Euler(0,90,0));
-		}
+		int rev = leftside ? -1 : 1;
+		Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(rev*1,0,0), Quaternion.Euler(0,rev*90,0));
 	}
 
 	private void shoot(bool leftside) {
-		if (leftside)
-			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(-1,0.7f,0), Quaternion.Euler(0,270,0));
-		else
-			Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(1,0.7f,0), Quaternion.Euler(0,90,0));
+		int rev = leftside ? -1 : 1;
+		Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(rev*1,0.7f,0), Quaternion.Euler(0,rev*90,0));
 	}
 
 	private void tap(bool leftside) {
@@ -125,18 +138,18 @@ public class DefAction : MonoBehaviour {
 			jump(false);
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 			shield(false);
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			shoot(false);
 		if (Input.GetKeyDown(KeyCode.RightArrow))
+			shoot(false);
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
 			tap(false);
 
 		if (Input.GetKeyDown(KeyCode.W))
 			jump(true);
 		if (Input.GetKeyDown(KeyCode.S))
 			shield(true);
-		if (Input.GetKeyDown(KeyCode.D))
-			shoot(true);
 		if (Input.GetKeyDown(KeyCode.A))
+			shoot(true);
+		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
 }
