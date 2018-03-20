@@ -4,7 +4,6 @@ using UnityEngine;
 
 /**
  * A class for holding all the player's items
- * @TODO: do we want enemies to have inventories too, so they can give/take items from the player?
  */
 
 public class Inventory : MonoBehaviour
@@ -54,12 +53,15 @@ public class Inventory : MonoBehaviour
 
     /**
 	 * Get an Item from the items List
-	 * @TODO: is there a better way to do this?
 	 */
     private Item GetItemFromList(Item newItem)
     {
+		// This list may contain null Items, because Items will Destroy themselves when they reach 0 quantity
+		items.RemoveAll(Item => Item == null);
+
         foreach (Item listItem in items)
         {
+
             if (listItem.Name() == newItem.Name())
                 return listItem;
         }
@@ -70,15 +72,13 @@ public class Inventory : MonoBehaviour
     /**
 	 * Pauses the game and opens the menu. This should
 	 * be called by a button or something in the game
-	 * @TODO: see also https://gamedev.stackexchange.com/questions/116698/resuming-a-previous-scene-from-a-current-scene-using-the-unity3d
-	 * @TODO: Should this method be in another class?
 	 */
     public void OpenMenu()
     {
 		Debug.Log("OpenMenu called. There are " + items.Count + " item types in the inventory.");
         Time.timeScale = 0;
         Transform t = Instantiate(itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-		t.gameObject.GetComponent<ItemsMenu> ().UpdateInventory (items);
+		t.gameObject.GetComponent<ItemsMenu> ().StartInventoryMenu (items);
     }
 
 }

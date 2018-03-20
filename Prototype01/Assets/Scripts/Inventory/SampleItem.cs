@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class SampleItem : Item
 {
-
 	/**
 	 * Initialization
 	 */
@@ -18,13 +17,18 @@ public class SampleItem : Item
 	}
 
 	/**
-	 * Use the SampleItem
+	 * Use the SampleItem - creates another SampleItem on the screen
 	 */
 	public override void UseItem ()
 	{
 		Debug.Log("SampleItem used");
-		//@TODO: the below line doesn't work yet - it's an idea of something more interesting that this item can do
-		//Instantiate (this, Camera.Main.ScreenToWorldPoint (Vector3 (250, 250, 0)), Quaternion.identity);
+
+		Instantiate ((GameObject)Resources.Load("SampleItemResource", typeof(GameObject)), new Vector3 (Random.Range(-15,15), 1, Random.Range(-15,15)), Quaternion.identity);
+
+		quantity--;
+
+		if (quantity <= 0)
+			Destroy (this);
 	}
 	
 }

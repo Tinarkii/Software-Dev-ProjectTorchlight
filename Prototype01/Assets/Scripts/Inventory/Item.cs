@@ -25,19 +25,19 @@ public abstract class Item : MonoBehaviour
 	abstract public void UseItem ();
 
 	/**
+	 * Returns the name of this Item
+	 */
+	public string Name ()
+	{
+		return myName;
+	}
+
+	/**
 	 * Returns the number of items of this type that are here
 	 */
 	public int GetQuantity ()
 	{
 		return quantity;
-	}
-
-	/**
-	 * Returns the name of this Item
-	 */
-	public string Name ()
-	{
-		return name;
 	}
 
 	/**
