@@ -47,7 +47,7 @@ public class ItemsMenu : MonoBehaviour
 			if (i.GetQuantity () <= 0)
 				continue;
 
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition-=100), Quaternion.identity);
+			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition-=1), Quaternion.identity);
 			t.tag = "ItemButton";
 
 			Button button = t.gameObject.GetComponent<Button> ();
