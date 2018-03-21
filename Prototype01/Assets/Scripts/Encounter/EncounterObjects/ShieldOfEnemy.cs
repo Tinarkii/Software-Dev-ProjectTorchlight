@@ -8,12 +8,18 @@ using UnityEngine;
 
 public class ShieldOfEnemy : EncounterElement
 {
+    private int time = 0;
 
 	private void Update() {
 		// A very hackish way to do move the object.
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.
 		transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+        time++;
+        if(time >= 250)
+        {
+            Destroy(transform.gameObject);
+        }
 	}
 
 	/**
@@ -21,14 +27,14 @@ public class ShieldOfEnemy : EncounterElement
 	 */
 	protected override void OnCollisionEnter (Collision col)
 	{
-		// The player's shield doesn't care about collisions unless they're with an enemy's blasts
-		if (col.gameObject.name != "Blast")
+		// The enemy's shield doesn't care about collisions unless they're with a player's blast
+		if (col.gameObject.name != "Blast(Clone)")
 			return;
 
 		Debug.Log ("ShieldOfEnemy has collided with a Blast");
 
 		Destroy (col.gameObject);
-		Destroy (this);
+		Destroy (transform.gameObject);
 	}
 	
 }

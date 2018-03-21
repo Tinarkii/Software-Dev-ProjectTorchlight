@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlastOfEnemy : EncounterElement {
 
+    private int time = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,9 +17,22 @@ public class BlastOfEnemy : EncounterElement {
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.
 		transform.Translate(Vector3.forward * 5 * Time.deltaTime);
-	}
+        time++;
+        if (time >= 300)
+        {
+            Destroy(transform.gameObject);
+            time = 0;
+        }
+    }
 
 	protected override void OnCollisionEnter(Collision col) {
+        //An enemy's blast doesn't care about collisions that are not a player's shield
+        if (col.gameObject.name != "Shield(Clone)")
+            return;
 
-	}
+        Debug.Log("ShieldOfPlayer has collided with a BlastBad");
+
+        Destroy(col.gameObject);
+        Destroy(transform.gameObject);
+    }
 }
