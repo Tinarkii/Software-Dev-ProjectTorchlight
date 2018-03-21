@@ -10,6 +10,7 @@ public class OverWorldNavOG : MonoBehaviour {
     RaycastHit hitPoint;
 	public Camera usedCamera;
 	private Vector3 veloc;
+	private int bufferFrame = 0;
 
     // Use this for initialization
     void Start () {
@@ -18,6 +19,11 @@ public class OverWorldNavOG : MonoBehaviour {
         self = GetComponent<Rigidbody>();
 
 	}
+
+	public void Cleanse(){
+		target = self.position;
+		bufferFrame = 1;
+	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -25,10 +31,11 @@ public class OverWorldNavOG : MonoBehaviour {
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
         if (Input.GetMouseButton(0))
         {
-			if (Physics.Raycast(ray, out hitPoint,1000,(1 << 9)))
-            {
-                target = hitPoint.point;
-            }
+			if (Physics.Raycast (ray, out hitPoint, 1000, (1 << 9)) && bufferFrame < 1) {
+				target = hitPoint.point;
+			} else {
+				bufferFrame--;
+			}
         }
 
 		veloc = (target - self.position) * (6.5f/7.0f);

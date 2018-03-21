@@ -13,16 +13,15 @@ public class LampLightTest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myLight.enabled = on;
+		game = GameObject.Find ("GameControl");
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-			myLight.enabled = !myLight.enabled;
-			on = myLight.enabled;
-
-			game.GetComponent<Game> ().UpdateLamp (index);
+			on = !on;
+			game.GetComponent<GameControl> ().UpdateLamp (index);
         }
             
     }
@@ -35,6 +34,10 @@ public class LampLightTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		if (game == null) {
+			game = GameObject.Find ("GameControl");
+		}
+		myLight.enabled = on;
+
 	}
 }
