@@ -16,29 +16,42 @@ public class Attack : MonoBehaviour {
 	private bool finished;
 
 	// An array that stores the intances of combat circle prefab
-	GameObject[] circles = new GameObject[5];
+	GameObject[] circles;
 
 	public int attacksCompleted = 0;
-	public int roundsPassed = 0;
 
 	private float timeAllotted;
 
 	public float time = 3;
+
+	private bool circleConstructed;
+	private bool cc;
+	private bool triConstructed;
+	private bool ct;
+	private bool boxConstructed;
+	private bool cb;
+
+	int whichI;
 
 
 	// Use this for initialization
 	void Start () 
 	{
 		timeAllotted = time;
-		CircleConstructor();
 	}
 
 
 
 	// Sets up each of our combat circles
-	void CircleConstructor()
+	void BoxConstructor()
 	{
-		for (int i = 0; i < 5; i++)
+		whichI = 4;
+		boxConstructed = true;
+		triConstructed = false;
+		circleConstructed = false;
+		// An array that stores the intances of combat circle prefab
+		circles = new GameObject[4];
+		for (int i = 0; i < 4; i++)
          {
 			 // Instantiates the circle prefab, makes it white, and names it using i
              GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
@@ -51,11 +64,68 @@ public class Attack : MonoBehaviour {
 			 // Positions each circle
 			 if (i == 0) circle.transform.position = new Vector3(-2, 0.5f, 0);
 			 if (i == 1) circle.transform.position = new Vector3(-2, 3, 0);
-			 if (i == 2) circle.transform.position = new Vector3(0, 3, 0);
-			 if (i == 3) circle.transform.position = new Vector3(2, 3, 0);
-			 if (i == 4) circle.transform.position = new Vector3(2, 0.5f, 0);
+			 if (i == 2) circle.transform.position = new Vector3(2, 3, 0);
+			 if (i == 3) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
 	}
+
+
+
+	// Sets up each of our combat circles
+	void TriConstructor()
+	{
+		whichI = 3;
+		boxConstructed = false;
+		triConstructed = true;
+		circleConstructed = false;
+		// An array that stores the intances of combat circle prefab
+		circles = new GameObject[3];
+		for (int i = 0; i < 3; i++)
+         {
+			 // Instantiates the circle prefab, makes it white, and names it using i
+             GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
+			 circle.GetComponent<Renderer>().material.color = Color.white;
+             circle.name = (i+1).ToString();
+
+			 // Stores each instance in the array circles
+			 circles[i] = circle;
+
+			 // Positions each circle
+			 if (i == 0) circle.transform.position = new Vector3(-2, 0.5f, 0);
+			 if (i == 1) circle.transform.position = new Vector3(0, 3, 0);
+			 if (i == 2) circle.transform.position = new Vector3(2, 0.5f, 0);
+         }
+	}
+
+
+	void CircleConstructor()
+	{
+		whichI = 6;
+		boxConstructed = false;
+		triConstructed = false;
+		circleConstructed = true;
+		// An array that stores the intances of combat circle prefab
+		circles = new GameObject[6];
+		for (int i = 0; i < 6; i++)
+         {
+			 // Instantiates the circle prefab, makes it white, and names it using i
+             GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
+			 circle.GetComponent<Renderer>().material.color = Color.white;
+             circle.name = (i+1).ToString();
+
+			 // Stores each instance in the array circles
+			 circles[i] = circle;
+
+			 // Positions each circle
+			 if (i == 0) circle.transform.position = new Vector3(-2, 2, 0);
+			 if (i == 1) circle.transform.position = new Vector3(2, 2, 0);
+			 if (i == 2) circle.transform.position = new Vector3(1, .25f, 0);
+			 if (i == 3) circle.transform.position = new Vector3(-1, .25f, 0);
+			 if (i == 4) circle.transform.position = new Vector3(1, 3.75f, 0);
+			 if (i == 5) circle.transform.position = new Vector3(-1, 3.75f, 0);
+         }
+	}
+
 
 
 
@@ -64,16 +134,17 @@ public class Attack : MonoBehaviour {
 	{
 		if(finished)
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < whichI; i++)
 			{
 				// Disables the MouseOverStuff script
 				MouseOverStuff.isEnabled = false;
 
 				// Make the circles invisible
-				circles[i].GetComponent<Renderer>().material.color = Color.clear;
+				//circles[i].GetComponent<Renderer>().material.color = Color.clear;
 
 				// Get rid of garbage in the shapes array
 				ClearShape();
+				Destroy(circles[i]);
 			}
 		}
 		return finished;
@@ -88,12 +159,6 @@ public class Attack : MonoBehaviour {
 			print("You have beaten the opponent");
 			return true;
 		}
-
-		if(roundsPassed >= 8)
-		{
-			print("You lost to the opponent");
-			return true;
-		}
 		else return false;
 	}
 
@@ -105,10 +170,23 @@ public class Attack : MonoBehaviour {
 		finished = false;
 		timePassed = 0;
 		timeAllotted = time;
-		roundsPassed++;
+
+		int r = Random.Range(1,3);
+		switch (r)
+		{
+			case 1: 
+				BoxConstructor();
+				break;
+			case 2: 
+				TriConstructor();
+				break;
+			case 3:
+				CircleConstructor();
+				break;
+		}
 
 		// Enable the scripts in circles and turns them white
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < whichI; i++)
 		{
 			MouseOverStuff.isEnabled = true;
 			if(circles[i] != null) circles[i].GetComponent<Renderer>().material.color = Color.white;
@@ -164,37 +242,49 @@ public class Attack : MonoBehaviour {
 	// Checks for a box when called
 	private bool CheckBox()
 	{
-		return string.Join("", shape).CompareTo("123451") == 0 ||
-			string.Join("", shape).CompareTo("154321") == 0 ||
-			string.Join("", shape).CompareTo("234512") == 0 || 
-			string.Join("", shape).CompareTo("215432") == 0 || 
-			string.Join("", shape).CompareTo("345123") == 0 || 
-			string.Join("", shape).CompareTo("321543") == 0 || 
-			string.Join("", shape).CompareTo("451234") == 0 ||
-			string.Join("", shape).CompareTo("432154") == 0 || 
-			string.Join("", shape).CompareTo("512345") == 0 ||
-			string.Join("", shape).CompareTo("543215") == 0;
+		if (boxConstructed)
+		{
+			int pos = System.Array.IndexOf(circles, "1") + System.Array.IndexOf(circles, "2") + System.Array.IndexOf(circles, "3") + System.Array.IndexOf(circles, "4");
+			if (pos < 6) return false;
+			else return true;
+		}
+		else return false;
 	}
 
 	// Checks for an X when called
-	private bool CheckX()
+	private bool CheckCircle()
 	{
-		return string.Join("", shape).CompareTo("14325") == 0 ||
-			string.Join("", shape).CompareTo("52341") == 0;
+		if (circleConstructed)
+		{
+			int pos = System.Array.IndexOf(shape, "1") + System.Array.IndexOf(shape, "2") + System.Array.IndexOf(shape, "3") + System.Array.IndexOf(shape, "4") + 
+				System.Array.IndexOf(shape, "5") + System.Array.IndexOf(shape, "6") + System.Array.IndexOf(shape, "7") + System.Array.IndexOf(shape, "8");
+			if (pos < 28) 
+			{
+				//Debug.Log(pos);
+				return false;
+			}
+			else return true;
+		}
+		else return false;
 	}
 
 	// Checks for a triangle when called
 	private bool CheckTriangle()
 	{
-		return string.Join("", shape).CompareTo("1351") == 0 ||			
-			string.Join("", shape).CompareTo("1531") == 0 ||
-			string.Join("", shape).CompareTo("3513") == 0 ||
-			string.Join("", shape).CompareTo("3153") == 0 ||
-			string.Join("", shape).CompareTo("5135") == 0 ||
-			string.Join("", shape).CompareTo("5315") == 0;
+		if (triConstructed)
+		{
+			int pos = System.Array.IndexOf(shape, "1") + System.Array.IndexOf(shape, "2") + System.Array.IndexOf(shape, "3");
+			if (pos < 3) 
+			{
+				//Debug.Log(pos);
+				return false;
+			}
+			else return true;
+		}
+		else return false;
 	}
 
-	// Catches a wrong shape earlier
+	/*// Catches a wrong shape earlier
 	private bool WrongShape()
 	{
 		return string.Join("", shape).CompareTo("312") == 0 ||
@@ -244,7 +334,7 @@ public class Attack : MonoBehaviour {
 			string.Join("", shape).CompareTo("541") == 0 ||
 			string.Join("", shape).CompareTo("542") == 0 ||
 			string.Join("", shape).CompareTo("545") == 0;
-	}
+	}*/
 
 	
 	// Update is called once per frame
@@ -270,7 +360,7 @@ public class Attack : MonoBehaviour {
 			attacksCompleted++;
 			finished = true;
 		}
-		else if (CheckX()) 
+		else if (CheckCircle()) 
 		{
 			print("That's an X.");
 			ClearShape();	
@@ -284,7 +374,7 @@ public class Attack : MonoBehaviour {
 			attacksCompleted++;		
 			finished = true;
 		}
-		else if (WrongShape())
+		/*else if (WrongShape())
 		{
 			print("That's a not a shape.");
 			ClearShape();
@@ -302,7 +392,7 @@ public class Attack : MonoBehaviour {
 			{
 				circles[i].GetComponent<Renderer>().material.color = Color.white;
 			}
-		}	
+		}	*/
 		finished = (timeAllotted - timePassed) <= 0;
 	}
 }

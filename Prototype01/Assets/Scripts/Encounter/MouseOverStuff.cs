@@ -9,11 +9,18 @@ public class MouseOverStuff : MonoBehaviour {
 	public static bool isEnabled;
 	public static bool beingTouched;
 	public static GameObject thisObject;
+	public bool beenTouched;
 
 	void Start() 
 	{
 		beingTouched = false;
 	}
+	
+	public bool GetBeenTouched()
+	{
+		return beenTouched;
+	}
+
  	void OnMouseEnter()
 	{
 		// Ignores the OnMouseEnter function if isEnabled is false
@@ -24,8 +31,10 @@ public class MouseOverStuff : MonoBehaviour {
 
 		// Tells Attack.cs that circle was touched, and which circle this is
 		beingTouched = true;
+		beenTouched = true;
 		thisObject = gameObject;
 	}
+
 	void OnMouseExit()
 	{
 		beingTouched = false;
