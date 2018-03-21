@@ -38,6 +38,7 @@ public class EncounterControl : MonoBehaviour {
 	
 	/* On combat completion, return to previous scene */
 	public void ExitCombat() {
+
 		GameControl.control.Load();
 	}
 
@@ -46,6 +47,9 @@ public class EncounterControl : MonoBehaviour {
 	 */
 	// Update is called once per frame
 	void Update () {
+
+		PlayerPrefs.SetInt("Health", GameControl.control.confidence);
+
 		if (attackScript.Finished()) {
 			attackScript.enabled = false;
             defScript.enabled = true;

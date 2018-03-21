@@ -75,6 +75,8 @@ public class GameControl : MonoBehaviour {
 			playerPosition = data.playerPosition;
 			GameObject.Find("Player").transform.position = data.playerPosition;
 			GameObject.Find("Lamp").GetComponent<LampLightTest>().on = data.lamp;
+			if (PlayerPrefs.HasKey("Health"))
+				confidence = PlayerPrefs.GetInt("Health");
 			
 			Debug.Log(data.playerPosition);
 
