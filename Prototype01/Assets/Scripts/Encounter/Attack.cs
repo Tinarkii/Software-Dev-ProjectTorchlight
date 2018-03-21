@@ -34,18 +34,20 @@ public class Attack : MonoBehaviour {
 
 	int whichI;
 	private bool exitCondition;
-	public int enemyHealth = 100;
+	private int enemyHealth;
 
 
 
 
 	
 	public Text E;
+	public Text t;
 
 
 	// Use this for initialization
 	void Start () 
 	{
+		enemyHealth = 100;
 		timeAllotted = time;
 	}
 
@@ -345,6 +347,7 @@ public class Attack : MonoBehaviour {
 		if (enemyHealth <= 0) exitCondition = true;
 		timePassed += Time.deltaTime;
 
+		t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
 		// Prevents accidentally double hitting a circle
 		NoRepeats();
 

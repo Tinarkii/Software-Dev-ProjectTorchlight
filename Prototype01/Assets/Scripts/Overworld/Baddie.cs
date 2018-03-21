@@ -45,7 +45,10 @@ public class Baddie : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
+        {
+            GameControl.control.Save();
             SceneManager.LoadScene("sampleEncounter");
+        }
     }
 
     // Update is called once per frame

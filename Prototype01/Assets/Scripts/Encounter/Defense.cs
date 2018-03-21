@@ -60,7 +60,7 @@ public class Defense : MonoBehaviour {
 
 	/* Exit scene when player runs out of health */
 	public bool ToExit() {
-		return SceneParameters.playerHealth <= 0;
+		return GameControl.control.confidence <= 0;
 	}
 
 	/* Keeps track of whether the defensive phase has ended */

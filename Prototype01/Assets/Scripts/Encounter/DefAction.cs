@@ -27,8 +27,13 @@ public class DefAction : MonoBehaviour {
 	private bool canJump;
 
 
+
+	public Text t;// Very bad practice, just need it to work for now
+
+
 	// Initialization
 	void Start () {
+		t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
 		self = GetComponent<Rigidbody>();
 	}
 
@@ -79,16 +84,16 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
-	public Text t;// Very bad practice, just need it to work for now
+	
 	protected void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
 			Destroy(col.gameObject);
-			SceneParameters.playerHealth -= 15;
+			GameControl.control.confidence -= 15;
 
 			// This should be done elsewhere
-			if (SceneParameters.playerHealth < 0)
-				SceneParameters.playerHealth = 0;
-			t.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();
+			if (GameControl.control.confidence < 0)
+				GameControl.control.confidence = 0;
+			t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
 		}
 	}
 

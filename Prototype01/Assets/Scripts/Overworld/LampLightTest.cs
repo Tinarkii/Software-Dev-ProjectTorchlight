@@ -5,7 +5,7 @@ using UnityEngine;
 public class LampLightTest : MonoBehaviour {
 
     public Light myLight;
-    private bool on = false; 
+    public bool on = false; 
     
 
 	// Use this for initialization
