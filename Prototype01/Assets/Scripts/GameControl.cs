@@ -7,6 +7,7 @@ using System;
 using System.Runtime.Serialization;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+ using UnityEngine.SceneManagement;
 
 
 
@@ -17,6 +18,7 @@ public class GameControl : MonoBehaviour {
 	public int confidence;
 	public Vector3 playerPosition;
 	public bool lamp;
+	public string currentScene;
 
 
 	void Awake () 
@@ -40,13 +42,16 @@ public class GameControl : MonoBehaviour {
 
 	public void Save()
 	{
+		
+
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(Application.persistentDataPath + "/savegame.dat");
-
+		currentScene = SceneManager.GetActiveScene ().name;
 		SaveGame data = new SaveGame();
 		V3S.SerializableVector3 serPlayerPos = GameObject.Find("Player").transform.position;
 		Debug.Log(GameObject.Find("Player").transform.position);
 
+		data.currentScene = currentScene;
 		data.lamp = GameObject.Find("Lamp").GetComponent<LampLightTest>().on;
 		data.confidence = confidence;
 		data.playerPosition = serPlayerPos;
@@ -64,11 +69,13 @@ public class GameControl : MonoBehaviour {
 			SaveGame data = (SaveGame)bf.Deserialize(file);
 			file.Close();
 
+			SceneManager.LoadScene(currentScene);
 			lamp = data.lamp;
 			confidence = data.confidence;
 			playerPosition = data.playerPosition;
 			GameObject.Find("Player").transform.position = data.playerPosition;
 			GameObject.Find("Lamp").GetComponent<LampLightTest>().on = data.lamp;
+			
 			Debug.Log(data.playerPosition);
 
 		}
@@ -82,4 +89,5 @@ class SaveGame
 	public int confidence;
 	public V3S.SerializableVector3 playerPosition;
 	public bool lamp;
+	public string currentScene;
 }

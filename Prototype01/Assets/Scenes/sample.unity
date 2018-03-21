@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.087477006, g: 0.046703003, b: 0.1282104, a: 1}
+  m_IndirectSpecularColor: {r: 0.08701923, g: 0.046703003, b: 0.1284925, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -671,6 +671,48 @@ GameObject:
   m_PrefabParentObject: {fileID: 1528802955752124, guid: 19d76e77578c55a45b8ebd1ef6725c02,
     type: 2}
   m_PrefabInternal: {fileID: 540063442}
+--- !u!1001 &571682544
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.16161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 14.69191
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -21.428658
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504601928499672, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &618067188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1793,7 @@ GameObject:
   - component: {fileID: 673424843}
   - component: {fileID: 1523079307}
   - component: {fileID: 1523079306}
+  - component: {fileID: 1523079308}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Player
@@ -1801,6 +1844,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1523079308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523079304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20fa453453a85456fa9f488dd1e4c161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574149643
 GameObject:
   m_ObjectHideFlags: 0
