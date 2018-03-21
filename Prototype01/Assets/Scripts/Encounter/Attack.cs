@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Attack : MonoBehaviour {
 
@@ -10,7 +11,7 @@ public class Attack : MonoBehaviour {
 	private int touched = 0;
 
 	// The order in which the circles are passed through
-	private string[] shape = new string[6];
+	private string[] shape = new string[10];
 
 	// Whether or not the attack phase is done
 	private bool finished;
@@ -32,6 +33,14 @@ public class Attack : MonoBehaviour {
 	private bool cb;
 
 	int whichI;
+	private bool exitCondition;
+	public int enemyHealth = 100;
+
+
+
+
+	
+	public Text E;
 
 
 	// Use this for initialization
@@ -151,15 +160,9 @@ public class Attack : MonoBehaviour {
 	}
 
 
-
 	public bool ToExit()
 	{
-		if(attacksCompleted >= 4)
-		{
-			print("You have beaten the opponent");
-			return true;
-		}
-		else return false;
+		return exitCondition;
 	}
 
 
@@ -171,7 +174,7 @@ public class Attack : MonoBehaviour {
 		timePassed = 0;
 		timeAllotted = time;
 
-		int r = Random.Range(1,3);
+		int r = Random.Range(1,4);
 		switch (r)
 		{
 			case 1: 
@@ -244,7 +247,8 @@ public class Attack : MonoBehaviour {
 	{
 		if (boxConstructed)
 		{
-			int pos = System.Array.IndexOf(circles, "1") + System.Array.IndexOf(circles, "2") + System.Array.IndexOf(circles, "3") + System.Array.IndexOf(circles, "4");
+			int pos = System.Array.IndexOf(shape, "1") + System.Array.IndexOf(shape, "2") + System.Array.IndexOf(shape, "3") +
+				System.Array.IndexOf(shape, "4");
 			if (pos < 6) return false;
 			else return true;
 		}
@@ -257,10 +261,9 @@ public class Attack : MonoBehaviour {
 		if (circleConstructed)
 		{
 			int pos = System.Array.IndexOf(shape, "1") + System.Array.IndexOf(shape, "2") + System.Array.IndexOf(shape, "3") + System.Array.IndexOf(shape, "4") + 
-				System.Array.IndexOf(shape, "5") + System.Array.IndexOf(shape, "6") + System.Array.IndexOf(shape, "7") + System.Array.IndexOf(shape, "8");
-			if (pos < 28) 
+				System.Array.IndexOf(shape, "5") + System.Array.IndexOf(shape, "6");
+			if (pos < 15) 
 			{
-				//Debug.Log(pos);
 				return false;
 			}
 			else return true;
@@ -276,7 +279,6 @@ public class Attack : MonoBehaviour {
 			int pos = System.Array.IndexOf(shape, "1") + System.Array.IndexOf(shape, "2") + System.Array.IndexOf(shape, "3");
 			if (pos < 3) 
 			{
-				//Debug.Log(pos);
 				return false;
 			}
 			else return true;
@@ -340,6 +342,7 @@ public class Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
+		if (enemyHealth <= 0) exitCondition = true;
 		timePassed += Time.deltaTime;
 
 		// Prevents accidentally double hitting a circle
@@ -352,26 +355,30 @@ public class Attack : MonoBehaviour {
 			MouseOverStuff.beingTouched = false;
 		}
 
+
 		// Check if a shape has been drawn, and handles it
 		if (CheckBox()) 
 		{
 			print("That's a box.");
 			ClearShape();
-			attacksCompleted++;
+			enemyHealth = enemyHealth - 25;
+			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
 		else if (CheckCircle()) 
 		{
-			print("That's an X.");
+			print("That's a circle.");
 			ClearShape();	
-			attacksCompleted++;	
+			enemyHealth = enemyHealth - 25;
+			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
 		else if (CheckTriangle()) 
 		{
 			print("That's a triangle.");
 			ClearShape();
-			attacksCompleted++;		
+			enemyHealth = enemyHealth - 25;
+			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
 		/*else if (WrongShape())
