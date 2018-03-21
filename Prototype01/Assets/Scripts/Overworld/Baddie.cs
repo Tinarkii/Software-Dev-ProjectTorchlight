@@ -46,6 +46,7 @@ public class Baddie : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            GameControl.control.Save();
             SceneManager.LoadScene("sampleEncounter");
         }
     }
