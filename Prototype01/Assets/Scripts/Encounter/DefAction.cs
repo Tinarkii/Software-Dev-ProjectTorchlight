@@ -88,7 +88,7 @@ public class DefAction : MonoBehaviour {
 			// This should be done elsewhere
 			if (SceneParameters.playerHealth < 0)
 				SceneParameters.playerHealth = 0;
-			t.text = SceneParameters.playerHealth.ToString();
+			t.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();
 		}
 	}
 
