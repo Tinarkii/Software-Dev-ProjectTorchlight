@@ -17,12 +17,13 @@ public class GameControl : MonoBehaviour {
 
 	public int confidence;
 	public Vector3 playerPosition;
-	public bool lamp;
+	public Vector3 cameraPosition;
 	public string currentScene;
 
 
 	void Awake () 
 	{
+		currentScene = SceneManager.GetActiveScene ().name;
 		if (control == null)
 		{
 			DontDestroyOnLoad(gameObject);	
@@ -48,11 +49,13 @@ public class GameControl : MonoBehaviour {
 		FileStream file = File.Create(Application.persistentDataPath + "/savegame.dat");
 		currentScene = SceneManager.GetActiveScene ().name;
 		SaveGame data = new SaveGame();
+
 		V3S.SerializableVector3 serPlayerPos = GameObject.Find("Player").transform.position;
+		V3S.SerializableVector3 serCameraPosition = GameObject.Find("Camera").transform.position;
 		Debug.Log(GameObject.Find("Player").transform.position);
 
 		data.currentScene = currentScene;
-		data.lamp = GameObject.Find("Lamp").GetComponent<LampLightTest>().on;
+		data.cameraPosition = serCameraPosition;
 		data.confidence = confidence;
 		data.playerPosition = serPlayerPos;
 
@@ -64,17 +67,19 @@ public class GameControl : MonoBehaviour {
 	{
 		if (File.Exists(Application.persistentDataPath + "/savegame.dat"))
 		{
+			if (SceneManager.GetActiveScene ().name.CompareTo(currentScene) > 0)	
+				SceneManager.LoadScene(currentScene);
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(Application.persistentDataPath + "/savegame.dat", FileMode.Open);
 			SaveGame data = (SaveGame)bf.Deserialize(file);
 			file.Close();
 
-			SceneManager.LoadScene(currentScene);
-			lamp = data.lamp;
+			
 			confidence = data.confidence;
 			playerPosition = data.playerPosition;
+			cameraPosition = data.cameraPosition;
+			GameObject.Find("Camera").transform.position = data.cameraPosition;
 			GameObject.Find("Player").transform.position = data.playerPosition;
-			GameObject.Find("Lamp").GetComponent<LampLightTest>().on = data.lamp;
 			if (PlayerPrefs.HasKey("Health"))
 				confidence = PlayerPrefs.GetInt("Health");
 			
@@ -88,8 +93,8 @@ public class GameControl : MonoBehaviour {
 [Serializable] 
 class SaveGame
 {
+	public V3S.SerializableVector3 cameraPosition;
 	public int confidence;
 	public V3S.SerializableVector3 playerPosition;
-	public bool lamp;
 	public string currentScene;
 }
