@@ -17,6 +17,10 @@ public class OverworldCameraMovement : MonoBehaviour {
 
 	}
 
+	public void Snap (){
+		self.position = boy.transform.position + new Vector3(0,60,45);
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -24,7 +28,7 @@ public class OverworldCameraMovement : MonoBehaviour {
 
 		target.z += 45;
 
-		target += (boy.transform.forward * 7 + boy.velocity);
+		target += (boy.transform.forward * 5 + boy.velocity);
 
 		target.y = boy.transform.position.y + 60;
 
