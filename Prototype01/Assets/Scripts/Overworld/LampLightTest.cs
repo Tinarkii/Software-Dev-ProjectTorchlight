@@ -5,7 +5,7 @@ using UnityEngine;
 public class LampLightTest : MonoBehaviour {
 
     public Light myLight;
-    private bool on = false; 
+    public bool on = false; 
 	private int index = -1;
 	public GameObject game;
     
@@ -35,6 +35,6 @@ public class LampLightTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		myLight.enabled = on;
 	}
 }
