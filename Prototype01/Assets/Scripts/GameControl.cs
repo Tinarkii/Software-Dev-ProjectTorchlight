@@ -83,7 +83,8 @@ public class GameControl : MonoBehaviour {
 			bitLamps = data.lamps;
 			confidence = data.confidence;
 			playerPosition = data.playerPosition;
-
+			if (PlayerPrefs.HasKey("Health"))
+				confidence = PlayerPrefs.GetInt("Health");
 
 			gameLoaded = false;
 			frameBuffer = 1;
