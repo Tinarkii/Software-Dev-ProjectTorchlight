@@ -94,12 +94,14 @@ public class GameControl : MonoBehaviour {
 	}
 
 
-	public void UpdateLamp(int index){
+	public void UpdateLamp(int index)
+	{
 		bitLamps ^= (short)(1 << index);
 		Debug.Log (index);
 	}
 
-	public void LoadArray(){
+	public void LoadArray()
+	{
 		Debug.Log ("Game Loaded : "+bitLamps.ToString("x4"));
 		for (int i = 0; i < lamps.Length; i++) {
 			bool state = ((bitLamps >> i) & (1)) > 0;
@@ -114,8 +116,10 @@ public class GameControl : MonoBehaviour {
 	}
 
 
-	void Update () {
-		if (frameBuffer == 0) {
+	void Update () 
+	{
+		if (frameBuffer == 0) 
+		{
 			LoadArray ();
 			GameObject.Find("Player").transform.position = playerPosition;
 			GameObject.Find ("Player").GetComponent<OverWorldNavOG> ().Cleanse ();
