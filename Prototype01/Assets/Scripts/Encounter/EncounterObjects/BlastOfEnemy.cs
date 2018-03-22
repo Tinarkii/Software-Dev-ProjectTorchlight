@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlastOfEnemy : EncounterElement {
+public class BlastOfEnemy : MonoBehaviour {
 
     private int time = 0;
 
@@ -25,12 +25,10 @@ public class BlastOfEnemy : EncounterElement {
         }
     }
 
-	protected override void OnCollisionEnter(Collision col) {
+	protected void OnTriggerEnter(Collider col) {
         //An enemy's blast doesn't care about collisions that are not a player's shield
         if (col.gameObject.name != "Shield(Clone)")
             return;
-
-        Debug.Log("ShieldOfPlayer has collided with a BlastBad");
 
         Destroy(col.gameObject);
         Destroy(transform.gameObject);

@@ -10,7 +10,7 @@ public static class SceneParameters {
 
 	// Player's health, used both as an input for battle
 	// and as the value as a result of battle
-	public static int playerHealth = GameControl.control.confidence;
+	public static int playerHealth = 100;//GameControl.control.confidence;
 
 	// The unique identifier of the enemy entering combat
 	public static int enemyID = 0;

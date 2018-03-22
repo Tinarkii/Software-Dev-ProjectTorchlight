@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : EncounterElement {
+public class Block : MonoBehaviour {
 
     private int time = 0;
 
@@ -25,7 +25,4 @@ public class Block : EncounterElement {
         }
     }
 	
-	protected override void OnCollisionEnter(Collision col) {
-
-	}
 }

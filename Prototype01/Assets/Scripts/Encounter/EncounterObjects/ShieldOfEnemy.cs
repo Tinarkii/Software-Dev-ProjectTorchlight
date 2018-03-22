@@ -6,7 +6,7 @@ using UnityEngine;
  * A script for the shield made by enemies
  */
 
-public class ShieldOfEnemy : EncounterElement
+public class ShieldOfEnemy : MonoBehaviour
 {
     private int time = 0;
 
@@ -25,13 +25,10 @@ public class ShieldOfEnemy : EncounterElement
 	/**
 	 * If a Blast collides with a ShieldOfEnemy, destroy them both
 	 */
-	protected override void OnCollisionEnter (Collision col)
-	{
+	protected void OnTriggerEnter (Collider col) {
 		// The enemy's shield doesn't care about collisions unless they're with a player's blast
 		if (col.gameObject.name != "Blast(Clone)")
 			return;
-
-		Debug.Log ("ShieldOfEnemy has collided with a Blast");
 
 		Destroy (col.gameObject);
 		Destroy (transform.gameObject);

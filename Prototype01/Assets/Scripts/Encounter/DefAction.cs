@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;// Remove this when UI is removed
+using UnityEngine.UI;
 
 public class DefAction : MonoBehaviour {
 
@@ -10,6 +10,9 @@ public class DefAction : MonoBehaviour {
 
 	[Tooltip("A prefab of the player's blast that will be instantiated during encounters")]
 	public Transform prefabForBlastOfPlayer;
+
+	// The Text element that displays the player's confidence
+	public Text confidenceText;
 
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
@@ -22,18 +25,22 @@ public class DefAction : MonoBehaviour {
 		public const int Delta = 2;
 	}
 
+	// A reference to the player's rigidbody for movement
 	private Rigidbody self;
 
+	// Whether the player is in a state to allow jumping
 	private bool canJump;
-
-
-
-	public Text t;// Very bad practice, just need it to work for now
+		
+	// The delay until the player can perform a certain action again
+	private float shieldDelayLeft = 0;
+	private float shieldDelayRight = 0;
+	private float shootDelayLeft = 0;
+	private float shootDelayRight = 0;
 
 
 	// Initialization
 	void Start () {
-		t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+		confidenceText.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();//GameControl.control.confidence.ToString();
 		self = GetComponent<Rigidbody>();
 	}
 
@@ -44,6 +51,15 @@ public class DefAction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (shieldDelayLeft > 0)
+			shieldDelayLeft -= Time.deltaTime;
+		if (shieldDelayRight > 0)
+			shieldDelayRight -= Time.deltaTime;
+		if (shootDelayLeft > 0)
+			shootDelayLeft -= Time.deltaTime;
+		if (shootDelayRight > 0)
+			shootDelayRight -= Time.deltaTime;
+
 		// For testing with keyboard inputs
 		keyInput();
 		
@@ -70,7 +86,6 @@ public class DefAction : MonoBehaviour {
 				if (Math.Abs(temp.x - touches[i].position.x) <= Const.Delta
 							&& Math.Abs(temp.y - touches[i].position.y) <= Const.Delta) {
 					tap(side);
-				} else if (Math.Abs(temp.y - touches[i].position.y) > Math.Abs(temp.x - touches[i].position.x)) {
 					if (temp.y - touches[i].position.y > 0)
 						shield(side);
 					else
@@ -84,8 +99,20 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
-	
-	protected void OnCollisionEnter(Collision col) {
+	/* If in contact with a solid, allow jumping */
+	protected void OnCollisionStay(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
+			canJump = true;
+	}
+
+	/* If not in contact with a solid, do not allow jumping */
+	protected void OnCollisionExit(Collision col) {
+		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
+			canJump = false;
+	}
+
+	/* Handles when the player is hit with a enemy blast or shield */
+	protected void OnTriggerEnter(Collider col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
 			Destroy(col.gameObject);
 			GameControl.control.confidence -= 15;
@@ -93,18 +120,8 @@ public class DefAction : MonoBehaviour {
 			// This should be done elsewhere
 			if (GameControl.control.confidence < 0)
 				GameControl.control.confidence = 0;
-			t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+			confidenceText.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();//GameControl.control.confidence.ToString();
 		}
-	}
-
-	protected void OnCollisionStay(Collision col) {
-		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
-			canJump = true;
-	}
-
-	protected void OnCollisionExit(Collision col) {
-		if (col.gameObject.name == "Cube" || col.gameObject.name == "BlockBad(Clone)")
-			canJump = false;
 	}
 
 	// # Begin region player actions. bool leftside refers to
@@ -120,11 +137,31 @@ public class DefAction : MonoBehaviour {
 	 * @param leftside Whether the shield should be made on the left side of the player
 	 */
 	private void shield(bool leftside) {
+		if (leftside) {
+			if (shieldDelayLeft > 0)
+				return;
+			shieldDelayLeft = 0.3f;
+		} else {
+			if (shieldDelayRight > 0)
+				return;
+			shieldDelayRight = 0.3f;
+		}
+
 		int rev = leftside ? -1 : 1;
 		Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(rev*1,0,0), Quaternion.Euler(0,rev*90,0));
 	}
 
 	private void shoot(bool leftside) {
+		if (leftside) {
+			if (shootDelayLeft > 0)
+				return;
+			shootDelayLeft = 0.3f;
+		} else {
+			if (shootDelayRight > 0)
+				return;
+			shootDelayRight = 0.3f;
+		}
+
 		int rev = leftside ? -1 : 1;
 		Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(rev*1,0.7f,0), Quaternion.Euler(0,rev*90,0));
 	}
