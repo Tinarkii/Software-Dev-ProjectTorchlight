@@ -10,7 +10,8 @@ public class LightingRoomScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
         if(Mathf.Abs(Input.mousePosition.x - Screen.width/2) > (Screen.width / 5))
         {
