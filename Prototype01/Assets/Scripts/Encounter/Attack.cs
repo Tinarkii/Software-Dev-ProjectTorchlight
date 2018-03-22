@@ -289,58 +289,6 @@ public class Attack : MonoBehaviour {
 		else return false;
 	}
 
-	/*// Catches a wrong shape earlier
-	private bool WrongShape()
-	{
-		return string.Join("", shape).CompareTo("312") == 0 ||
-			string.Join("", shape).CompareTo("314") == 0 ||
-			string.Join("", shape).CompareTo("323") == 0 || 
-			string.Join("", shape).CompareTo("324") == 0 || 
-			string.Join("", shape).CompareTo("325") == 0 || 
-			string.Join("", shape).CompareTo("341") == 0 || 
-			string.Join("", shape).CompareTo("342") == 0 ||
-			string.Join("", shape).CompareTo("343") == 0 || 
-			string.Join("", shape).CompareTo("352") == 0 ||
-			string.Join("", shape).CompareTo("353") == 0 ||
-			string.Join("", shape).CompareTo("354") == 0 || 
-			string.Join("", shape).CompareTo("121") == 0 || 
-			string.Join("", shape).CompareTo("124") == 0 || 
-			string.Join("", shape).CompareTo("125") == 0 ||
-			string.Join("", shape).CompareTo("131") == 0 || 
-			string.Join("", shape).CompareTo("132") == 0 ||
-			string.Join("", shape).CompareTo("134") == 0 ||
-			string.Join("", shape).CompareTo("151") == 0 || 
-			string.Join("", shape).CompareTo("152") == 0 || 
-			string.Join("", shape).CompareTo("24") == 0 || 
-			string.Join("", shape).CompareTo("25") == 0 || 
-			string.Join("", shape).CompareTo("212") == 0 ||
-			string.Join("", shape).CompareTo("213") == 0 || 
-			string.Join("", shape).CompareTo("214") == 0 ||
-			string.Join("", shape).CompareTo("231") == 0 ||
-			string.Join("", shape).CompareTo("232") == 0 || 
-			string.Join("", shape).CompareTo("235") == 0 || 
-			string.Join("", shape).CompareTo("41") == 0 || 
-			string.Join("", shape).CompareTo("42") == 0 || 
-			string.Join("", shape).CompareTo("431") == 0 ||
-			string.Join("", shape).CompareTo("434") == 0 || 
-			string.Join("", shape).CompareTo("435") == 0 ||
-			string.Join("", shape).CompareTo("452") == 0 ||
-			string.Join("", shape).CompareTo("453") == 0 ||
-			string.Join("", shape).CompareTo("454") == 0 ||
-			string.Join("", shape).CompareTo("514") == 0 ||
-			string.Join("", shape).CompareTo("515") == 0 ||
-			string.Join("", shape).CompareTo("521") == 0 ||
-			string.Join("", shape).CompareTo("523") == 0 ||
-			string.Join("", shape).CompareTo("524") == 0 ||
-			string.Join("", shape).CompareTo("525") == 0 ||
-			string.Join("", shape).CompareTo("532") == 0 ||
-			string.Join("", shape).CompareTo("534") == 0 ||
-			string.Join("", shape).CompareTo("535") == 0 ||
-			string.Join("", shape).CompareTo("541") == 0 ||
-			string.Join("", shape).CompareTo("542") == 0 ||
-			string.Join("", shape).CompareTo("545") == 0;
-	}*/
-
 	
 	// Update is called once per frame
 	void Update () 
@@ -385,25 +333,6 @@ public class Attack : MonoBehaviour {
 			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
-		/*else if (WrongShape())
-		{
-			print("That's a not a shape.");
-			ClearShape();
-			for (int i = 0; i<5; i++)
-			{
-				circles[i].GetComponent<Renderer>().material.color = Color.white;
-			}
-		}
-		// If no shape was drawn, reset everything to how it was
-		else if(touched>=6)
-		{
-			print("That's a not a shape.");
-			ClearShape();
-			for (int i = 0; i<5; i++)
-			{
-				circles[i].GetComponent<Renderer>().material.color = Color.white;
-			}
-		}	*/
 		finished = (timeAllotted - timePassed) <= 0;
 	}
 }
