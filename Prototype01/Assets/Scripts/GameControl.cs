@@ -132,6 +132,9 @@ public class GameControl : MonoBehaviour {
 
 }
 
+/// <summary>
+/// The contents saved in our savegame.dat file
+/// </summary>
 [Serializable] 
 class SaveGame
 {
