@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
+	[Tooltip("A prefab for the GameControl object")]
+	public GameObject gameControlPrefab;
+
 	/**
 	 * Start a new game
 	 */
@@ -22,6 +25,7 @@ public class TitleScreen : MonoBehaviour
 	 */
 	public void ResumeGame()
 	{
-		Debug.LogWarning("@TODO: ResumeGame has not yet been implemented");
+		gameControlPrefab.GetComponent<GameControl>().Load();
+		////@TODO: This works, but it seems kinda sloppy. Is there a better way of doing this?
 	}
 }
