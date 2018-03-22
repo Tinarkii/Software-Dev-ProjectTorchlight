@@ -40,7 +40,7 @@ public class DefAction : MonoBehaviour {
 
 	// Initialization
 	void Start () {
-		confidenceText.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();//GameControl.control.confidence.ToString();
+		confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
 		self = GetComponent<Rigidbody>();
 	}
 
@@ -116,11 +116,9 @@ public class DefAction : MonoBehaviour {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
 			Destroy(col.gameObject);
 			GameControl.control.confidence -= 15;
-
-			// This should be done elsewhere
 			if (GameControl.control.confidence < 0)
 				GameControl.control.confidence = 0;
-			confidenceText.text = "Player's Confidence: " + SceneParameters.playerHealth.ToString();//GameControl.control.confidence.ToString();
+			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
 		}
 	}
 
