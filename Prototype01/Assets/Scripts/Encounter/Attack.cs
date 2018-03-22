@@ -32,6 +32,7 @@ public class Attack : MonoBehaviour {
 	private bool boxConstructed;
 	private bool cb;
 
+	// Stuff
 	int whichI;
 	private bool exitCondition;
 	private int enemyHealth;
