@@ -30,7 +30,7 @@ public class GameControl : MonoBehaviour {
 	{
 		if (control == null)
 		{
-			DontDestroyOnLoad(gameObject);	
+			DontDestroyOnLoad(gameObject);
 			control = this;
 		}
 		else if (control != this)
