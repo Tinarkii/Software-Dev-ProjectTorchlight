@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class LampLightTest : MonoBehaviour {
 
-    public Light myLight;
-    public bool on = false; 
+    public Light myLight; //the light we want to modify
+
+    public bool on = false; //if the light is on 
+
 	private int index = -1;
+
 	public GameObject game;
     
 
 	// Use this for initialization
 	void Start () {
-        myLight.enabled = on;
+        myLight.enabled = on; //turns the light off
 		game = GameObject.Find ("GameControl");
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-			on = !on;
+    void OnTriggerEnter(Collider other){
+        if (other.gameObject.tag == "Player"){
+			on = !on; //flips  the sate of the light
 			game.GetComponent<GameControl> ().UpdateLamp (index);
         }
             
@@ -34,9 +35,8 @@ public class LampLightTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (game == null) {
+		if (game == null)
 			game = GameObject.Find ("GameControl");
-		}
 		myLight.enabled = on;
 
 	}
