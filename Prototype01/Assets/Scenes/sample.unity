@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.087477006, g: 0.046703003, b: 0.1282104, a: 1}
+  m_IndirectSpecularColor: {r: 0.08701923, g: 0.046703003, b: 0.1284925, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -265,6 +265,20 @@ MonoBehaviour:
   boy: {fileID: 618067194}
   speed: 15
   angle: 100
+--- !u!114 &165537074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165537072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1b7fa9a1c20424eb25c8b9cbcebb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 165537080}
+  magnitude: 0.8
+  rate: 2
 --- !u!136 &165537078
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -301,7 +315,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1670,7 +1684,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 2dc9925a307f57742a4de15af57048e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2dc9925a307f57742a4de15af57048e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1678,7 +1692,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2dc9925a307f57742a4de15af57048e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.1
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2dc9925a307f57742a4de15af57048e4, type: 3}
       propertyPath: m_LocalRotation.x
