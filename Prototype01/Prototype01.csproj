@@ -295,6 +295,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AdjustScript.cs" />
+    <Compile Include="Assets\Scripts\Compatibility\V3S.cs" />
     <Compile Include="Assets\Scripts\Drag\Draggable.cs" />
     <Compile Include="Assets\Scripts\Drag\DropZoneArmor.cs" />
     <Compile Include="Assets\Scripts\Drag\DropZoneInventory.cs" />
@@ -307,11 +309,11 @@
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\BlastOfEnemy.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\BlastOfPlayer.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\Block.cs" />
-    <Compile Include="Assets\Scripts\Encounter\EncounterObjects\EncounterElement.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfEnemy.cs" />
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfPlayer.cs" />
     <Compile Include="Assets\Scripts\Encounter\MouseOverStuff.cs" />
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemsMenu.cs" />
@@ -325,6 +327,8 @@
     <Compile Include="Assets\Scripts\Overworld\OverWorldNav.cs" />
     <Compile Include="Assets\Scripts\Overworld\OverWorldNavOG.cs" />
     <Compile Include="Assets\Scripts\Overworld\TracePath.cs" />
+    <Compile Include="Assets\Scripts\SaveLoad\Game.cs" />
+    <Compile Include="Assets\Scripts\SaveLoad\Save.cs" />
     <Compile Include="Assets\Scripts\SceneParameters.cs" />
     <Compile Include="Assets\Scripts\TitleScreen.cs" />
   </ItemGroup>

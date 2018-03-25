@@ -86,6 +86,7 @@ public class DefAction : MonoBehaviour {
 				if (Math.Abs(temp.x - touches[i].position.x) <= Const.Delta
 							&& Math.Abs(temp.y - touches[i].position.y) <= Const.Delta) {
 					tap(side);
+				} else if (Math.Abs(temp.y - touches[i].position.y) > Math.Abs(temp.x - touches[i].position.x)) {
 					if (temp.y - touches[i].position.y > 0)
 						shield(side);
 					else
