@@ -25,7 +25,9 @@ public class GameControl : MonoBehaviour {
 	private bool gameLoaded = false;
 	private int frameBuffer = 1;
 
-
+	/// <summary>
+	/// Makes sure that only one instance of GameControl exists at one time
+	/// </summary>
 	void Awake () 
 	{
 		if (control == null)
@@ -42,12 +44,17 @@ public class GameControl : MonoBehaviour {
 
 	}
 
-	
+	/// <summary>
+	/// label that keeps track of "psuedo-health"
+	/// </summary>
 	void OnGUI()
 	{
 		GUI.Label(new Rect(10, 10, 100, 30), "Confidence: " + confidence);
 	}
 
+	/// <summary>
+	/// A function that prepares the data to be serialized 
+	/// </summary>
 	public void Save()
 	{
 		
@@ -69,6 +76,9 @@ public class GameControl : MonoBehaviour {
 		file.Close();
 	}
 
+	/// <summary>
+	/// Deserializes a binary file containing a save
+	/// </summary>
 	public void Load()
 	{
 		if (File.Exists(Application.persistentDataPath + "/savegame.dat"))
@@ -94,6 +104,10 @@ public class GameControl : MonoBehaviour {
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
 	public void UpdateLamp(int index)
 	{
 		bitLamps ^= (short)(1 << index);
@@ -121,9 +135,14 @@ public class GameControl : MonoBehaviour {
 		if (frameBuffer == 0) 
 		{
 			LoadArray ();
-			GameObject.Find("Player").transform.position = playerPosition;
-			GameObject.Find ("Player").GetComponent<OverWorldNavOG> ().Cleanse ();
-			GameObject.Find ("Camera").GetComponent<OverworldCameraMovement> ().Snap ();
+			if (GameObject.Find("Player") != null)
+			{
+				GameObject.Find("Player").transform.position = playerPosition;
+				GameObject.Find ("Player").GetComponent<OverWorldNavOG> ().Cleanse ();
+				GameObject.Find ("Camera").GetComponent<OverworldCameraMovement> ().Snap ();
+			}
+			else Debug.Log("There was no player");
+
 		}
 		frameBuffer--;
 
