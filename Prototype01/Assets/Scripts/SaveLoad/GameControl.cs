@@ -23,7 +23,6 @@ public class GameControl : MonoBehaviour {
 	public Vector3 playerPosition;
 	public string currentScene;
 
-	private bool gameLoaded = false;
 	private int frameBuffer = 1;
 
 
@@ -87,7 +86,6 @@ public class GameControl : MonoBehaviour {
 			if (PlayerPrefs.HasKey("Health"))
 				confidence = PlayerPrefs.GetInt("Health");
 
-			gameLoaded = false;
 			frameBuffer = 1;
 			Debug.Log(data.playerPosition);
 
