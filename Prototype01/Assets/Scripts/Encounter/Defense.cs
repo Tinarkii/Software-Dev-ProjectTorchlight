@@ -10,7 +10,7 @@ public class Defense : MonoBehaviour {
 	private float timePassed;
 
 	// Which of the enemy's attacks will be used
-	int seqenceNum;
+	private int seqenceNum;
 
 	// The attacks that will be produced on the enemy's turn
 	private Queue<Sequence.Attack> attacks;

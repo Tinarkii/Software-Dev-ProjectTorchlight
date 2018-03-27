@@ -37,8 +37,7 @@ public class EncounterControl : MonoBehaviour {
 	}
 	
 	/* On combat completion, return to previous scene */
-	public void ExitCombat() {
-
+	private void ExitCombat() {
 		GameControl.control.Load();
 	}
 
