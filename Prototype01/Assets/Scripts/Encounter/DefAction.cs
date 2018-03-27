@@ -50,7 +50,7 @@ public class DefAction : MonoBehaviour {
 		tracked = new Dictionary<int, Vector2>();
 	}
 	
-	/* Take player input */
+	/* Take player input, decrease delays */
 	// Update is called once per frame
 	void Update () {
 		if (shieldDelayLeft > 0)
@@ -125,7 +125,7 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
-	// # Begin region player actions. bool leftside refers to
+	// # Begin region player actions. @param bool leftside refers to
 	// whether the action happened on the left side or not.
 
 	/* Jump if allowed */
