@@ -56,6 +56,7 @@ public class Baddie : MonoBehaviour {
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
 
+			//@TODO: This works, but it's kinda messy. Is there a better way of doing it?
 			if (gameObject.tag == "armorBaddie")
 				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
 			else if (gameObject.tag == "crystalBaddie")
