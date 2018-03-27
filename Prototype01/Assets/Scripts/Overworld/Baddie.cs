@@ -64,6 +64,9 @@ public class Baddie : MonoBehaviour {
 			else
 				Debug.LogError ("This enemy's type is not recognized");
 
+			// If the encounter is won, this enemy should dissappear from the overworld. If it is lost, a saved game is loaded and this line doesn't matter.
+			Destroy (gameObject); ////@TODO: This doesn't yet work because of how the saving/switching scenes is set ups
+
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }
     }
