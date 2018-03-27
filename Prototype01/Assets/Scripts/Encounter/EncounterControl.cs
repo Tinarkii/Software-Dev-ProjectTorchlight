@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
  */
 public class EncounterControl : MonoBehaviour {
 
+	[Tooltip("Reference to the enemy that the player is encountering @TODO: there may be a better way to keep track of which enemy is being encountered")]
+	public static GameObject enemy;
+
 	// Allows encounters to begin with Defense mode for testing
 	// Adjustable from the editor
 	public bool DefTestMode;
@@ -29,7 +32,8 @@ public class EncounterControl : MonoBehaviour {
 		defActScript = player.GetComponent<DefAction>();
 		attackScript = Camera.main.GetComponent<Attack>();
 
-		// Should probably instantiate enemy here
+		// Should probably instantiate enemy here @TODO: finish this Instantiate(Object original, Vector3 position, Quaternion rotation);
+		////@TODO: Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
 
 		defScript.enabled = false^DefTestMode;
 		defActScript.enabled = false^DefTestMode;

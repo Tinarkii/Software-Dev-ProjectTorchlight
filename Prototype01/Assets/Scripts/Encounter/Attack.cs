@@ -26,11 +26,8 @@ public class Attack : MonoBehaviour {
 	public float time = 3;
 
 	private bool circleConstructed;
-	private bool cc;
 	private bool triConstructed;
-	private bool ct;
 	private bool boxConstructed;
-	private bool cb;
 
 	// Stuff
 	int whichI;

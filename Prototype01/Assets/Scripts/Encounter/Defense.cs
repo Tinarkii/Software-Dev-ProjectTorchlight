@@ -54,7 +54,7 @@ public class Defense : MonoBehaviour {
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
-		attacks = Sequence.getRef().getMoves(SceneParameters.enemyID, seqenceNum);
+		attacks = Sequence.getRef().getMoves(0, seqenceNum);
 		// Should increment sequenceNum, but I need to make it work in Sequence.cs first
 	}
 

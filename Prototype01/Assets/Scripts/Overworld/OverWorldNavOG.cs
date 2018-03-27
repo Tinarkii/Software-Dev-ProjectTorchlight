@@ -26,7 +26,7 @@ public class OverWorldNavOG : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
         if (Input.GetMouseButton(0))
