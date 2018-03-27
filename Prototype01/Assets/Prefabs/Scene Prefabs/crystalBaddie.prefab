@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114738521501696086}
   m_Layer: 0
   m_Name: crystalBaddie
-  m_TagString: Untagged
+  m_TagString: crystalBaddie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

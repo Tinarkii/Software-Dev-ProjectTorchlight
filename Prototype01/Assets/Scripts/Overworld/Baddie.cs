@@ -55,8 +55,14 @@ public class Baddie : MonoBehaviour {
     void OnCollisionEnter(Collision other){
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
-			//DontDestroyOnLoad (gameObject);////@TODO: in progress
-			//EncounterControl.enemy = gameObject;////
+
+			if (gameObject.tag == "armorBaddie")
+				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
+			else if (gameObject.tag == "crystalBaddie")
+				EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
+			else
+				Debug.LogError ("This enemy's type is not recognized");
+
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }
     }

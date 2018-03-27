@@ -1,13 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveLoad\Save.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Encounter\EncounterControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\Overworld\Baddie.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Overworld\Baddie.cs" Line="58" Column="48" />
       <File FileName="Assets\Scripts\Encounter\Defense.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Encounter\Sequence.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Encounter\EncounterControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Encounter\EncounterControl.cs" Line="36" Column="14" />
       <File FileName="Assets\Scripts\Encounter\DefAction.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SaveLoad\Save.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
