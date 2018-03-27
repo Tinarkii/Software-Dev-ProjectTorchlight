@@ -60,7 +60,7 @@ public class Baddie : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (go) { //if we have the player in the range
             target = boy.transform.position; //the players postion 
 
