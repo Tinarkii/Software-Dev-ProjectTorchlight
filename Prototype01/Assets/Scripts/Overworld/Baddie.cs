@@ -55,6 +55,8 @@ public class Baddie : MonoBehaviour {
     void OnCollisionEnter(Collision other){
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
+			//DontDestroyOnLoad (gameObject);////@TODO: in progress
+			//EncounterControl.enemy = gameObject;////
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }
     }

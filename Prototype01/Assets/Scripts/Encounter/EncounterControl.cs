@@ -33,7 +33,7 @@ public class EncounterControl : MonoBehaviour {
 		attackScript = Camera.main.GetComponent<Attack>();
 
 		// Should probably instantiate enemy here @TODO: finish this Instantiate(Object original, Vector3 position, Quaternion rotation);
-		Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
+		////@TODO: Instantiate(enemy, new Vector3(0, 0, 0), Quaternion.identity);
 
 		defScript.enabled = false^DefTestMode;
 		defActScript.enabled = false^DefTestMode;
