@@ -11,7 +11,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-
+/// <summary>
+/// The Big Daddy System. Roughly speaking, this
+/// is our "Control" or "Logic" class. It
+/// determines what stays alive on scene
+/// transition, facilitates saving and loading,
+/// as well as maintains a soft save (or cache)
+/// for transitioning between different scenes.
+/// </summary>
 public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
@@ -163,7 +170,11 @@ class SaveGame
 	public string currentScene;
 }
 
-
+/// <summary>
+/// The data each individual "Level" or room needs
+/// to save. EG. lamp info, badguy info, item info,
+/// etc.
+/// </summary>
 [Serializable]
 public class LevelData{
 	public short bitLamps = 0;
