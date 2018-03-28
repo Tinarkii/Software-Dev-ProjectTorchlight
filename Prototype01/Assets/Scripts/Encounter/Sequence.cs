@@ -66,6 +66,8 @@ public class Sequence {
 				return ID00();
 			case 1:
 				return ID01();
+			case 2:
+			return ID02();
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemy IDs", "sequence");
 		}
@@ -103,7 +105,7 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlock, 7.0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 7.3f, 2, 5));
 
-		attacks.Enqueue(new Attack(12));
+		attacks.Enqueue(new Attack(11));
 		return attacks;
 	}
 
@@ -112,6 +114,34 @@ public class Sequence {
 
 		attacks.Enqueue(new Attack(2));
 
+		return attacks;
+	}
+
+	private Queue<Attack> ID02() {
+		Queue<Attack> attacks = new Queue<Attack>();
+
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
+
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, -5));
+
+		attacks.Enqueue(new Attack(enemyShield, 2f, 0, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 2f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.3f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.6f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.9f, 0, 5));
+
+		attacks.Enqueue(new Attack(enemyShield, 3f, 2, -5));
+		attacks.Enqueue(new Attack(enemyShield, 3f, 4, 5));
+
+
+		attacks.Enqueue(new Attack(7));
 		return attacks;
 	}
 }

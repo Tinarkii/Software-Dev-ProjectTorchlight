@@ -62,7 +62,7 @@ public class Baddie : MonoBehaviour {
 			else if (gameObject.tag == "crystalBaddie")
 				EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
 			else
-				Debug.LogError ("This enemy's type is not recognized");
+				Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }

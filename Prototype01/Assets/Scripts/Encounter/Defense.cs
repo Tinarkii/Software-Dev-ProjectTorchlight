@@ -51,7 +51,14 @@ public class Defense : MonoBehaviour {
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
-		attacks = Sequence.getRef().getMoves(0, seqenceNum);
+
+		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
+		if (EncounterControl.enemyPrefab.tag == "armorBaddie")
+			attacks = Sequence.getRef().getMoves(0, seqenceNum);
+		else if (EncounterControl.enemyPrefab.tag == "crystalBaddie")
+			attacks = Sequence.getRef().getMoves(2, seqenceNum);
+		else
+			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 		// Should increment sequenceNum, but I need to make it work in Sequence.cs first
 	}
 
