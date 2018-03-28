@@ -43,11 +43,9 @@ public class Defense : MonoBehaviour {
 	/* Create game objects representing the enemy's moves */
 	private void Create(Sequence.Attack att) {
 		int rev = (att.velocity > 0) ? 1 : -1;
-		float adjust = (att.type == enemyShield) ? 0.5f : 0;// Not a fan of this, but it works
+		float adjust = (att.type == enemyShield) ? 0.5f : 0; // Not a fan of this, but it works
 		// Too many magic numbers. I know this is a fantasy game, but still.
-		Instantiate(att.type, new Vector3(rev*-11, (6.25f/4)*(att.height + adjust) + 0.2f, -3),
-					Quaternion.Euler(0, 90*rev, 0));
-		// use t for velocity?
+		Instantiate(att.type, new Vector3(rev*-11, (6.25f/4)*(att.height + adjust) + 0.2f, -3), Quaternion.Euler(0, 90*rev, 0));
 	}
 
 	void OnEnable () {
