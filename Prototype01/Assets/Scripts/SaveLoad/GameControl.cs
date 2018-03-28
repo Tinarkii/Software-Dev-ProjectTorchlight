@@ -15,32 +15,56 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
+	private GameObject player;
+	public static string[] scenes = new string[]{"TitleScreen","sample","Room01"};
+	private LevelData[] levels = new LevelData[12];
+	public GameObject playerPrefab;
 
-	public GameObject[] lamps = new GameObject[16];
-	private  short bitLamps = 0;
+
+	private int door = 0;
+	private Vector3? playerPosition = null;
+	private bool doorOrPos = false;
 
 	public int confidence;
-	public Vector3 playerPosition;
 	public string currentScene;
 
-	private int frameBuffer = 1;
 
+	void CreateEmptyLevels(){
+		for (int i = 0; i < levels.Length; i++) {
+			levels [i] = new LevelData ();
+		}
+	}
 
 	void Awake () 
 	{
+		CreateEmptyLevels ();
+		currentScene = SceneManager.GetActiveScene ().name;
 		if (control == null)
 		{
 			DontDestroyOnLoad(gameObject);
 			control = this;
+			DontDestroyOnLoad (GameObject.Find ("Player"));
+			player = GameObject.Find ("Player");
 		}
 		else if (control != this)
 		{
 			Destroy(gameObject);
+
 		}
 
-
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach(GameObject p in players){
+			if (p != control.player) {
+				Destroy (p);
+			}
+		}
 
 	}
+
+	public GameObject GetPlayer(){
+		return player;
+	}
+
 
 	
 	void OnGUI()
@@ -50,7 +74,7 @@ public class GameControl : MonoBehaviour {
 
 	public void Save()
 	{
-		
+
 
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(Application.persistentDataPath + "/savegame.dat");
@@ -58,10 +82,10 @@ public class GameControl : MonoBehaviour {
 		SaveGame data = new SaveGame();
 		V3S.SerializableVector3 serPlayerPos = GameObject.Find("Player").transform.position;
 		Debug.Log(GameObject.Find("Player").transform.position);
-		Debug.Log ("Game Saved : "+bitLamps.ToString("x4"));
+		Debug.Log ("Game Saved");
 
 		data.currentScene = currentScene;
-		data.lamps = bitLamps;
+		data.levels = CacheLevelData();
 		data.confidence = confidence;
 		data.playerPosition = serPlayerPos;
 
@@ -79,55 +103,51 @@ public class GameControl : MonoBehaviour {
 			file.Close();
 
 			currentScene = data.currentScene;
+			levels = data.levels;
+			doorOrPos = false;
 			SceneManager.LoadScene(currentScene);
-			bitLamps = data.lamps;
+
 			confidence = data.confidence;
 			playerPosition = data.playerPosition;
 			if (PlayerPrefs.HasKey("Health"))
 				confidence = PlayerPrefs.GetInt("Health");
 
-			frameBuffer = 1;
 			Debug.Log(data.playerPosition);
 
 		}
 	}
+		
 
+	public void SwapScene(int sceneToLoad,int doorToLoad){
+		CacheLevelData ();
+		door = doorToLoad;
+		doorOrPos = true;
+		SceneManager.LoadScene (scenes [sceneToLoad]);
 
-	public void UpdateLamp(int index)
-	{
-		bitLamps ^= (short)(1 << index);
-		Debug.Log (index);
 	}
 
-	public void LoadArray()
-	{
-		Debug.Log ("Game Loaded : "+bitLamps.ToString("x4"));
-		for (int i = 0; i < lamps.Length; i++) {
-			bool state = ((bitLamps >> i) & (1)) > 0;
-			String name = "Lamp (" + i + ")";
-			if (GameObject.Find (name) != null) {
-				Debug.Log ("Found " + i + ", " + state);
-				lamps [i] = GameObject.Find (name);
-				lamps [i].GetComponent<LampLightTest> ().SetIndex (i);
-				lamps [i].GetComponent<LampLightTest> ().on = state;
+	public Vector3 GetPlayerSpawn(){
+		if (doorOrPos) {
+			return GameObject.Find ("SceneControl").GetComponent<SceneControl> ().doors[door].GetComponent<Door>().GetSpawnPoint();
+		} else {
+			if (playerPosition == null) {
+				return GameObject.Find ("SceneControl").GetComponent<SceneControl> ().neutralSpawnPoint;
 			}
+			return playerPosition.Value;
 		}
 	}
 
-
-	void Update () 
-	{
-		if (frameBuffer == 0) 
-		{
-			LoadArray ();
-			GameObject.Find("Player").transform.position = playerPosition;
-			GameObject.Find ("Player").GetComponent<OverWorldNavOG> ().Cleanse ();
-			GameObject.Find ("Camera").GetComponent<OverworldCameraMovement> ().Snap ();
-		}
-		frameBuffer--;
-
+	public LevelData[] CacheLevelData(){
+		LevelData level = levels [Array.IndexOf (scenes, currentScene)];
+		level.bitLamps = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetLamps();
+		level.bitBaddies = 0;
+		return levels;
 	}
 
+	public LevelData GetLevelCache(){
+		Debug.Log(Array.IndexOf(scenes,currentScene));
+		return levels [Array.IndexOf (scenes, currentScene)];
+	}
 
 }
 
@@ -139,6 +159,13 @@ class SaveGame
 {
 	public int confidence;
 	public V3S.SerializableVector3 playerPosition;
-	public short lamps;
+	public LevelData[] levels;
 	public string currentScene;
+}
+
+
+[Serializable]
+public class LevelData{
+	public short bitLamps = 0;
+	public short bitBaddies = 0;
 }

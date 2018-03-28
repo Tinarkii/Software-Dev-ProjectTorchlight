@@ -7,7 +7,7 @@ public class Baddie : MonoBehaviour {
 
     Rigidbody self; //The baddie we are refrencing/ maipulating
 
-    public Rigidbody boy; //the movement target
+	private Rigidbody boy; //the movement target
 
     Vector3 target; //Vector towardsa a target 
 
@@ -18,7 +18,8 @@ public class Baddie : MonoBehaviour {
     bool go; //whether to move or not 
 
     // Use this for initialization of enemies 
-    void Start(){
+	void Start(){
+		boy = GameControl.control.GetPlayer ().GetComponent<Rigidbody>(); //grabs the boy from GameControl.control
         target = new Vector3(0, 0, 0); //starts the target as none
         self = GetComponent<Rigidbody>(); //sets the varaibales for itself
         go = false; //no movement as of now

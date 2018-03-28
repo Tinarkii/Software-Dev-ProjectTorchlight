@@ -5,25 +5,29 @@ using UnityEngine;
 public class OverworldCameraMovement : MonoBehaviour {
 
 	Rigidbody self;
-	public Rigidbody boy;
+	private Rigidbody boy;
 	Vector3 target;
 	public int maxSpeed;
 	public int minSpeed;
 
 	// Use this for initialization
 	void Start () {
+		boy = GameControl.control.GetPlayer ().GetComponent<Rigidbody>();
 		target = new Vector3(0, 0, 0);
 		self = GetComponent<Rigidbody>();
 
 	}
 
-	public void Snap (){
-		self.position = boy.transform.position + new Vector3(0,60,45);
+	public void Snap (Vector3 snapPos){
+		this.gameObject.transform.position = snapPos + new Vector3(0,60,45);
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+		if (GameControl.control.GetPlayer () == null) {
+			return;
+		}
 		target = boy.transform.position;
 
 		target.z += 45;

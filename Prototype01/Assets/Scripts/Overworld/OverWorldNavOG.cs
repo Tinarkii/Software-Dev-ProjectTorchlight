@@ -8,12 +8,13 @@ public class OverWorldNavOG : MonoBehaviour {
     Vector3 target;
 	public int maxSpeed;
     RaycastHit hitPoint;
-	public Camera usedCamera;
+	private Camera usedCamera;
 	private Vector3 veloc;
 	private int bufferFrame = 0;
 
     // Use this for initialization
     void Start () {
+		usedCamera = Camera.main;
 		target = transform.position;
 		veloc = new Vector3 (0, 0, 0);
         self = GetComponent<Rigidbody>();
@@ -21,13 +22,19 @@ public class OverWorldNavOG : MonoBehaviour {
 	}
 
 	public void Cleanse(){
-		target = self.position;
+		target = this.transform.position;
 		bufferFrame = 1;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+
+		usedCamera = Camera.main;
+		if (usedCamera == null) {
+			Debug.Log ("Cant Find Camera");
+			return;
+		}
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
         if (Input.GetMouseButton(0))
         {

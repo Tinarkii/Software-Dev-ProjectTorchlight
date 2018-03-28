@@ -7,12 +7,14 @@ public class AnchorTo : MonoBehaviour {
 	public Vector3 offset;
 	// Use this for initialization
 	void Start () {
-		transform.position = target.transform.position + offset;
+		target = GameControl.control.GetPlayer ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (GameControl.control.GetPlayer () == null) {
+			return;
+		}
 		transform.position = target.transform.position + offset;
 	}
 }

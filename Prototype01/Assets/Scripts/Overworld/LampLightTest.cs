@@ -10,19 +10,19 @@ public class LampLightTest : MonoBehaviour {
 
 	private int index = -1;
 
-	public GameObject game;
+	public GameObject scene;
     
 
 	// Use this for initialization
 	void Start () {
         myLight.enabled = on; //turns the light off
-		game = GameObject.Find ("GameControl");
+		scene = GameObject.Find ("SceneControl");
     }
 
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player"){
 			on = !on; //flips  the sate of the light
-			game.GetComponent<GameControl> ().UpdateLamp (index);
+			scene.GetComponent<SceneControl> ().UpdateLamp (index);
         }
             
     }
@@ -35,8 +35,8 @@ public class LampLightTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (game == null)
-			game = GameObject.Find ("GameControl");
+		if (scene == null)
+			scene = GameObject.Find ("SceneControl");
 		myLight.enabled = on;
 
 	}

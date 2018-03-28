@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114050603196560496}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Player
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21cc80602486334b82edada0b0a2156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boy: {fileID: 0}
+  scene: {fileID: 0}
   maxSpeed: 50
   minSpeed: 4

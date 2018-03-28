@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sampleEncounter.unity
     guid: 61068a432174f454e99c5673a39fadf7
+  - enabled: 1
+    path: Assets/Scenes/Room01.unity
+    guid: 1d91bf5cbf6e4a6499a652b72d6b0501
