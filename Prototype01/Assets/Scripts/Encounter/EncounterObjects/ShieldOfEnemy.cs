@@ -10,7 +10,7 @@ public class ShieldOfEnemy : MonoBehaviour
 {
     private int time = 0;
 
-	private void Update() {
+	private void FixedUpdate() {
 		// A very hackish way to do move the object.
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.

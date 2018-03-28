@@ -21,8 +21,8 @@ public class DefAction : MonoBehaviour {
 	private static class Const {
 		// The upward velocity added for a jump
 		public const float jumpSpeed = 12.5f;
-		// The constant that defines how many pixels a swipe is
-		public const int Delta = 2;
+		// The constant that defines how many pixels a swipe is (versus a tap)
+		public const int Delta = 0;
 	}
 
 	// A reference to the player's rigidbody for movement
@@ -44,11 +44,13 @@ public class DefAction : MonoBehaviour {
 		self = GetComponent<Rigidbody>();
 	}
 
+	/* Reset tracked finger inputs */
 	// Other initialization
 	void OnEnable () {
 		tracked = new Dictionary<int, Vector2>();
 	}
 	
+	/* Take player input, decrease delays */
 	// Update is called once per frame
 	void Update () {
 		if (shieldDelayLeft > 0)
@@ -123,9 +125,10 @@ public class DefAction : MonoBehaviour {
 		}
 	}
 
-	// # Begin region player actions. bool leftside refers to
+	// # Begin region player actions. @param bool leftside refers to
 	// whether the action happened on the left side or not.
 
+	/* Jump if allowed */
 	private void jump(bool leftside) {
 		if (canJump)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
@@ -150,6 +153,7 @@ public class DefAction : MonoBehaviour {
 		Instantiate (prefabForShieldOfPlayer, this.transform.position + new Vector3(rev*1,0,0), Quaternion.Euler(0,rev*90,0));
 	}
 
+	/* Create blast object */
 	private void shoot(bool leftside) {
 		if (leftside) {
 			if (shootDelayLeft > 0)
@@ -165,11 +169,9 @@ public class DefAction : MonoBehaviour {
 		Instantiate (prefabForBlastOfPlayer, this.transform.position + new Vector3(rev*1,0.7f,0), Quaternion.Euler(0,rev*90,0));
 	}
 
+	/* The user did a tap rather than a swipe */
 	private void tap(bool leftside) {
-		if (leftside)
-			Debug.Log("Tap on left side");
-		else
-			Debug.Log("Tap on right side");
+		// Currently unimplemented. May not ever be.
 	}
 
 	// # End region player actions

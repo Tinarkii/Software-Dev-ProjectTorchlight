@@ -10,7 +10,7 @@ public class Defense : MonoBehaviour {
 	private float timePassed;
 
 	// Which of the enemy's attacks will be used
-	int seqenceNum;
+	private int seqenceNum;
 
 	// The attacks that will be produced on the enemy's turn
 	private Queue<Sequence.Attack> attacks;
@@ -43,18 +43,22 @@ public class Defense : MonoBehaviour {
 	/* Create game objects representing the enemy's moves */
 	private void Create(Sequence.Attack att) {
 		int rev = (att.velocity > 0) ? 1 : -1;
-		float adjust = (att.type == enemyShield) ? 0.5f : 0;// Not a fan of this, but it works
+		float adjust = (att.type == enemyShield) ? 0.5f : 0; // Not a fan of this, but it works
 		// Too many magic numbers. I know this is a fantasy game, but still.
-		/*Transform t = //commenting this to get rid of compiler a warning*/
-		Instantiate(att.type, new Vector3(rev*-11, (6.25f/4)*(att.height + adjust) + 0.2f, -3),
-					Quaternion.Euler(0, 90*rev, 0));
-		// use t for velocity?
+		Instantiate(att.type, new Vector3(rev*-11, (6.25f/4)*(att.height + adjust) + 0.2f, -3), Quaternion.Euler(0, 90*rev, 0));
 	}
 
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
-		attacks = Sequence.getRef().getMoves(0, seqenceNum);
+
+		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
+		if (EncounterControl.enemyPrefab.tag == "armorBaddie")
+			attacks = Sequence.getRef().getMoves(0, seqenceNum);
+		else if (EncounterControl.enemyPrefab.tag == "crystalBaddie")
+			attacks = Sequence.getRef().getMoves(1, seqenceNum);
+		else
+			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 		// Should increment sequenceNum, but I need to make it work in Sequence.cs first
 	}
 

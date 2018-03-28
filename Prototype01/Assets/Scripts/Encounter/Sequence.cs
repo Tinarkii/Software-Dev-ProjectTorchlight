@@ -74,7 +74,7 @@ public class Sequence {
 	// # Begin region of builders for enemy attack sequences
 	// Currently I end with a null attack to signal the end of an attack sequence.
 	// Not the prettiest way to do it, and should be rethought later on.
-	// Also, I really shoud construct the queues inside a for loop over a text file or something.
+	// Also, I really should construct the queues inside a for loop over a text file or something.
 
 	private Queue<Attack> ID00() {
 		Queue<Attack> attacks = new Queue<Attack>();
@@ -103,15 +103,36 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlock, 7.0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 7.3f, 2, 5));
 
-		attacks.Enqueue(new Attack(12));
+		attacks.Enqueue(new Attack(11));
 		return attacks;
 	}
 
-	private Queue<Attack> ID01() {
+	private Queue<Attack> ID01()
+	{
 		Queue<Attack> attacks = new Queue<Attack>();
 
-		attacks.Enqueue(new Attack(2));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
 
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, -5));
+
+		attacks.Enqueue(new Attack(enemyShield, 2f, 0, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 2f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.3f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.6f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.9f, 0, 5));
+
+		attacks.Enqueue(new Attack(enemyShield, 3f, 2, -5));
+		attacks.Enqueue(new Attack(enemyShield, 3f, 4, 5));
+
+
+		attacks.Enqueue(new Attack(7));
 		return attacks;
 	}
 }

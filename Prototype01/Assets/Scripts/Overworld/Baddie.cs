@@ -56,8 +56,15 @@ public class Baddie : MonoBehaviour {
     void OnCollisionEnter(Collision other){
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
-			//DontDestroyOnLoad (gameObject);////@TODO: in progress
-			//EncounterControl.enemy = gameObject;////
+
+			//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
+			if (gameObject.tag == "armorBaddie")
+				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
+			else if (gameObject.tag == "crystalBaddie")
+				EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
+			else
+				Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }
     }

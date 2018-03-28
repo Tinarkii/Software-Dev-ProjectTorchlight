@@ -11,8 +11,8 @@ public class BlastOfPlayer : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	// called once per frame
+	void FixedUpdate () {
 		// A very hackish way to do move the object. (Also in other blast class.)
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.
