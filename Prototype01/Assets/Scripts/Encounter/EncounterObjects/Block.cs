@@ -12,7 +12,7 @@ public class Block : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		// A very hackish way to do move the object.
 		// If someone would be so kind as to provide a less hackish solution,
 		// it would be much appreciated.

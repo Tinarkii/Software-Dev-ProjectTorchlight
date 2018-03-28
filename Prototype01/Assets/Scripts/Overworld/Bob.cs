@@ -18,9 +18,9 @@ public class Bob : MonoBehaviour
 	public float rate;
 
 	/**
-	 * Update is called once per frame
+	 * Called once per frame. FixedUpdated is used rather than Update to avoid interference with the in-game physics.
 	 */
-	void Update ()
+	void FixedUpdate ()
 	{
 		rigidBody.velocity = new Vector3 (rigidBody.velocity.x, magnitude*Mathf.Sin(Time.time*rate), rigidBody.velocity.z);
 	}
