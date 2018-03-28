@@ -56,7 +56,7 @@ public class Defense : MonoBehaviour {
 		if (EncounterControl.enemyPrefab.tag == "armorBaddie")
 			attacks = Sequence.getRef().getMoves(0, seqenceNum);
 		else if (EncounterControl.enemyPrefab.tag == "crystalBaddie")
-			attacks = Sequence.getRef().getMoves(2, seqenceNum);
+			attacks = Sequence.getRef().getMoves(1, seqenceNum);
 		else
 			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 		// Should increment sequenceNum, but I need to make it work in Sequence.cs first

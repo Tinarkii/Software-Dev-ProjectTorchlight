@@ -66,8 +66,6 @@ public class Sequence {
 				return ID00();
 			case 1:
 				return ID01();
-			case 2:
-			return ID02();
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemy IDs", "sequence");
 		}
@@ -109,15 +107,8 @@ public class Sequence {
 		return attacks;
 	}
 
-	private Queue<Attack> ID01() {
-		Queue<Attack> attacks = new Queue<Attack>();
-
-		attacks.Enqueue(new Attack(2));
-
-		return attacks;
-	}
-
-	private Queue<Attack> ID02() {
+	private Queue<Attack> ID01()
+	{
 		Queue<Attack> attacks = new Queue<Attack>();
 
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
