@@ -15,8 +15,6 @@ public class OverWorldNav : MonoBehaviour {
     void Start () {
         //target = new Vector3(0, 0, 0);
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        // self = GetComponent<Rigidbody>();
-        // Commenting above line out until it is actually used, to get rid of warning
 	}
 	
 	// Update is called once per frame

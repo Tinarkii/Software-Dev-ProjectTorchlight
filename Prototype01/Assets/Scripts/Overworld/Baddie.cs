@@ -56,16 +56,13 @@ public class Baddie : MonoBehaviour {
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
 
-			//@TODO: This works, but it's kinda messy. Is there a better way of doing it?
+			//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
 			if (gameObject.tag == "armorBaddie")
 				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
 			else if (gameObject.tag == "crystalBaddie")
 				EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
 			else
 				Debug.LogError ("This enemy's type is not recognized");
-
-			// If the encounter is won, this enemy should dissappear from the overworld. If it is lost, a saved game is loaded and this line doesn't matter.
-			Destroy (gameObject); ////@TODO: This doesn't yet work because of how the saving/switching scenes is set ups
 
             SceneManager.LoadScene("sampleEncounter"); //loads scences 
         }
