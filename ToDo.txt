@@ -1,9 +1,9 @@
 /*Universal fixes*/
-->Scene transitions & save-states
-->Slight graphical overhaul
+->Scene transitions & save-states - Mostly Done
+->Slight graphical overhaul - Sort of Done
 ->Cleanup movement
-->Level Design
-->Clean up Warnings
+->Level Design - 1 room
+->Clean up Warnings - Done
 
 /*Item Management*/
 ->Inventory needs to be completed
@@ -16,4 +16,4 @@
 ->Refine Offensive phase
 
 /*Other*/
-->Make save-lamps and save system (saving should be set up by Wednesday)
+->Make save-lamps and save system (saving should be set up by Wednesday) - Done
