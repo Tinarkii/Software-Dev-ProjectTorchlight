@@ -6,11 +6,12 @@
 ->Clean up Warnings - Done
 
 /*Item Management*/
-->Inventory needs to be completed
-->Item that actually does stuff
+->Inventory needs to be completed - Done
+->Item that actually does stuff - Done
+->More items (ones that will show up in the final version of the game)
 
 /*Encounter System setup stuff*/
-->Dynamically receive info from OverWorld
+->Dynamically receive info from OverWorld - Done, I think
 ->Combat Resolution
 ->Develop Defensive phase
 ->Refine Offensive phase
