@@ -735,7 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 2075508403}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &444823740
 Animator:
   serializedVersion: 3
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 629288684}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &532795478
 Animator:
   serializedVersion: 3
@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 721438784}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &1072167762
 Animator:
   serializedVersion: 3
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 1530301956}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &1244393271
 Animator:
   serializedVersion: 3
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 1276448113}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &1528425884
 Animator:
   serializedVersion: 3
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 1057226211}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
 --- !u!95 &2071627901
 Animator:
   serializedVersion: 3
