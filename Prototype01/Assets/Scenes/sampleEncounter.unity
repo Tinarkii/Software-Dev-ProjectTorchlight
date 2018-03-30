@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0.83752555}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 15.490001, y: -29.050001, z: 0.36400002}
 --- !u!1001 &246565551
 Prefab:
@@ -343,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -62.002003, y: 44.473003, z: -30.557001}
 --- !u!1 &537598066
 GameObject:
@@ -405,7 +405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &544441459
 Prefab:
@@ -543,7 +543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!114 &578362726
 MonoBehaviour:
@@ -676,7 +676,7 @@ RectTransform:
   - {fileID: 1438831230}
   - {fileID: 1349646304}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -765,7 +765,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1086172846
 Prefab:
@@ -804,7 +804,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 850ac54053955be4f80f4c1987117c01, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 850ac54053955be4f80f4c1987117c01, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -888,7 +888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 46.783, y: -11.896001, z: 12.944}
 --- !u!1 &1166387265
 GameObject:
@@ -902,8 +902,8 @@ GameObject:
   - component: {fileID: 1166387266}
   - component: {fileID: 1166387270}
   - component: {fileID: 1166387271}
-  - component: {fileID: 1166387269}
   - component: {fileID: 1166387272}
+  - component: {fileID: 1166387269}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -966,7 +966,7 @@ Transform:
   m_Children:
   - {fileID: 246565552}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90.00001, y: 110, z: 0}
 --- !u!114 &1166387269
 MonoBehaviour:
@@ -1011,7 +1011,7 @@ CapsuleCollider:
   m_Radius: 1.2
   m_Height: 6.25
   m_Direction: 2
-  m_Center: {x: 0, y: -0.17061903, z: 0.10161048}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!65 &1166387272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1239,5 +1239,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -116,12 +116,18 @@ public class DefAction : MonoBehaviour {
 
 	/* Handles when the player is hit with a enemy blast or shield */
 	protected void OnTriggerEnter(Collider col) {
-		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
-			Destroy(col.gameObject);
+		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)"
+						|| col.gameObject.name == "BlockBad(Clone)") {
 			GameControl.control.confidence -= 15;
 			if (GameControl.control.confidence < 0)
 				GameControl.control.confidence = 0;
 			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+
+			if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)")
+				Destroy(col.gameObject);
+			else if (col.gameObject.name == "BlockBad(Clone)") {
+				// Possibly push player on top of blocks here
+			}
 		}
 	}
 
