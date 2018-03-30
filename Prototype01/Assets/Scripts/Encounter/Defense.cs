@@ -9,9 +9,6 @@ public class Defense : MonoBehaviour {
 	// Amount of time before phase ends. Might remove later
 	private float timePassed;
 
-	// Which of the enemy's attacks will be used
-	private int seqenceNum;
-
 	// The attacks that will be produced on the enemy's turn
 	private Queue<Sequence.Attack> attacks;
 
@@ -23,7 +20,6 @@ public class Defense : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		seqenceNum = 0;
 	}
 
 	// Update is called once per frame
@@ -51,15 +47,7 @@ public class Defense : MonoBehaviour {
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
-
-		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
-		if (EncounterControl.enemyPrefab.tag == "armorBaddie")
-			attacks = Sequence.getRef().getMoves(0, seqenceNum);
-		else if (EncounterControl.enemyPrefab.tag == "crystalBaddie")
-			attacks = Sequence.getRef().getMoves(1, seqenceNum);
-		else
-			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
-		// Should increment sequenceNum, but I need to make it work in Sequence.cs first
+		attacks = Sequence.getRef().getMoves(EncounterControl.enemyPrefab.tag);
 	}
 
 	/* Exit scene when player runs out of health */

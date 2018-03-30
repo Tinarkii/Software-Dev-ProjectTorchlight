@@ -60,14 +60,14 @@ public class Sequence {
 	}
 
 	/* Create the moves for an attack sequence */
-	public Queue<Attack> getMoves(int enemyID, int sequence) {
-		switch (enemyID) {
-			case 0:
+	public Queue<Attack> getMoves(string enemy) {
+		switch (enemy) {
+			case "armorBaddie":
 				return ID00();
-			case 1:
+			case "crystalBaddie":
 				return ID01();
 			default:
-				throw new System.ArgumentException("Parameter is not in range of enemy IDs", "sequence");
+				throw new System.ArgumentException("Parameter is not in range of enemys", "enemy");
 		}
 	}
 
