@@ -1328,6 +1328,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 059f05cc22470ea4abd8663c5fd97eec, type: 3}
   m_IsPrefabParent: 0
+--- !u!114 &866096831 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114239910882130124, guid: f7a8c3bf88dff014aa3eda428d208a31,
+    type: 2}
+  m_PrefabInternal: {fileID: 784472501}
+  m_Script: {fileID: 11500000, guid: 7ab3669d5ab6f4babaf916389fcb481d, type: 3}
 --- !u!1 &917085999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,6 +2816,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 866096831}
+    - target: {fileID: 114734589833917034, guid: 216c963fdea35c4478ac64cc8f45e1ab,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 216c963fdea35c4478ac64cc8f45e1ab, type: 2}
