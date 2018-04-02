@@ -12,9 +12,9 @@
 
 /*Encounter System setup stuff*/
 ->Dynamically receive info from OverWorld - Done, I think
-->Combat Resolution
-->Develop Defensive phase
-->Refine Offensive phase
+->Combat resolution - Done (From encounter side. Overworld still needs to handle encounter aftermath.)
+->Refine defensive phase
+->Refine offensive phase
 
 /*Other*/
 ->Make save-lamps and save system (saving should be set up by Wednesday) - Done
