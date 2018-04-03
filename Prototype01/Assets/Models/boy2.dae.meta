@@ -9,10 +9,49 @@ ModelImporter:
     100002: Cube_001
     100004: Cube_002
     100006: Icosphere_001
+    100008: Armature
+    100010: ArmL1
+    100012: ArmL2
+    100014: ArmR1
+    100016: ArmR2
+    100018: Back
+    100020: BackUpper
+    100022: Camera
+    100024: CollarBone
+    100026: Cube
+    100028: Head
+    100030: Lamp
+    100032: LegL1
+    100034: LegL2
+    100036: LegR1
+    100038: LegR2
+    100040: Point
+    100042: Sphere
+    100044: Sphere_001
     400000: //RootNode
     400002: Cube_001
     400004: Cube_002
     400006: Icosphere_001
+    400008: Armature
+    400010: ArmL1
+    400012: ArmL2
+    400014: ArmR1
+    400016: ArmR2
+    400018: Back
+    400020: BackUpper
+    400022: Camera
+    400024: CollarBone
+    400026: Cube
+    400028: Head
+    400030: Lamp
+    400032: LegL1
+    400034: LegL2
+    400036: LegR1
+    400038: LegR2
+    400040: Point
+    400042: Sphere
+    400044: Sphere_001
+    2000000: Camera
     2100000: Face_001
     2100002: Material
     2100004: Material_001
@@ -20,15 +59,27 @@ ModelImporter:
     2300002: Cube_001
     2300004: Cube_002
     2300006: Icosphere_001
+    2300008: Cube
+    2300010: Sphere
     3300000: //RootNode
     3300002: Cube_001
     3300004: Cube_002
     3300006: Icosphere_001
+    3300008: Cube
+    3300010: Sphere
     4300000: Sphere_001
     4300002: Icosphere_001
     4300004: Cube_001
     4300006: Cube_002
+    4300008: Sphere
+    4300010: Cube
     9500000: //RootNode
+    10800000: Lamp
+    10800002: Point
+    13700000: Cube_001
+    13700002: Cube_002
+    13700004: Sphere_001
+    13700006: Icosphere_001
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -48,7 +99,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -84,7 +135,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -97,10 +148,10 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Back
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
