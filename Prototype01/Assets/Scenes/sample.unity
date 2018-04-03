@@ -1804,6 +1804,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 932f985d6b23a2e4995fcde464643f6c, type: 2}
+    - target: {fileID: 100000, guid: 7f31d4f19512039478fe8ef3dfd7285c, type: 3}
+      propertyPath: m_Name
+      value: Lamp (6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f31d4f19512039478fe8ef3dfd7285c, type: 3}
   m_IsPrefabParent: 0
