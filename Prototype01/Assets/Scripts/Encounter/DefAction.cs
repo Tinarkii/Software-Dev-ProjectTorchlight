@@ -24,7 +24,7 @@ public class DefAction : MonoBehaviour {
 		// The constant that defines how many pixels a swipe is (versus a tap)
 		public const int Delta = 0;
 		// How long the delay is before the player can repeat a move
-		public const float delayTime = 1.5f;
+		public const float delayTime = 1f;
 	}
 
 	// A reference to the player's rigidbody for movement
@@ -135,11 +135,17 @@ public class DefAction : MonoBehaviour {
 		if (col.gameObject.name != "BlockBad(Clone)")
 			return;
 		
+		
 		if (canHit == 0) {// Only cause damage once
 			GameControl.control.confidence -= 15;
 			if (GameControl.control.confidence < 0)
 				GameControl.control.confidence = 0;
 			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+
+			// Push player on top of block so he doesn't get stuck
+			// @TODO: Should really round down before adding
+			float pos = self.position.y + (6.5f/4);// Fix magic numbers; also in Defense.cs
+			self.position = new Vector3(self.position.x, pos, self.position.z);
 		}
 		canHit--;
 	}
