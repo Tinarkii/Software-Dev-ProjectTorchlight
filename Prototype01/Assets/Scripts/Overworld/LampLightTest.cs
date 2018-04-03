@@ -21,7 +21,7 @@ public class LampLightTest : MonoBehaviour {
 
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player"){
-			on = !on; //flips  the sate of the light
+			on = true; //sets the sate of the light to true 
 			scene.GetComponent<SceneControl> ().UpdateLamp (index);
         }
             
