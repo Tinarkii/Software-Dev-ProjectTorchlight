@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * A sample Item for testing purposes
+ * A script for items that restore confidence
  */
 
 public class ConfidenceItem : Item
@@ -23,11 +23,12 @@ public class ConfidenceItem : Item
 	}
 
 	/**
-	 * Use the SampleItem - creates another SampleItem on the screen
+	 * Use the ConfidenceItem - restores confidence
 	 */
 	public override void UseAction ()
 	{
-		Debug.Log ("A " + myName + " was used. The player's confidence meter should be increased by " + healthRegained + ".");
+		Debug.LogWarning ("The function UseAction in ConfidenceItem.cs has not been implemented.");
+		//Debug.Log ("A " + myName + " was used. The player's confidence meter should be increased by " + healthRegained + ".");
 	}
 
 }
