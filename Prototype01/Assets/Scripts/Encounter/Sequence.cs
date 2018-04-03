@@ -116,10 +116,10 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
 
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, 5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, -5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, 5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 2, -5));
 
 		attacks.Enqueue(new Attack(enemyShield, 2f, 0, 5));
 
