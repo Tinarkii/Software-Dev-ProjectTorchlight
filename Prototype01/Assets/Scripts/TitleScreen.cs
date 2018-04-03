@@ -17,7 +17,7 @@ public class TitleScreen : MonoBehaviour
 	 */
 	public void NewGame()
 	{
-		SceneManager.LoadScene("sample");
+		SceneManager.LoadScene("Room01");
 	}
 
 	/**
