@@ -1,29 +1,30 @@
 fileFormatVersion: 2
-guid: f07d63bb6286a4a42b6bdb7a3723a57b
-timeCreated: 1522872896
+guid: f49ff86c64d9ac04bb2cea4856a5bf24
+timeCreated: 1522873319
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Red
-    2100002: Blue
-    2100004: Green
+    2100000: White
+    2100002: Black
+    2100004: Yellow
     2100006: Orange
-    2100008: Yellow
-    2100010: White
-    2100012: Black
+    2100008: Red
+    2100010: Blue
+    2100012: Green
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
+    7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Black
-    second: {fileID: 2100000, guid: a45c4f231b1cbf14b91f7e354f6aa91f, type: 2}
+    second: {fileID: 2100000, guid: ef7bd3ea7b72b2c4e9e5f2f749aaa594, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
