@@ -164,6 +164,10 @@ public class GameControl : MonoBehaviour {
 			Debug.Log(data.playerPosition);
 
 		}
+		else
+		{
+			Debug.Log ("Load() was called, but there is no saved game to load");
+		}
 	}
 		
 

@@ -26,6 +26,6 @@ public class TitleScreen : MonoBehaviour
 	public void ResumeGame()
 	{
 		gameControlPrefab.GetComponent<GameControl>().Load();
-		////@TODO: This works, but it seems kinda sloppy. Is there a better way of doing this?
+		////@TODO: This works, but it seems kinda sloppy (I would like to just call GameControl.control.Load(), and not mess with any prefabs). Is there a better way of doing this?
 	}
 }

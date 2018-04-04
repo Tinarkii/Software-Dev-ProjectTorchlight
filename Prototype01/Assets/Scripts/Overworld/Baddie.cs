@@ -38,7 +38,7 @@ public class Baddie : MonoBehaviour {
     }
 
     /// <summary>
-    /// OntriigreExit is called when this trigger area has been left
+    /// OnTriggerExit is called when this trigger area has been left
     /// by another rigidbody/collider.
     /// If the object that leaves the trigger is the player than 
     /// it removes the tag go for the baddie so he will know to stop moving
@@ -57,7 +57,7 @@ public class Baddie : MonoBehaviour {
         if (other.gameObject.tag == "Player"){
             GameControl.control.Save();
 
-			//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it?
+			//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
 			if (gameObject.tag == "armorBaddie")
 				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
 			else if (gameObject.tag == "crystalBaddie")
