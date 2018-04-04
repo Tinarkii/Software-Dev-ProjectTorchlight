@@ -3,18 +3,19 @@
 ->Slight graphical overhaul - Sort of Done
 ->Cleanup movement
 ->Level Design - 1 room
-->Clean up Warnings - Done
 
 /*Item Management*/
-->Inventory needs to be completed - Done
-->Item that actually does stuff - Done
 ->More items (ones that will show up in the final version of the game)
 
 /*Encounter System setup stuff*/
-->Dynamically receive info from OverWorld - Done, I think
-->Combat resolution - Done (From encounter side. Overworld still needs to handle encounter aftermath.)
 ->Refine defensive phase
-->Refine offensive phase
 
-/*Other*/
+
+/*Complete*/
+->Dynamically receive info from OverWorld - Done, I think
+->Refine offensive phase - Done, unless people have stuff to add
 ->Make save-lamps and save system (saving should be set up by Wednesday) - Done
+->Combat resolution - Done
+->Clean up Warnings - Done
+->Inventory needs to be completed - Done
+->Item that actually does stuff - Done
