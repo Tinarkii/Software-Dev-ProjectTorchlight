@@ -18,12 +18,6 @@ public abstract class Item : MonoBehaviour
 	 */
 	protected string myName;
 
-
-	/**
-	 * Use the item
-	 */
-	abstract public void UseItem ();
-
 	/**
 	 * Returns the name of this Item
 	 */
@@ -73,4 +67,23 @@ public abstract class Item : MonoBehaviour
 		gameObject.SetActive (false);
     }
 
+	/**
+	 * Use this Item
+	 */
+	public void UseItem ()
+	{
+		Debug.Log("Item (" + myName + ") used");
+
+		UseAction ();
+
+		quantity--;
+
+		if (quantity <= 0)
+			Destroy (this);
+	}
+
+	/**
+	 * What happens when this Item is used
+	 */
+	abstract protected void UseAction ();
 }

@@ -20,9 +20,11 @@ public class DefAction : MonoBehaviour {
 	/* The various constants used */
 	private static class Const {
 		// The upward velocity added for a jump
-		public const float jumpSpeed = 12.5f;
+		public const float jumpSpeed = 14f;
 		// The constant that defines how many pixels a swipe is (versus a tap)
 		public const int Delta = 0;
+		// How long the delay is before the player can repeat a move
+		public const float delayTime = 1f;
 	}
 
 	// A reference to the player's rigidbody for movement
@@ -40,7 +42,7 @@ public class DefAction : MonoBehaviour {
 
 	// Initialization
 	void Start () {
-		confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+		confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 		self = GetComponent<Rigidbody>();
 	}
 
@@ -53,6 +55,7 @@ public class DefAction : MonoBehaviour {
 	/* Take player input, decrease delays */
 	// Update is called once per frame
 	void Update () {
+		// Update delays
 		if (shieldDelayLeft > 0)
 			shieldDelayLeft -= Time.deltaTime;
 		if (shieldDelayRight > 0)
@@ -116,19 +119,39 @@ public class DefAction : MonoBehaviour {
 
 	/* Handles when the player is hit with a enemy blast or shield */
 	protected void OnTriggerEnter(Collider col) {
-		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)"
-						|| col.gameObject.name == "BlockBad(Clone)") {
-			GameControl.control.confidence -= 15;
-			if (GameControl.control.confidence < 0)
-				GameControl.control.confidence = 0;
-			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
+			GameControl.control.AdjustConfidenceBy(-15);
+			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
-			if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)")
-				Destroy(col.gameObject);
-			else if (col.gameObject.name == "BlockBad(Clone)") {
-				// Possibly push player on top of blocks here
-			}
+			Destroy(col.gameObject);
 		}
+	}
+
+	/* Handles the player's interactions with blocks */
+	protected void OnTriggerStay(Collider col) {
+		// Only concerned with block interactions
+		if (col.gameObject.name != "BlockBad(Clone)")
+			return;
+		
+		
+		if (canHit == 0) {// Only cause damage once
+			GameControl.control.AdjustConfidenceBy(-15);
+			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
+
+			// Push player on top of block so he doesn't get stuck
+			// @TODO: Should really round down before adding
+			float pos = self.position.y + (6.5f/4);// Fix magic numbers; also in Defense.cs
+			self.position = new Vector3(self.position.x, pos, self.position.z);
+		}
+		canHit--;
+	}
+
+	// So that the player only takes damage after the 1st frame. A bit hackish.
+	private int canHit = 1;
+	/* Player can take damage from another block after contact from the first has ended */
+	protected void OnTriggerExit(Collider col) {
+		if (col.gameObject.name == "BlockBad(Clone)")
+			canHit = 1;
 	}
 
 	// # Begin region player actions. @param bool leftside refers to
@@ -148,11 +171,11 @@ public class DefAction : MonoBehaviour {
 		if (leftside) {
 			if (shieldDelayLeft > 0)
 				return;
-			shieldDelayLeft = 0.3f;
+			shieldDelayLeft = Const.delayTime;
 		} else {
 			if (shieldDelayRight > 0)
 				return;
-			shieldDelayRight = 0.3f;
+			shieldDelayRight = Const.delayTime;
 		}
 
 		int rev = leftside ? -1 : 1;
@@ -164,11 +187,11 @@ public class DefAction : MonoBehaviour {
 		if (leftside) {
 			if (shootDelayLeft > 0)
 				return;
-			shootDelayLeft = 0.3f;
+			shootDelayLeft = Const.delayTime;
 		} else {
 			if (shootDelayRight > 0)
 				return;
-			shootDelayRight = 0.3f;
+			shootDelayRight = Const.delayTime;
 		}
 
 		int rev = leftside ? -1 : 1;

@@ -61,6 +61,7 @@ public class Sequence {
 
 	/* Create the moves for an attack sequence */
 	public Queue<Attack> getMoves(string enemy) {
+		////@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
 		switch (enemy) {
 			case "armorBaddie":
 				return ID00();
@@ -116,10 +117,10 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
 
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, 5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 0, -5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, 5));
-		attacks.Enqueue(new Attack(enemyBlast, 0.5f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0.8f, 2, -5));
 
 		attacks.Enqueue(new Attack(enemyShield, 2f, 0, 5));
 
