@@ -316,6 +316,8 @@
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfPlayer.cs" />
     <Compile Include="Assets\Scripts\Encounter\MouseOverStuff.cs" />
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ButtonIntermediate.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ConfidenceItem.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemsMenu.cs" />

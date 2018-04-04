@@ -39,7 +39,7 @@ public class Baddie : MonoBehaviour {
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player")
-            go = true; 
+            go = true;    
     }
 
     /// <summary>
