@@ -23,12 +23,12 @@ public class ConfidenceItem : Item
 	}
 
 	/**
-	 * Use the ConfidenceItem - restores confidence
+	 * Use the ConfidenceItem - increases the player's confidence
 	 */
-	public override void UseAction ()
+	protected override void UseAction ()
 	{
-		Debug.LogWarning ("The function UseAction in ConfidenceItem.cs has not been implemented.");
-		//Debug.Log ("A " + myName + " was used. The player's confidence meter should be increased by " + healthRegained + ".");
+		Debug.Log ("A " + myName + " was used. The player's confidence meter should be increased by " + healthRegained + ".");
+		GameControl.control.AdjustConfidenceBy(healthRegained);
 	}
 
 }

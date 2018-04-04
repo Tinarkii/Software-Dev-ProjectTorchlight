@@ -85,5 +85,5 @@ public abstract class Item : MonoBehaviour
 	/**
 	 * What happens when this Item is used
 	 */
-	abstract public void UseAction ();
+	abstract protected void UseAction ();
 }

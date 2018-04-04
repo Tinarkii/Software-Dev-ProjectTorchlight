@@ -17,9 +17,9 @@ public class SampleItem : Item
 	}
 
 	/**
-	 * Creates another SampleItem on the screen
+	 * Creates a SampleItem near position (0,0,0)
 	 */
-	public override void UseAction ()
+	protected override void UseAction ()
 	{
 		Instantiate ((GameObject)Resources.Load("SampleItemResource", typeof(GameObject)), new Vector3 (Random.Range(-15,15), 1, Random.Range(-15,15)), Quaternion.identity);
 	}

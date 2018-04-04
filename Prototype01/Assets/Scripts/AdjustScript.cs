@@ -10,11 +10,11 @@ public class AdjustScript : MonoBehaviour {
 	{
 			if (GUI.Button(new Rect(10,100,100,30),"Health Up"))
 			{
-			GameControl.control.confidence += 10;
+				GameControl.control.AdjustConfidenceBy(10);
 			}
 			if (GUI.Button(new Rect(10,140,100,30),"Health Down"))
 			{
-				GameControl.control.confidence -= 10;
+				GameControl.control.AdjustConfidenceBy(-10);
 			}
 			if (GUI.Button(new Rect(10,180,100,30),"Save"))
 			{

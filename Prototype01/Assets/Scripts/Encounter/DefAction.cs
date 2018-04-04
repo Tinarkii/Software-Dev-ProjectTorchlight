@@ -42,7 +42,7 @@ public class DefAction : MonoBehaviour {
 
 	// Initialization
 	void Start () {
-		confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+		confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 		self = GetComponent<Rigidbody>();
 	}
 
@@ -120,10 +120,8 @@ public class DefAction : MonoBehaviour {
 	/* Handles when the player is hit with a enemy blast or shield */
 	protected void OnTriggerEnter(Collider col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
-			GameControl.control.confidence -= 15;
-			if (GameControl.control.confidence < 0)
-				GameControl.control.confidence = 0;
-			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+			GameControl.control.AdjustConfidenceBy(-15);
+			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
 			Destroy(col.gameObject);
 		}
@@ -137,10 +135,8 @@ public class DefAction : MonoBehaviour {
 		
 		
 		if (canHit == 0) {// Only cause damage once
-			GameControl.control.confidence -= 15;
-			if (GameControl.control.confidence < 0)
-				GameControl.control.confidence = 0;
-			confidenceText.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+			GameControl.control.AdjustConfidenceBy(-15);
+			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
 			// Push player on top of block so he doesn't get stuck
 			// @TODO: Should really round down before adding

@@ -50,7 +50,7 @@ public class EncounterControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		PlayerPrefs.SetInt("Health", GameControl.control.confidence);
+		PlayerPrefs.SetInt("Health", GameControl.control.Confidence());
 
 		if (attackScript.Finished()) {
 			attackScript.enabled = false;
