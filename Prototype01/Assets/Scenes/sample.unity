@@ -3411,7 +3411,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f07d63bb6286a4a42b6bdb7a3723a57b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f07d63bb6286a4a42b6bdb7a3723a57b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3444,6 +3444,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f07d63bb6286a4a42b6bdb7a3723a57b, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1907992429 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: f07d63bb6286a4a42b6bdb7a3723a57b, type: 3}
+  m_PrefabInternal: {fileID: 1907992428}
+--- !u!64 &1907992430
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1907992429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: f07d63bb6286a4a42b6bdb7a3723a57b, type: 3}
 --- !u!1 &2016014688 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 059f05cc22470ea4abd8663c5fd97eec, type: 3}
