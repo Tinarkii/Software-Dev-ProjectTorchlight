@@ -1,23 +1,22 @@
 fileFormatVersion: 2
-guid: f49ff86c64d9ac04bb2cea4856a5bf24
-timeCreated: 1522873319
+guid: f07d63bb6286a4a42b6bdb7a3723a57b
+timeCreated: 1522873664
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: White
-    2100002: Black
-    2100004: Yellow
+    2100000: Red
+    2100002: Blue
+    2100004: Green
     2100006: Orange
-    2100008: Red
-    2100010: Blue
-    2100012: Green
+    2100008: Yellow
+    2100010: White
+    2100012: Black
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
-    7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
