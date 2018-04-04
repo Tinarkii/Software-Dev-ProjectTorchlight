@@ -11,6 +11,8 @@ public class OverWorldNavOG : MonoBehaviour {
 	private Camera usedCamera;
 	private Vector3 veloc;
 	private int bufferFrame = 0;
+	private Animator anim;
+	public GameObject boy;
 
     // Use this for initialization
     void Start () {
@@ -18,7 +20,7 @@ public class OverWorldNavOG : MonoBehaviour {
 		target = transform.position;
 		veloc = new Vector3 (0, 0, 0);
         self = GetComponent<Rigidbody>();
-
+		anim = boy.GetComponent<Animator>();
 	}
 
 	public void Cleanse(){
@@ -61,6 +63,9 @@ public class OverWorldNavOG : MonoBehaviour {
 			target = transform.position;
 			self.velocity = new Vector3(0,0,0);
 		}
-
+		if (speed > 3f)
+			anim.SetTrigger("Walking");
+		else
+			anim.SetTrigger("Standing");
     }
 }
