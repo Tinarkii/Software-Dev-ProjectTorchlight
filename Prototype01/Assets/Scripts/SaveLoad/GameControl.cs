@@ -55,17 +55,17 @@ public class GameControl : MonoBehaviour {
 	/**
 	 * Adds to/removes from the confidence the player has (doesn't allow confidence to go over the maximum, and ends the game if it goes under 0)
 	 */
-	public void AdjustConfidenceBy(int newConfidence)
+	public void AdjustConfidenceBy(int confidenceChange)
 	{
-		confidence += newConfidence;
+		confidence += confidenceChange;
 
 		if (confidence > maxConfidence)
 		{
 			confidence = maxConfidence;
 		}
-		else if (confidence < 0)
+		else if (confidence <= 0)
 		{
-			Debug.LogError ("The player's confidence has reached 0 and the game should end. Please implement this functionality."); //// This functionality may be implemented elsewhere
+			Load(); // The player has lost; return to the last save point
 		}
 	}
 

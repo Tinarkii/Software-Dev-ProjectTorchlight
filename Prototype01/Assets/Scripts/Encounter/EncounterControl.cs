@@ -38,11 +38,6 @@ public class EncounterControl : MonoBehaviour {
 		defActScript.enabled = false^DefTestMode;
 		attackScript.enabled = true^DefTestMode;
 	}
-	
-	/* On combat completion, return to previous scene */
-	private void ExitCombat() {
-		GameControl.control.Load();
-	}
 
 	/* This toggles the active offensive and 
 	 * defensive scripts when a phase has completed
@@ -63,7 +58,7 @@ public class EncounterControl : MonoBehaviour {
 			attackScript.enabled = true;
 		}
 
-		if (attackScript.ToExit() || defScript.ToExit())
-			ExitCombat();
+		if (attackScript.BaddieDefeated())
+			GameControl.control.Load();
 	}
 }

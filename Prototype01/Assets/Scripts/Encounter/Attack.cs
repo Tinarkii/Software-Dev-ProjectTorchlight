@@ -160,7 +160,7 @@ public class Attack : MonoBehaviour {
 	}
 
 
-	public bool ToExit()
+	public bool BaddieDefeated()
 	{
 		return exitCondition;
 	}

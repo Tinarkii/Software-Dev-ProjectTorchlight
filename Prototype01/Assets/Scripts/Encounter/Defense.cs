@@ -46,11 +46,6 @@ public class Defense : MonoBehaviour {
 		attacks = Sequence.getRef().getMoves(EncounterControl.enemyPrefab.tag);
 	}
 
-	/* Exit scene when player runs out of health */
-	public bool ToExit() {
-		return GameControl.control.Confidence() <= 0;
-	}
-
 	/* Keeps track of whether the defensive phase has ended */
 	public bool Finished() {
 		return finished;
