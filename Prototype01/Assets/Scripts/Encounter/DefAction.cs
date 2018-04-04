@@ -32,6 +32,9 @@ public class DefAction : MonoBehaviour {
 
 	// Whether the player is in a state to allow jumping
 	private bool canJump;
+
+	// The amount of confidence the player loses per hit
+	private int hitAmount;
 		
 	// The delay until the player can perform a certain action again
 	private float shieldDelayLeft = 0;
@@ -44,6 +47,7 @@ public class DefAction : MonoBehaviour {
 	void Start () {
 		confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 		self = GetComponent<Rigidbody>();
+		hitAmount = -5;
 	}
 
 	/* Reset tracked finger inputs */
@@ -120,7 +124,7 @@ public class DefAction : MonoBehaviour {
 	/* Handles when the player is hit with a enemy blast or shield */
 	protected void OnTriggerEnter(Collider col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
-			GameControl.control.AdjustConfidenceBy(-15);
+			GameControl.control.AdjustConfidenceBy(hitAmount);
 			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
 			Destroy(col.gameObject);
@@ -135,7 +139,7 @@ public class DefAction : MonoBehaviour {
 		
 		
 		if (canHit == 0) {// Only cause damage once
-			GameControl.control.AdjustConfidenceBy(-15);
+			GameControl.control.AdjustConfidenceBy(hitAmount);
 			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
 			// Push player on top of block so he doesn't get stuck

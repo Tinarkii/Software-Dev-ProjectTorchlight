@@ -35,9 +35,8 @@ public class LampLightTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (scene == null)
-			scene = GameObject.Find ("SceneControl");
+        if (scene == null)
+            scene = GameObject.Find("SceneControl");
 		myLight.enabled = on;
-
 	}
 }
