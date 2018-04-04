@@ -17,6 +17,11 @@ public class Baddie : MonoBehaviour {
 
     bool go; //whether to move or not 
 
+	private int index = -1; //position in array of baddie
+
+	public bool alive = true; //if the baddy is alive
+
+
     // Use this for initialization of enemies 
 	void Start(){
 		boy = GameControl.control.GetPlayer ().GetComponent<Rigidbody>(); //grabs the boy from GameControl.control
@@ -55,22 +60,25 @@ public class Baddie : MonoBehaviour {
     /// it saves the game and loads the encounter scence 
     void OnCollisionEnter(Collision other){
         if (other.gameObject.tag == "Player"){
-            GameControl.control.Save();
 
-			//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
-			if (gameObject.tag == "armorBaddie")
-				EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
-			else if (gameObject.tag == "crystalBaddie")
-				EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
-			else
-				Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
-
-            SceneManager.LoadScene("sampleEncounter"); //loads scences 
+			GameControl.control.EnterEncounter (gameObject);
         }
     }
 
+	public void SetIndex(int i){
+		index = i;
+	}
+	public int GetIndex(){
+		return index;
+	}
+
     // Update is called once per frame
     void FixedUpdate() {
+
+		if (!alive) {
+			Destroy (gameObject);
+		}
+
         if (go) { //if we have the player in the range
             target = boy.transform.position; //the players postion 
 

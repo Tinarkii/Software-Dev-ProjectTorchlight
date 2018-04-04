@@ -28,6 +28,7 @@ public class GameControl : MonoBehaviour {
 
 
 	private int door = 0;
+	private int baddieToDie = -1;
 	private Vector3? playerPosition = null;
 	private bool doorOrPos = false;
 
@@ -81,6 +82,7 @@ public class GameControl : MonoBehaviour {
 	void CreateEmptyLevels(){
 		for (int i = 0; i < levels.Length; i++) {
 			levels [i] = new LevelData ();
+			levels [i].bitBaddies = ~0;
 		}
 	}
 
@@ -170,7 +172,9 @@ public class GameControl : MonoBehaviour {
 		}
 	}
 		
-
+	/*
+	 * Swaps Scenes, for use when entering doors between two overworld scenes
+	 */
 	public void SwapScene(int sceneToLoad,int doorToLoad){
 		CacheLevelData ();
 		door = doorToLoad;
@@ -179,11 +183,41 @@ public class GameControl : MonoBehaviour {
 
 	}
 
+	/*
+	 * Enter an encounter scene, with the correct baddie, while keeping track of the level's state
+	 */
+	public void EnterEncounter (GameObject baddie){
+
+		player.SetActive (false);
+
+		baddieToDie = baddie.GetComponent<Baddie> ().GetIndex ();
+		currentScene = SceneManager.GetActiveScene ().name;
+
+		CacheLevelData ();
+		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
+		if (baddie.tag == "armorBaddie")
+			EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
+		else if (baddie.tag == "crystalBaddie")
+			EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
+		else
+			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+
+		SceneManager.LoadScene("sampleEncounter"); //loads scenes 
+	}
+
+	public void ExitEncounter (){
+		doorOrPos = false;
+		levels [Array.IndexOf (scenes, currentScene)].bitBaddies &= (short)(~(1 << baddieToDie));
+		SceneManager.LoadScene (currentScene);
+	}
+
+
 	public Vector3 GetPlayerSpawn(){
 		if (doorOrPos) {
 			return GameObject.Find ("SceneControl").GetComponent<SceneControl> ().doors[door].GetComponent<Door>().GetSpawnPoint();
 		} else {
 			if (playerPosition == null) {
+				Debug.Log ("thats null?");
 				return GameObject.Find ("SceneControl").GetComponent<SceneControl> ().neutralSpawnPoint;
 			}
 			return playerPosition.Value;
@@ -191,9 +225,10 @@ public class GameControl : MonoBehaviour {
 	}
 
 	public LevelData[] CacheLevelData(){
+		playerPosition = player.transform.position;
 		LevelData level = levels [Array.IndexOf (scenes, currentScene)];
 		level.bitLamps = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetLamps();
-		level.bitBaddies = 0;
+		level.bitBaddies = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetBaddies();
 		return levels;
 	}
 
