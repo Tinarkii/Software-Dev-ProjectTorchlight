@@ -61,6 +61,7 @@ public class Sequence {
 
 	/* Create the moves for an attack sequence */
 	public Queue<Attack> getMoves(string enemy) {
+		////@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
 		switch (enemy) {
 			case "armorBaddie":
 				return ID00();

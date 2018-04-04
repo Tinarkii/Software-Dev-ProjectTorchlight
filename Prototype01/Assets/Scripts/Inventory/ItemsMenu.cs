@@ -39,7 +39,7 @@ public class ItemsMenu : MonoBehaviour
 		// This list may contain null Items, because Items will Destroy themselves when they reach 0 quantity
 		items.RemoveAll(Item => Item == null);
 
-		int zPosition = 0;
+		int verticalOffset = -1; // How much each new button is offset by (so that multiple buttons will show up in different places on the screne)
 		foreach (Item i in items)
 		{
 			// @TODO: For some reason, Items that should have been Destroyed (they have quantity == 0) still get buttons.
@@ -47,8 +47,14 @@ public class ItemsMenu : MonoBehaviour
 			if (i.GetQuantity () <= 0)
 				continue;
 
-			Transform t = Instantiate(useItemButton, new Vector3(0, 0, zPosition-=100), Quaternion.identity);
+			// Make a new button
+			Transform t = Instantiate(useItemButton);
 			t.tag = "ItemButton";
+
+			// Add the vertical offset to the new button's position
+			RectTransform rt = (RectTransform) t;
+			rt.pivot = new Vector2(rt.pivot.x, rt.pivot.y + verticalOffset);
+			verticalOffset += 1;
 
 			Button button = t.gameObject.GetComponent<Button> ();
 

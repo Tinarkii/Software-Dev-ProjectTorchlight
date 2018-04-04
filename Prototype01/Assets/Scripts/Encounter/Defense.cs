@@ -18,10 +18,6 @@ public class Defense : MonoBehaviour {
 	public Transform enemyBlock;
 	
 
-	// Use this for initialization
-	void Start () {
-	}
-
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
@@ -48,11 +44,6 @@ public class Defense : MonoBehaviour {
 		finished = false;
 		timePassed = 0;
 		attacks = Sequence.getRef().getMoves(EncounterControl.enemyPrefab.tag);
-	}
-
-	/* Exit scene when player runs out of health */
-	public bool ToExit() {
-		return GameControl.control.confidence <= 0;
 	}
 
 	/* Keeps track of whether the defensive phase has ended */

@@ -160,7 +160,7 @@ public class Attack : MonoBehaviour {
 	}
 
 
-	public bool ToExit()
+	public bool BaddieDefeated()
 	{
 		return exitCondition;
 	}
@@ -293,7 +293,7 @@ public class Attack : MonoBehaviour {
 		if (enemyHealth <= 0) exitCondition = true;
 		timePassed += Time.deltaTime;
 
-		t.text = "Player's Confidence: " + GameControl.control.confidence.ToString();
+		t.text = "Player's Confidence: " + GameControl.control.Confidence();
 		// Prevents accidentally double hitting a circle
 		NoRepeats();
 

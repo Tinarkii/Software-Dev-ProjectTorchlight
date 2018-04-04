@@ -1,5 +1,4 @@
-
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -32,8 +31,51 @@ public class GameControl : MonoBehaviour {
 	private Vector3? playerPosition = null;
 	private bool doorOrPos = false;
 
-	public int confidence;
 	public string currentScene;
+
+	/**
+	 * How much confidence (which is basically health) the player has
+	 */
+	private int confidence;
+
+	/**
+	 * The maximum amout of confidence the player can have
+	 */
+	private int maxConfidence = 100;
+
+
+	/**
+	 * Initialization: sets the player's confidence to the max
+	 */
+	public GameControl()
+	{
+		confidence = maxConfidence;
+	}
+
+	/**
+	 * Adds to/removes from the confidence the player has (doesn't allow confidence to go over the maximum, and ends the game if it goes under 0)
+	 */
+	public void AdjustConfidenceBy(int confidenceChange)
+	{
+		confidence += confidenceChange;
+
+		if (confidence > maxConfidence)
+		{
+			confidence = maxConfidence;
+		}
+		else if (confidence <= 0)
+		{
+			Load(); // The player has lost; return to the last save point
+		}
+	}
+
+	/**
+	 * Return's the player's confidence
+	 */
+	public int Confidence()
+	{
+		return confidence;
+	}
 
 
 	void CreateEmptyLevels(){
@@ -121,6 +163,10 @@ public class GameControl : MonoBehaviour {
 
 			Debug.Log(data.playerPosition);
 
+		}
+		else
+		{
+			Debug.Log ("Load() was called, but there is no saved game to load");
 		}
 	}
 		
