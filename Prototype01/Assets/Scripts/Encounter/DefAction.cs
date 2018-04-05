@@ -245,7 +245,7 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			anim.SetTrigger("Jump");
-			jump(false);
+			jump(true);
 		}
 		if (Input.GetKeyDown(KeyCode.S))
 			shield(true);
