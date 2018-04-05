@@ -64,7 +64,10 @@ public class OverWorldNavOG : MonoBehaviour {
 			self.velocity = new Vector3(0,0,0);
 		}
 		if (speed > 3f)
-			anim.SetTrigger("Walking");
+		{
+			//anim.SetTrigger("ImprovedWalking");
+			anim.SetTrigger("ImprovedWalking");
+		}
 		else
 			anim.SetTrigger("Standing");
     }
