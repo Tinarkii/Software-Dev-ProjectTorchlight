@@ -17,6 +17,10 @@ public class DefAction : MonoBehaviour {
 	// The touches that are in progress, by unique id
 	private Dictionary<int, Vector2> tracked;
 
+	private Animator anim;
+	public GameObject boyo;
+	
+
 	/* The various constants used */
 	private static class Const {
 		// The upward velocity added for a jump
@@ -45,6 +49,7 @@ public class DefAction : MonoBehaviour {
 
 	// Initialization
 	void Start () {
+		anim = boyo.GetComponent<Animator>();
 		confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 		self = GetComponent<Rigidbody>();
 		hitAmount = -5;
@@ -164,7 +169,9 @@ public class DefAction : MonoBehaviour {
 	/* Jump if allowed */
 	private void jump(bool leftside) {
 		if (canJump)
+		{
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
+		}
 	}
 
 	/**
@@ -218,16 +225,28 @@ public class DefAction : MonoBehaviour {
 			Application.Quit();
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			anim.SetTrigger("Jump");
 			jump(false);
+		}
 		if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			anim.SetTrigger("Shield");
 			shield(false);
+		}
 		if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			anim.SetTrigger("Fire");
 			shoot(false);
+		}
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 			tap(false);
 
 		if (Input.GetKeyDown(KeyCode.W))
-			jump(true);
+		{
+			anim.SetTrigger("Jump");
+			jump(false);
+		}
 		if (Input.GetKeyDown(KeyCode.S))
 			shield(true);
 		if (Input.GetKeyDown(KeyCode.A))
@@ -235,4 +254,5 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
+	
 }

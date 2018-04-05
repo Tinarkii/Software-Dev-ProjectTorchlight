@@ -25,6 +25,9 @@ public class EncounterControl : MonoBehaviour {
 	// Reference to the player character
 	public GameObject player;
 
+	
+
+
 	/* Initialization of scripts, begin in player offense mode. */
 	void Start () {
 		player = GameObject.Find("Person");
@@ -59,6 +62,8 @@ public class EncounterControl : MonoBehaviour {
 		}
 
 		if (attackScript.BaddieDefeated())
+		{	
 			GameControl.control.ExitEncounter();
+		}
 	}
 }
