@@ -63,7 +63,7 @@ public class OverWorldNavOG : MonoBehaviour {
 			target = transform.position;
 			self.velocity = new Vector3(0,0,0);
 		}
-		if (speed > 3f)
+		if (speed > 3.3f)
 		{
 			//anim.SetTrigger("ImprovedWalking");
 			anim.SetTrigger("ImprovedWalking");
