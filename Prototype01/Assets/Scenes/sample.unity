@@ -2999,6 +2999,11 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114927275109748814, guid: 87095e43aee3c4647aef8ea852799ba7,
+        type: 2}
+      propertyPath: minSpeedForWalkingAnimation
+      value: 3.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87095e43aee3c4647aef8ea852799ba7, type: 2}
   m_IsPrefabParent: 0
