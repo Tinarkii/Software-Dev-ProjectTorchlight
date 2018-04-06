@@ -227,7 +227,8 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			anim.SetTrigger("Jump");
-			jump(false);
+			StartCoroutine(Wait());
+			
 		}
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
@@ -245,7 +246,8 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			anim.SetTrigger("Jump");
-			jump(true);
+			StartCoroutine(Wait());
+			//jump(true);
 		}
 		if (Input.GetKeyDown(KeyCode.S))
 			shield(true);
@@ -254,5 +256,13 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
+	IEnumerator<WaitForSeconds> Wait()
+	{
+		Debug.Log("Waiting");
+    	yield return new WaitForSeconds(0.2f);
+		jump(false);
+		Debug.Log("Done Waiting");
+
+  	}
 	
 }

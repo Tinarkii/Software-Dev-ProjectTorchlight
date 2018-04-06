@@ -204,8 +204,6 @@ public class Attack : MonoBehaviour {
 		// Logs which circle was entered into an array and increments the index
 		shape[touched] = x.name;
 		touched++;
-
-		Debug.Log(string.Join("", shape));
 	}
 	
 
