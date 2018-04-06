@@ -463,6 +463,21 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 132a79285e43b45b291a779a24a10b52, type: 2}
+    - target: {fileID: 114927275109748814, guid: 87095e43aee3c4647aef8ea852799ba7,
+        type: 2}
+      propertyPath: boy
+      value: 
+      objectReference: {fileID: 1555263171}
+    - target: {fileID: 114927275109748814, guid: 87095e43aee3c4647aef8ea852799ba7,
+        type: 2}
+      propertyPath: minSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927275109748814, guid: 87095e43aee3c4647aef8ea852799ba7,
+        type: 2}
+      propertyPath: minSpeedForWalkingAnimation
+      value: 3.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87095e43aee3c4647aef8ea852799ba7, type: 2}
   m_IsPrefabParent: 0
@@ -697,6 +712,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4414960398953738, guid: 7070dbe075939954b9c607b1936cff8e,
     type: 2}
   m_PrefabInternal: {fileID: 1495938740}
+--- !u!1 &1555263171 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1223042249632318, guid: 87095e43aee3c4647aef8ea852799ba7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1233341111}
 --- !u!1 &1609725006
 GameObject:
   m_ObjectHideFlags: 0

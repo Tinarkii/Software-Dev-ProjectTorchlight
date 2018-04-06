@@ -13,6 +13,8 @@ public class OverWorldNavOG : MonoBehaviour {
 	private int bufferFrame = 0;
 	private Animator anim;
 	public GameObject boy;
+	[Tooltip("The minimum speed for which the boy has a walking animation")]
+	public float minSpeedForWalkingAnimation;
 
     // Use this for initialization
     void Start () {
@@ -34,7 +36,7 @@ public class OverWorldNavOG : MonoBehaviour {
 
 		usedCamera = Camera.main;
 		if (usedCamera == null) {
-			Debug.Log ("Cant Find Camera");
+			Debug.LogWarning ("Can't Find Camera");
 			return;
 		}
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
@@ -63,7 +65,7 @@ public class OverWorldNavOG : MonoBehaviour {
 			target = transform.position;
 			self.velocity = new Vector3(0,0,0);
 		}
-		if (speed > 3.3f)
+		if (speed > minSpeedForWalkingAnimation)
 		{
 			//anim.SetTrigger("ImprovedWalking");
 			anim.SetTrigger("ImprovedWalking");
