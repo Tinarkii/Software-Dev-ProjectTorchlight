@@ -61,7 +61,7 @@ public class Attack : MonoBehaviour {
 		// An array that stores the intances of combat circle prefab
 		circles = new GameObject[4];
 		for (int i = 0; i < 4; i++)
-         {
+        {
 			 // Instantiates the circle prefab, makes it white, and names it using i
              GameObject circle = (GameObject)Instantiate(Resources.Load("Circle"));
 			 circle.GetComponent<Renderer>().material.color = Color.white;
@@ -76,6 +76,32 @@ public class Attack : MonoBehaviour {
 			 if (i == 2) circle.transform.position = new Vector3(2, 3, 0);
 			 if (i == 3) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
+		 //BoxMotion(circles);
+	}
+
+	void BoxMotion(GameObject[] boxShape)
+	{
+		int j = 10;
+		while (j >= 0)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				Vector3 boxPos = boxShape[i].transform.position;
+				Debug.Log("Box #" + i + " " + boxPos);
+				boxShape[i].transform.position = new Vector3(boxPos.x, boxPos.x, 0);
+				Debug.Log(boxShape[i].transform.position);
+			}
+			j--;
+		}
+		while (j <= 10)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				Vector3 boxPos = boxShape[i].transform.position;
+				boxShape[i].transform.position = new Vector3(boxPos.x, boxPos.x, 0);
+			}
+			j++;
+		}
 	}
 
 
@@ -104,6 +130,11 @@ public class Attack : MonoBehaviour {
 			 if (i == 1) circle.transform.position = new Vector3(0, 3, 0);
 			 if (i == 2) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
+	}
+
+	void TriMotion()
+	{
+
 	}
 
 
@@ -135,7 +166,10 @@ public class Attack : MonoBehaviour {
          }
 	}
 
+	void CircleMotion()
+	{
 
+	}
 
 
 	// Called by EncounterControl to check if Attack phase is over
