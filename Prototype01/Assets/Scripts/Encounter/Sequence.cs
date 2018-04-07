@@ -67,8 +67,6 @@ public class Sequence {
 	}
 
 	// # Begin region of builders for enemy attack sequences
-	// Currently I end with a null attack to signal the end of an attack sequence.
-	// Not the prettiest way to do it, and should be rethought later on.
 	// Also, I really should construct the queues inside a for loop over a text file or something.
 
 	private Queue<Attack> Blocks() {
