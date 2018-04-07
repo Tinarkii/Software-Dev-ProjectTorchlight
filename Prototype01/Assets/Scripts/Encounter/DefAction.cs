@@ -25,7 +25,7 @@ public class DefAction : MonoBehaviour {
 	private static class Const {
 		// The upward velocity added for a jump
 		public const float jumpSpeed = 14f;
-		// The constant that defines how many pixels a swipe is (versus a tap)
+		// The constant that defines how many pixels a swipe is (versus a tap). Currently 0; non-functional
 		public const int Delta = 0;
 		// How long the delay is before the player can repeat a move
 		public const float delayTime = 1f;
@@ -169,9 +169,7 @@ public class DefAction : MonoBehaviour {
 	/* Jump if allowed */
 	private void jump(bool leftside) {
 		if (canJump)
-		{
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
-		}
 	}
 
 	/**
