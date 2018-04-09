@@ -6,8 +6,12 @@ public class Defense : MonoBehaviour {
 
 	// Whether the phase has completed
 	private bool finished;
+
 	// Amount of time before phase ends. Might remove later
 	private float timePassed;
+
+	// Delay let all attacks clear the screen
+	private float timeLeft;
 
 	// The attacks that will be produced on the enemy's turn
 	private Queue<Sequence.Attack> attacks;
@@ -28,7 +32,10 @@ public class Defense : MonoBehaviour {
 				Create(att);
 		}
 
+		// Condition for exiting phase
 		if (attacks.Count == 0)
+			timeLeft -= Time.deltaTime;
+		if (timeLeft <= 0)
 			finished = true;
 	}
 
@@ -43,6 +50,7 @@ public class Defense : MonoBehaviour {
 	void OnEnable () {
 		finished = false;
 		timePassed = 0;
+		timeLeft = 4f;
 		attacks = Sequence.getRef().getMoves(EncounterControl.enemyPrefab.tag);
 	}
 

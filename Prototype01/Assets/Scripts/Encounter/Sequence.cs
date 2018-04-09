@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Class that provides attack sequences for enemy encounters */
 public class Sequence {
 
 	// Reference to the singleton class
@@ -24,14 +25,6 @@ public class Sequence {
 			this.time = time;
 			this.height = height;
 			this.velocity = velocity;
-		}
-
-		// End of sequence null constructor
-		public Attack(float time) {
-			this.type = null;
-			this.time = time;
-			this.height = 0;
-			this.velocity = 0;
 		}
 	};
 	
@@ -61,23 +54,48 @@ public class Sequence {
 
 	/* Create the moves for an attack sequence */
 	public Queue<Attack> getMoves(string enemy) {
-		////@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
+		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
 		switch (enemy) {
 			case "armorBaddie":
-				return ID00();
+				return Blocks();
+				//return ArmorOG();
 			case "crystalBaddie":
-				return ID01();
+				return CrystalOG();
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemys", "enemy");
 		}
 	}
 
 	// # Begin region of builders for enemy attack sequences
-	// Currently I end with a null attack to signal the end of an attack sequence.
-	// Not the prettiest way to do it, and should be rethought later on.
 	// Also, I really should construct the queues inside a for loop over a text file or something.
 
-	private Queue<Attack> ID00() {
+	private Queue<Attack> Blocks() {
+		Queue<Attack> attacks = new Queue<Attack>();
+
+		attacks.Enqueue(new Attack(enemyBlock, 0f, 4, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 0f, 4, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 0.3f, 4, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 0.3f, 4, 5));
+		attacks.Enqueue(new Attack(enemyBlock, 0.6f, 4, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 0.6f, 4, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 0.6f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 0.9f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 1.2f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 1.5f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 1.8f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.1f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.4f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.7f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 3.0f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 3.3f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 3.6f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 3.9f, 2, -5));
+
+		return attacks;
+	}
+
+	private Queue<Attack> ArmorOG() {
 		Queue<Attack> attacks = new Queue<Attack>();
 
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
@@ -104,12 +122,10 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyBlock, 7.0f, 2, 5));
 		attacks.Enqueue(new Attack(enemyBlock, 7.3f, 2, 5));
 
-		attacks.Enqueue(new Attack(11));
 		return attacks;
 	}
 
-	private Queue<Attack> ID01()
-	{
+	private Queue<Attack> CrystalOG() {
 		Queue<Attack> attacks = new Queue<Attack>();
 
 		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
@@ -132,8 +148,6 @@ public class Sequence {
 		attacks.Enqueue(new Attack(enemyShield, 3f, 2, -5));
 		attacks.Enqueue(new Attack(enemyShield, 3f, 4, 5));
 
-
-		attacks.Enqueue(new Attack(7));
 		return attacks;
 	}
 }
