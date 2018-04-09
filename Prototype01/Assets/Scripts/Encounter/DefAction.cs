@@ -257,7 +257,7 @@ public class DefAction : MonoBehaviour {
 	IEnumerator<WaitForSeconds> Wait()
 	{
 		Debug.Log("Waiting");
-    	yield return new WaitForSeconds(0.3f);
+    	yield return new WaitForSeconds(0.1f);
 		jump(false);
 		Debug.Log("Done Waiting");
 
