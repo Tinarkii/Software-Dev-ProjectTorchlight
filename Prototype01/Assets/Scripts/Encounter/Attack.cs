@@ -35,9 +35,6 @@ public class Attack : MonoBehaviour {
 	private int enemyHealth;
 
 
-
-
-	
 	public Text E;
 	public Text t;
 
@@ -49,6 +46,14 @@ public class Attack : MonoBehaviour {
 		timeAllotted = time;
 	}
 
+	/*IEnumerator<WaitForEndOfFrame> WaitforBox(GameObject[] boxA, int i)
+	{
+    	yield return new WaitForEndOfFrame();
+		Vector3 boxPos = boxA[i].transform.position;
+		Debug.Log("Box #" + i + " " + boxPos);
+		boxA[i].transform.position = new Vector3(boxPos.x + 0.2f, boxPos.y + 0.2f, 0);
+		Debug.Log(boxA[i].transform.position);
+  	}*/
 
 
 	// Sets up each of our combat circles
@@ -79,30 +84,18 @@ public class Attack : MonoBehaviour {
 		 //BoxMotion(circles);
 	}
 
-	void BoxMotion(GameObject[] boxShape)
+	/*void BoxMotion(GameObject[] boxShape)
 	{
 		int j = 10;
 		while (j >= 0)
 		{
 			for (int i = 0; i < 4; i++)
 			{
-				Vector3 boxPos = boxShape[i].transform.position;
-				Debug.Log("Box #" + i + " " + boxPos);
-				boxShape[i].transform.position = new Vector3(boxPos.x, boxPos.x, 0);
-				Debug.Log(boxShape[i].transform.position);
+				StartCoroutine(WaitforBox(boxShape, i));
 			}
 			j--;
 		}
-		while (j <= 10)
-		{
-			for (int i = 0; i < 4; i++)
-			{
-				Vector3 boxPos = boxShape[i].transform.position;
-				boxShape[i].transform.position = new Vector3(boxPos.x, boxPos.x, 0);
-			}
-			j++;
-		}
-	}
+	} */
 
 
 
@@ -132,10 +125,6 @@ public class Attack : MonoBehaviour {
          }
 	}
 
-	void TriMotion()
-	{
-
-	}
 
 
 	void CircleConstructor()
@@ -166,10 +155,6 @@ public class Attack : MonoBehaviour {
          }
 	}
 
-	void CircleMotion()
-	{
-
-	}
 
 
 	// Called by EncounterControl to check if Attack phase is over
