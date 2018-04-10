@@ -24,7 +24,9 @@ public class DefAction : MonoBehaviour {
 	/* The various constants used */
 	private static class Const {
 		// The upward velocity added for a jump
-		public const float jumpSpeed = 14f;
+		public const float jumpSpeed = 6f;
+		// The player's gravity (affects fall speed)
+		public const float gravity = 0.2f;
 		// The constant that defines how many pixels a swipe is (versus a tap). Currently 0; non-functional
 		public const int Delta = 0;
 		// How long the delay is before the player can repeat a move
@@ -60,6 +62,11 @@ public class DefAction : MonoBehaviour {
 	void OnEnable () {
 		tracked = new Dictionary<int, Vector2>();
 	}
+
+	// Simulates a weaker gravity to increase jump time
+	void FixedUpdate() {
+		self.velocity = new Vector3(0, self.velocity.y - Const.gravity, 0);
+	}
 	
 	/* Take player input, decrease delays */
 	// Update is called once per frame
@@ -76,7 +83,7 @@ public class DefAction : MonoBehaviour {
 
 		// For testing with keyboard inputs
 		keyInput();
-		
+
 		Touch[] touches = Input.touches;
 		for(int i = 0; i < Input.touchCount; i++) {
 

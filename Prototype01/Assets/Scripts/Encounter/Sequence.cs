@@ -57,8 +57,8 @@ public class Sequence {
 		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
 		switch (enemy) {
 			case "armorBaddie":
-				return Blocks();
-				//return ArmorOG();
+				//return Blocks();
+				return ArmorOG();
 			case "crystalBaddie":
 				return CrystalOG();
 			default:
@@ -67,7 +67,7 @@ public class Sequence {
 	}
 
 	// # Begin region of builders for enemy attack sequences
-	// Also, I really should construct the queues inside a for loop over a text file or something.
+	//@TODO: I really should construct the queues inside a for loop over a text file or something.
 
 	private Queue<Attack> Blocks() {
 		Queue<Attack> attacks = new Queue<Attack>();
