@@ -120,7 +120,7 @@ public class Attack : MonoBehaviour {
 
 			 // Positions each circle
 			 if (i == 0) circle.transform.position = new Vector3(-2, 0.5f, 0);
-			 if (i == 1) circle.transform.position = new Vector3(0, 3, 0);
+			 if (i == 1) circle.transform.position = new Vector3(0, 4, 0);
 			 if (i == 2) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
 	}

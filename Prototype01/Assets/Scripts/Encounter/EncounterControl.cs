@@ -25,9 +25,8 @@ public class EncounterControl : MonoBehaviour {
 	// Reference to the player character
 	public GameObject player;
 
-
 	/* Initialization of scripts, begin in player offense mode. */
-	void Start () {
+	private void Start () {
 		player = GameObject.Find("Person");
 		defScript = Camera.main.GetComponent<Defense>();
 		defActScript = player.GetComponent<DefAction>();
