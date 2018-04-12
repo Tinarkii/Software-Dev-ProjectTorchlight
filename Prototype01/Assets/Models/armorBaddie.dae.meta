@@ -6,12 +6,42 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Armature
+    100004: ArmL1
+    100006: ArmL2
+    100008: ArmR1
+    100010: ArmR2
+    100012: Back
+    100014: BackUpper
+    100016: CollarBone
+    100018: Cube_001
+    100020: Head
+    100022: LegL1
+    100024: LegL2
+    100026: LegR1
+    100028: LegR2
     400000: //RootNode
+    400002: Armature
+    400004: ArmL1
+    400006: ArmL2
+    400008: ArmR1
+    400010: ArmR2
+    400012: Back
+    400014: BackUpper
+    400016: CollarBone
+    400018: Cube_001
+    400020: Head
+    400022: LegL1
+    400024: LegL2
+    400026: LegR1
+    400028: LegR2
     2100000: Material
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
+    4300002: Cube_001
     9500000: //RootNode
+    13700000: Cube_001
   externalObjects: {}
   materials:
     importMaterials: 0
