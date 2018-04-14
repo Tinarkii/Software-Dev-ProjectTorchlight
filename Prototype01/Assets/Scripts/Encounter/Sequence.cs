@@ -56,20 +56,39 @@ public class Sequence {
 	public Queue<Attack> getMoves(string enemy) {
 		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
 		switch (enemy) {
-			case "armorBaddie":
+			case "armorBaddie"://Stuff commented out for testing various sequences
 				return Shields();
 				//return Blocks();
 				//return ArmorOG();
-				//Stuff commented out for testing various sequences
 			case "crystalBaddie":
-				return CrystalOG();
+				return Blasts();
+				//return CrystalOG();
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemys", "enemy");
 		}
 	}
 
 	// # Begin region of builders for enemy attack sequences
-	//@TODO: I really should construct the queues inside a loop over a text file or something.
+
+	private Queue<Attack> Blasts() {
+		Queue<Attack> attacks = new Queue<Attack>();
+
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 3, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 3, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 4, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 4, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 1.8f, 0, -5));
+
+		attacks.Enqueue(new Attack(enemyBlast, 3.2f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 3.5f, 1, 5));
+
+		return attacks;
+	}
 
 	private Queue<Attack> Shields() {
 		Queue<Attack> attacks = new Queue<Attack>();
