@@ -24,7 +24,32 @@ ModelImporter:
     4300000: Cube_004
     9500000: //RootNode
     10800000: Lamp
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_1
+    second: {fileID: 2100000, guid: 81b26d4ad5245794fa2c0bc8c79e814b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_1_001
+    second: {fileID: 2100000, guid: 81b26d4ad5245794fa2c0bc8c79e814b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: block
+    second: {fileID: 2100000, guid: d77e1978b141f7b47be45c5831e6c750, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_2
+    second: {fileID: 2100000, guid: 5fca7fc7827822344862f20eb87c2292, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_3
+    second: {fileID: 2100000, guid: 654c800b7d6fa0a4184eeb30aa2fd5a7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
