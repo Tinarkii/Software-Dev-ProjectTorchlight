@@ -82,7 +82,6 @@ public class OverWorldNavOG : MonoBehaviour {
         }
 
         veloc = calcP(target, self.position);
-        Debug.Log(target.magnitude - self.position.magnitude);
 
         float speed = Mathf.Min (Mathf.Abs(maxSpeed), Mathf.Abs(veloc.magnitude) + calcI(target, self.position));
            

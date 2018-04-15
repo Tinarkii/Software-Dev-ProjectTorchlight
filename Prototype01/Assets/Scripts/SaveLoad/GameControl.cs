@@ -22,7 +22,7 @@ public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
 	private GameObject player;
-	public static string[] scenes = new string[]{"TitleScreen","sample","Room01"};
+	public static string[] scenes = new string[]{"TitleScreen","sample","Room01", "Room02"};
 	private LevelData[] levels = new LevelData[12];
 	public GameObject playerPrefab;
 
