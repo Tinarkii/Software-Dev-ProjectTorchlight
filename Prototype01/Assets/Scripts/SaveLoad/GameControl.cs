@@ -179,8 +179,30 @@ public class GameControl : MonoBehaviour {
 		CacheLevelData ();
 		door = doorToLoad;
 		doorQuery = true;
-		SceneManager.LoadScene (scenes [sceneToLoad]);
+		LoadWithFade(scenes [sceneToLoad]);
 
+	}
+
+	public Image fadeImage;
+	/** Loads a scene with a fading effect */
+	private void LoadWithFade(string scene) {
+/* Commented out so I can get broken code to my laptop
+		Image temp = (Image) Instantiate(fadeImage);
+		temp.color = new Color(1f, 1f, 1f, 0);// make it black and transparent
+		// Add to canvas, which makes it visible
+		temp.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
+
+		float minVal = 1.175494351*Math.Pow(10,-38);
+
+		Time.timeScale = 0;// Pause
+		// Fade out
+		for (float f = 0; f < 1; f += 
+*/
+		SceneManager.LoadScene(scene);// Load scene
+/*
+		// Fade in
+		Time.timeScale = 1;// Un-pause
+*/
 	}
 
 	/*
@@ -202,7 +224,7 @@ public class GameControl : MonoBehaviour {
 		else
 			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 
-		SceneManager.LoadScene("sampleEncounter"); //loads scenes 
+		LoadWithFade("encounter"); //loads scenes 
 	}
 
 	public void ExitEncounter (){

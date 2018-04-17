@@ -12,8 +12,8 @@
 ->Saving for Items (Jeffery) 
 ->Show Item obtained/used (Zach) 
 ->Add all items (luke & paul)
-	->Equipping ??
+	->Equipping??
 
 /*Report*/
 ->Take Screenshots of main pages that show the functionality (Everyone) 
-
+->Look over and update report (Everyone)
