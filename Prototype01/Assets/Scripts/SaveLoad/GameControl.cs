@@ -30,7 +30,7 @@ public class GameControl : MonoBehaviour {
 	private int door = 0;
 	private int baddieToDie = -1;
 	private Vector3? playerPosition = null;
-	private bool doorOrPos = false;
+	private bool doorSpawn = false;
 
 	public string currentScene;
 
@@ -78,7 +78,9 @@ public class GameControl : MonoBehaviour {
 		return confidence;
 	}
 
-
+	/*
+	 * ensures no LevelData datatypes are undeclared (for saving purposes)
+	 */
 	void CreateEmptyLevels(){
 		for (int i = 0; i < levels.Length; i++) {
 			levels [i] = new LevelData ();
@@ -155,7 +157,7 @@ public class GameControl : MonoBehaviour {
 
 			currentScene = data.currentScene;
 			levels = data.levels;
-			doorOrPos = false;
+			doorSpawn = false;
 			SceneManager.LoadScene(currentScene);
 
 			confidence = data.confidence;
@@ -178,7 +180,7 @@ public class GameControl : MonoBehaviour {
 	public void SwapScene(int sceneToLoad,int doorToLoad){
 		CacheLevelData ();
 		door = doorToLoad;
-		doorOrPos = true;
+		doorSpawn = true;
 		SceneManager.LoadScene (scenes [sceneToLoad]);
 
 	}
@@ -206,14 +208,14 @@ public class GameControl : MonoBehaviour {
 	}
 
 	public void ExitEncounter (){
-		doorOrPos = false;
+		doorSpawn = false;
 		levels [Array.IndexOf (scenes, currentScene)].bitBaddies &= (short)(~(1 << baddieToDie));
 		SceneManager.LoadScene (currentScene);
 	}
 
 
 	public Vector3 GetPlayerSpawn(){
-		if (doorOrPos) {
+		if (doorSpawn) {
 			return GameObject.Find ("SceneControl").GetComponent<SceneControl> ().doors[door].GetComponent<Door>().GetSpawnPoint();
 		} else {
 			if (playerPosition == null) {
