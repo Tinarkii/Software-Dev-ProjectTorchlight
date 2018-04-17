@@ -13,7 +13,7 @@ public class LetterBlock : DefenceItem
 	 */
 	public void Start()
 	{
-		myName = "Fruit Snacks";
-		defenseIncrease = 30;
+		myName = "Letter Block";
+		defenseIncrease = 1;
 	}
 }

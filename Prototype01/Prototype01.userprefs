@@ -1,13 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveLoad\GameControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\SaveLoad\GameControl.cs" Line="220" Column="9" />
-      <File FileName="Assets\Scripts\Overworld\SceneControl.cs" Line="8" Column="48" />
-      <File FileName="Assets\Scripts\Inventory\Item.cs" Line="96" Column="4" />
-      <File FileName="Assets\Scripts\Overworld\Baddie.cs" Line="76" Column="23" />
-      <File FileName="Assets\Scripts\Overworld\LampLightTest.cs" Line="19" Column="29" />
-      <File FileName="Assets\Scripts\Inventory\ConfidenceItem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Overworld\Door.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameControl.cs" Line="225" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

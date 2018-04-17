@@ -10,12 +10,14 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
 
-	[Tooltip("How many of this item are in this location. This will make having multiple items in one location easy.")]
-	public int quantity;
+	/**
+	 * How many of this item are in this location (all items start with a quantity of 1)
+	 */
+	private int quantity = 1;
 	private int index = -1; //position in array of item
 
 	public bool picked = false; //if the item has been picked up
-	public GameObject scene;
+	private GameObject sceneControl;
 
 	/**
 	 * The name of this kind of Item
@@ -67,7 +69,7 @@ public abstract class Item : MonoBehaviour
 		}
 
 		personsInventory.addItem (this);
-		scene.GetComponent<SceneControl> ().UpdateItem (index);
+		sceneControl.GetComponent<SceneControl> ().UpdateItem (index);
 		picked = true;
     }
 
@@ -86,8 +88,11 @@ public abstract class Item : MonoBehaviour
 			Destroy (this);
 	}
 
-	void Start(){
-		scene = GameObject.Find ("SceneControl");
+	void Awake(){
+		sceneControl = GameObject.Find ("SceneControl");
+
+		if (sceneControl == null)
+			Debug.LogError ("Cannot find SceneControl");
 	}
 
 	void FixedUpdate(){

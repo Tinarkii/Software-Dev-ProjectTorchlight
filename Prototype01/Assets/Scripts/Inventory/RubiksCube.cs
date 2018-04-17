@@ -14,6 +14,6 @@ public class RubiksCube : AttackItem
 	public void Start()
 	{
 		myName = "Rubik's Cube";
-		attackIncrease = 30;
+		attackIncrease = 15;
 	}
 }
