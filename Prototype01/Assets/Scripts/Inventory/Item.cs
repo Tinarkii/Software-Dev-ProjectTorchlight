@@ -17,7 +17,7 @@ public abstract class Item : MonoBehaviour
 	private int index = -1; //position in array of item
 
 	public bool picked = false; //if the item has been picked up
-	public GameObject scene;
+	public GameObject sceneControl;
 
 	/**
 	 * The name of this kind of Item
@@ -69,7 +69,7 @@ public abstract class Item : MonoBehaviour
 		}
 
 		personsInventory.addItem (this);
-		scene.GetComponent<SceneControl> ().UpdateItem (index);
+		sceneControl.GetComponent<SceneControl> ().UpdateItem (index);
 		picked = true;
     }
 
@@ -89,7 +89,7 @@ public abstract class Item : MonoBehaviour
 	}
 
 	void Start(){
-		scene = GameObject.Find ("SceneControl");
+		sceneControl = GameObject.Find ("SceneControl");
 	}
 
 	void FixedUpdate(){
