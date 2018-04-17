@@ -1,22 +1,19 @@
 /*Universal fixes*/
-->Scene transitions & save-states - Mostly Done
-	->Fade Transtions 
-->Slight graphical overhaul - Sort of Done
-->Cleanup movement
-->Level Design - 1 room
-->End Condition 
-->More rooms/levels 
-->Click on lamp/door to use 
-->Don't move towrads menu button
-->Brighten for presentation (optional) 
+->Scene transitions & save-states - (Jeffery) 
+	->Fade Transtions (Joel) 
+->End Condition (Joel & Drew) 
+->More rooms/levels (Luke and then Jeffery) 
+->Click on lamp/door to use (Zach) 
+->Don't move towrads menu button (Zach) -> Mini Work Session 
+->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
-->More items (ones that will show up in the final version of the game)
-->Saving for Items 
-->Show Item obtained 
-->Add all items
-	->Equipping 
+->More items (ones that will show up in the final version of the game) (Drew) 
+->Saving for Items (Jeffery) 
+->Show Item obtained/used (Zach) 
+->Add all items (luke & paul)
+	->Equipping ??
 
 /*Report*/
-->Take Screenshots of main pages that show the functionality 
+->Take Screenshots of main pages that show the functionality (Everyone) 
 
