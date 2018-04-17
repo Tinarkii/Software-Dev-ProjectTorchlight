@@ -17,7 +17,7 @@ public abstract class Item : MonoBehaviour
 	private int index = -1; //position in array of item
 
 	public bool picked = false; //if the item has been picked up
-	public GameObject sceneControl;
+	private GameObject sceneControl;
 
 	/**
 	 * The name of this kind of Item
@@ -88,8 +88,11 @@ public abstract class Item : MonoBehaviour
 			Destroy (this);
 	}
 
-	void Start(){
+	void Awake(){
 		sceneControl = GameObject.Find ("SceneControl");
+
+		if (sceneControl == null)
+			Debug.LogError ("Cannot find SceneControl");
 	}
 
 	void FixedUpdate(){
