@@ -1,21 +1,22 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - Mostly Done
+	->Fade Transtions 
 ->Slight graphical overhaul - Sort of Done
 ->Cleanup movement
 ->Level Design - 1 room
+->End Condition 
+->More rooms/levels 
+->Click on lamp/door to use 
+->Don't move towrads menu button
+->Brighten for presentation (optional) 
 
 /*Item Management*/
 ->More items (ones that will show up in the final version of the game)
+->Saving for Items 
+->Show Item obtained 
+->Add all items
+	->Equipping 
 
 /*Encounter System setup stuff*/
 ->Refine defensive phase
 
-
-/*Complete*/
-->Dynamically receive info from OverWorld - Done, I think
-->Refine offensive phase - Done, unless people have stuff to add
-->Make save-lamps and save system (saving should be set up by Wednesday) - Done
-->Combat resolution - Done
-->Clean up Warnings - Done
-->Inventory needs to be completed - Done
-->Item that actually does stuff - Done
