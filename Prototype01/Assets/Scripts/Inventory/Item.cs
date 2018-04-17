@@ -12,6 +12,10 @@ public abstract class Item : MonoBehaviour
 
 	[Tooltip("How many of this item are in this location. This will make having multiple items in one location easy.")]
 	public int quantity;
+	private int index = -1; //position in array of item
+
+	public bool picked = false; //if the item has been picked up
+	public GameObject scene;
 
 	/**
 	 * The name of this kind of Item
@@ -63,8 +67,8 @@ public abstract class Item : MonoBehaviour
 		}
 
 		personsInventory.addItem (this);
-
-		gameObject.SetActive (false);
+		scene.GetComponent<SceneControl> ().UpdateItem (index);
+		picked = true;
     }
 
 	/**
@@ -80,6 +84,24 @@ public abstract class Item : MonoBehaviour
 
 		if (quantity <= 0)
 			Destroy (this);
+	}
+
+	void Start(){
+		scene = GameObject.Find ("SceneControl");
+	}
+
+	void FixedUpdate(){
+		if (picked) {
+			gameObject.SetActive (false);
+		}
+	}
+
+
+	public void SetIndex(int i){
+		index = i;
+	}
+	public int GetIndex(){
+		return index;
 	}
 
 	/**
