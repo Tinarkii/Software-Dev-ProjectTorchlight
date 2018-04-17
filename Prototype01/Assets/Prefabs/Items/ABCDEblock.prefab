@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23485521613988782}
   - component: {fileID: 95863259015210734}
   - component: {fileID: 64676513162018776}
-  - component: {fileID: 114259210517673422}
+  - component: {fileID: 114464968958027714}
   m_Layer: 0
   m_Name: ABCDEblock
   m_TagString: Untagged
@@ -120,7 +120,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114259210517673422
+--- !u!114 &114464968958027714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920689362035714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b40dcc7e0c0e7864d879549663b7842f, type: 3}
+  m_Script: {fileID: 11500000, guid: 80d474baca3cb6e4ea98696e1a88c83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   picked: 0
-  scene: {fileID: 0}
+  sceneControl: {fileID: 0}
