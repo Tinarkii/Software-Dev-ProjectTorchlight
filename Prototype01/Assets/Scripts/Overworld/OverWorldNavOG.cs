@@ -6,13 +6,16 @@ using System;
 public class OverWorldNavOG : MonoBehaviour {
     Rigidbody self;
     Vector3 target;
-	public int maxSpeed;
+    public int maxSpeed;
     RaycastHit hitPoint;
 	private Camera usedCamera;
 	private Vector3 veloc;
 	private int bufferFrame = 0;
 	private Animator anim;
 	public GameObject boy;
+    private float p;
+    private float i;
+    private float integral;
 	[Tooltip("The minimum speed for which the boy has a walking animation")]
 	public float minSpeedForWalkingAnimation;
 
@@ -23,13 +26,39 @@ public class OverWorldNavOG : MonoBehaviour {
 		veloc = new Vector3 (0, 0, 0);
         self = GetComponent<Rigidbody>();
 		anim = boy.GetComponent<Animator>();
-	}
+        p = 1.75f;//original value 6.5f / 7.0f;
+        i = 0.3f;
+        integral = 0f;
+    }
 
 	public void Cleanse(){
 		target = this.transform.position;
 		bufferFrame = 1;
 	}
 	
+    /**
+     * Calculate the P (proportional) value for movement
+     */
+    private Vector3 calcP(Vector3 target, Vector3 current)
+    {
+        Vector3 error = target - current;
+
+        Vector3 pOut = error * p;
+
+        Vector3 toReturn = pOut;
+        return toReturn;
+    }
+    /**
+     * Calculate the I (integral) value for movement
+     */
+    private float calcI(Vector3 target, Vector3 current)
+    {
+        float iOut = 0;
+        integral += Mathf.Abs(target.magnitude - current.magnitude) / 5f;
+        iOut = i * integral;
+        return iOut;
+    }
+
 	// Update is called once per frame
 	void FixedUpdate ()
     {
@@ -39,19 +68,22 @@ public class OverWorldNavOG : MonoBehaviour {
 			Debug.LogWarning ("Can't Find Camera");
 			return;
 		}
+
+        
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
         if (Input.GetMouseButton(0))
         {
 			if (Physics.Raycast (ray, out hitPoint, 1000, (1 << 9)) && bufferFrame < 1) {
-				target = hitPoint.point;
-			} else {
+                target = hitPoint.point;
+
+            } else {
 				bufferFrame--;
 			}
         }
 
-		veloc = (target - self.position) * (6.5f/7.0f);
+        veloc = calcP(target, self.position);
 
-		float speed = Mathf.Min (maxSpeed, veloc.magnitude);
+        float speed = Mathf.Min (Mathf.Abs(maxSpeed), Mathf.Abs(veloc.magnitude) + calcI(target, self.position));
            
 		veloc = (veloc.normalized);
            
@@ -61,16 +93,28 @@ public class OverWorldNavOG : MonoBehaviour {
 		if (veloc.magnitude > .1) {
 			Vector3 lookto = new Vector3 (target.x, self.position.y, target.z);
 			self.transform.LookAt (lookto);
-		} else {
+        } else {
 			target = transform.position;
 			self.velocity = new Vector3(0,0,0);
 		}
-		if (speed > minSpeedForWalkingAnimation)
-		{
-			//anim.SetTrigger("ImprovedWalking");
-			anim.SetTrigger("ImprovedWalking");
-		}
-		else
-			anim.SetTrigger("Standing");
+
+        if (!Input.GetMouseButton(0))
+        {
+            if (Mathf.Abs(target.magnitude - self.position.magnitude) <= .25f && veloc.magnitude > .5f)
+            {
+                self.velocity = new Vector3(0, 0, 0);
+                speed = 0f;
+                integral = 0;
+            }
+        }
+        if (speed > minSpeedForWalkingAnimation)
+        {
+            //anim.SetTrigger("ImprovedWalking");
+            anim.SetTrigger("ImprovedWalking");
+        }
+        else
+        {
+            anim.SetTrigger("Standing");
+        }
     }
 }

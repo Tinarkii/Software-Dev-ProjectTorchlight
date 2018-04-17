@@ -46,16 +46,6 @@ public class Attack : MonoBehaviour {
 		timeAllotted = time;
 	}
 
-	/*IEnumerator<WaitForEndOfFrame> WaitforBox(GameObject[] boxA, int i)
-	{
-    	yield return new WaitForEndOfFrame();
-		Vector3 boxPos = boxA[i].transform.position;
-		Debug.Log("Box #" + i + " " + boxPos);
-		boxA[i].transform.position = new Vector3(boxPos.x + 0.2f, boxPos.y + 0.2f, 0);
-		Debug.Log(boxA[i].transform.position);
-  	}*/
-
-
 	// Sets up each of our combat circles
 	void BoxConstructor()
 	{
@@ -81,23 +71,7 @@ public class Attack : MonoBehaviour {
 			 if (i == 2) circle.transform.position = new Vector3(2, 3, 0);
 			 if (i == 3) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
-		 //BoxMotion(circles);
 	}
-
-	/*void BoxMotion(GameObject[] boxShape)
-	{
-		int j = 10;
-		while (j >= 0)
-		{
-			for (int i = 0; i < 4; i++)
-			{
-				StartCoroutine(WaitforBox(boxShape, i));
-			}
-			j--;
-		}
-	} */
-
-
 
 	// Sets up each of our combat circles
 	void TriConstructor()
@@ -120,11 +94,10 @@ public class Attack : MonoBehaviour {
 
 			 // Positions each circle
 			 if (i == 0) circle.transform.position = new Vector3(-2, 0.5f, 0);
-			 if (i == 1) circle.transform.position = new Vector3(0, 3, 0);
+			 if (i == 1) circle.transform.position = new Vector3(0, 4, 0);
 			 if (i == 2) circle.transform.position = new Vector3(2, 0.5f, 0);
          }
 	}
-
 
 
 	void CircleConstructor()
@@ -156,7 +129,6 @@ public class Attack : MonoBehaviour {
 	}
 
 
-
 	// Called by EncounterControl to check if Attack phase is over
 	public bool Finished() 
 	{
@@ -166,9 +138,6 @@ public class Attack : MonoBehaviour {
 			{
 				// Disables the MouseOverStuff script
 				MouseOverStuff.isEnabled = false;
-
-				// Make the circles invisible
-				//circles[i].GetComponent<Renderer>().material.color = Color.clear;
 
 				// Get rid of garbage in the shapes array
 				ClearShape();
@@ -183,7 +152,6 @@ public class Attack : MonoBehaviour {
 	{
 		return exitCondition;
 	}
-
 
 
 	void OnEnable() 
@@ -216,7 +184,6 @@ public class Attack : MonoBehaviour {
 	}
 
 
-
 	// Handles a circle being touched by the cursor
 	public void CircleTouched(GameObject x)
 	{
@@ -225,7 +192,6 @@ public class Attack : MonoBehaviour {
 		touched++;
 	}
 	
-
 
 	// Sets all values in the shape array to null and resets the index
 	void ClearShape()
@@ -236,7 +202,6 @@ public class Attack : MonoBehaviour {
 		}
 		touched = 0;
 	}
-
 
 
 	// Method to prevent accdentally hitting a circle more than once
@@ -256,7 +221,6 @@ public class Attack : MonoBehaviour {
 		// If no repeats, do nothing
 		else return;
 	}
-
 
 
 	// Checks for a box when called

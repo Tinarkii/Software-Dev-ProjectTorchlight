@@ -261,7 +261,7 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
-	IEnumerator<WaitForSeconds> Wait()
+	private IEnumerator<WaitForSeconds> Wait()
 	{
 		Debug.Log("Waiting");
     	yield return new WaitForSeconds(0.1f);
