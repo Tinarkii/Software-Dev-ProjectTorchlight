@@ -19,7 +19,7 @@ public abstract class AttackItem : Item
 	protected override void UseAction ()
 	{
 		Debug.Log ("A " + myName + " was used. The player's offensive strength should be increased by " +attackIncrease + ".");
-		Debug.LogError ("Method not yet implemented");
+		GameControl.control.AdjustDamageToEnemyBy (attackIncrease);
 	}
 
 }

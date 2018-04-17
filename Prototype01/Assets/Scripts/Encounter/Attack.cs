@@ -291,7 +291,7 @@ public class Attack : MonoBehaviour {
 		{
 			print("That's a box.");
 			ClearShape();
-			enemyHealth = enemyHealth - 25;
+			enemyHealth -= GameControl.control.DamageToEnemy();
 			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
@@ -299,7 +299,7 @@ public class Attack : MonoBehaviour {
 		{
 			print("That's a circle.");
 			ClearShape();	
-			enemyHealth = enemyHealth - 25;
+			enemyHealth -= GameControl.control.DamageToEnemy();
 			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}
@@ -307,7 +307,7 @@ public class Attack : MonoBehaviour {
 		{
 			print("That's a triangle.");
 			ClearShape();
-			enemyHealth = enemyHealth - 25;
+			enemyHealth -= GameControl.control.DamageToEnemy();
 			E.text = "Enemy's Enthusiasm: " + enemyHealth.ToString();
 			finished = true;
 		}

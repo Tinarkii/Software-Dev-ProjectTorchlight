@@ -19,7 +19,7 @@ public abstract class DefenceItem : Item
 	protected override void UseAction ()
 	{
 		Debug.Log ("A " + myName + " was used. The player's defense should be increased by " + defenseIncrease + ".");
-		Debug.LogError ("Method not yet implemented");
+		GameControl.control.AdjustDamageToPlayerBy (-defenseIncrease);
 	}
 
 }

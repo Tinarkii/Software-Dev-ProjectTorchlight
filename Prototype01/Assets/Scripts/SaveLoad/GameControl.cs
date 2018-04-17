@@ -44,13 +44,57 @@ public class GameControl : MonoBehaviour {
 	 */
 	private int maxConfidence = 100;
 
+	/**
+	 * How much damage enemy attacks cause to the player
+	 */
+	private int damageToPlayer;
 
 	/**
-	 * Initialization: sets the player's confidence to the max
+	 * How much damage player attacks cause to enemies
+	 */
+	private int damageToEnemy;
+
+
+	/**
+	 * Initialization: sets the player's confidence to the max and sets initial values for damageByEnemy and damageToEnemy
 	 */
 	public GameControl()
 	{
 		confidence = maxConfidence;
+		damageToPlayer = 5;
+		damageToEnemy = 25;
+	}
+
+	/**
+	 * Gets the amount of damage that enemies cause
+	 */
+	public int DamageToPlayer() { return damageToPlayer; }
+
+	/**
+	 * Adjusts the amount of damage enemies cause
+	 */
+	public void AdjustDamageToPlayerBy(int adjustment)
+	{
+		damageToPlayer += adjustment;
+
+		if (damageToPlayer <= 0)
+			Debug.LogWarning ("Enemies now do 0 damage or less");
+	}
+
+	/**
+	 * Gets the amount of damage that the player causes
+	 */
+	public int DamageToEnemy() { return damageToEnemy; }
+
+	/**
+	 * Adjusts the amount of damage that the player causes
+	 */
+	public void AdjustDamageToEnemyBy(int adjustment)
+	{
+		damageToEnemy += adjustment;
+
+		if (damageToEnemy <= 0)
+			Debug.LogWarning ("The player now does 0 damage or less");
 	}
 
 	/**

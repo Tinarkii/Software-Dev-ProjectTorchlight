@@ -10,8 +10,10 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
 
-	[Tooltip("How many of this item are in this location. This will make having multiple items in one location easy.")]
-	public int quantity;
+	/**
+	 * How many of this item are in this location (all items start with a quantity of 1)
+	 */
+	private int quantity = 1;
 	private int index = -1; //position in array of item
 
 	public bool picked = false; //if the item has been picked up
