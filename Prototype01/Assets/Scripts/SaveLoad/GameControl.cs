@@ -229,6 +229,7 @@ public class GameControl : MonoBehaviour {
 		LevelData level = levels [Array.IndexOf (scenes, currentScene)];
 		level.bitLamps = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetLamps();
 		level.bitBaddies = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetBaddies();
+		level.bitItems = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetItems();
 		return levels;
 	}
 
@@ -260,4 +261,5 @@ class SaveGame
 public class LevelData{
 	public short bitLamps = 0;
 	public short bitBaddies = 0;
+	public short bitItems = 0;
 }
