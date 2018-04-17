@@ -15,7 +15,27 @@ ModelImporter:
     3300000: //RootNode
     4300000: Sphere_003
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drawers
+    second: {fileID: 2100000, guid: ce2a52b04efb8e546acd353e4374930d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dresser
+    second: {fileID: 2100000, guid: 654c800b7d6fa0a4184eeb30aa2fd5a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dresser_Top
+    second: {fileID: 2100000, guid: 932f985d6b23a2e4995fcde464643f6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Knobs
+    second: {fileID: 2100000, guid: d77e1978b141f7b47be45c5831e6c750, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
