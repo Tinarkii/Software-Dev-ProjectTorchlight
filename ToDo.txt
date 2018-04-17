@@ -17,6 +17,6 @@
 ->Add all items
 	->Equipping 
 
-/*Encounter System setup stuff*/
-->Refine defensive phase
+/*Report*/
+->Take Screenshots of main pages that show the functionality 
 
