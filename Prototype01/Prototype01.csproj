@@ -318,6 +318,7 @@
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
     <Compile Include="Assets\Scripts\Inventory\ButtonIntermediate.cs" />
     <Compile Include="Assets\Scripts\Inventory\ConfidenceItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\FruitSnacks.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemsMenu.cs" />
