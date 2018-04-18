@@ -54,5 +54,5 @@ MonoBehaviour:
   playerPrefab: {fileID: 1223323773107984, guid: f7a8c3bf88dff014aa3eda428d208a31,
     type: 2}
   currentScene: 
-  fadeImage: {fileID: 114838089418766212, guid: 57a9172ddfbf741e09de15bab650d087,
+  fadeImagePrefab: {fileID: 114838089418766212, guid: 57a9172ddfbf741e09de15bab650d087,
     type: 2}

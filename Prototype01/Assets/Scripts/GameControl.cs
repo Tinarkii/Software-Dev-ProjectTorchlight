@@ -224,32 +224,39 @@ public class GameControl : MonoBehaviour {
 		CacheLevelData ();
 		door = doorToLoad;
 		doorQuery = true;
-		SceneManager.LoadScene (scenes [sceneToLoad]);
+		LoadWithFade(scenes [sceneToLoad]);
 
 	}
 
-	public Image fadeImage;
+	public Image fadeImagePrefab;
+	private Image fadeImage;
 	/** Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
-/* Commented out so I can get broken code to my laptop
-		Image temp = (Image) Instantiate(fadeImage);
-		temp.color = new Color(1f, 1f, 1f, 0);// make it black and transparent
-		// Add to canvas, which makes it visible
-		temp.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
+		SceneManager.LoadScene(scene);// Load scene
+		return;// The rest of this function isn't ready yet
 
-		float minVal = 1.175494351*Math.Pow(10,-38);
+		if (fadeImage == null)
+			fadeImage = (Image) Instantiate(fadeImagePrefab);
+
+		fadeImage.color = new Color(1f, 1f, 1f, 0);// make it black and transparent
+		// Add to canvas, which makes it visible
+		fadeImage.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
 
 		Time.timeScale = 0;// Pause
-		// Fade out
-		for (float f = 0; f < 1; f += 
-*/
+		//StartCoroutine("Fade", true);// Fade out
 		SceneManager.LoadScene(scene);// Load scene
-/*
 		// Fade in
+		//StartCoroutine("Fade", false);// Fade out
 		Time.timeScale = 1;// Un-pause
-*/
 	}
 	
+	private IEnumerator Fade(bool inOut) {
+		for (float f = 0; f < 1; f += float.MinValue)
+			fadeImage.color = new Color(1f, 1f, 1f, f);
+		for (float f = 1; f > 0; f -= float.MinValue)
+			fadeImage.color = new Color(1f, 1f, 1f, f);
+		yield return null;
+	}
 
 	/*
 	 * Enter an encounter scene, with the correct baddie, while keeping track of the level's state
@@ -270,7 +277,7 @@ public class GameControl : MonoBehaviour {
 		else
 			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
 
-		SceneManager.LoadScene("sampleEncounter"); //loads scenes 
+		LoadWithFade("encounter"); //loads scenes 
 	}
 
 	public void ExitEncounter (){
