@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -47.1
+      value: -109.5
       objectReference: {fileID: 0}
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -248,17 +248,27 @@ Prefab:
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: sceneToLoad
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: spawnPoint.z
-      value: -5
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: spawnPoint.x
-      value: 30
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
+        type: 2}
+      propertyPath: spawnPoint.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
+        type: 2}
+      propertyPath: doorToLoad
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
@@ -324,15 +334,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 148.67
+      value: 17.1
       objectReference: {fileID: 0}
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 40.93
+      value: 40.9
       objectReference: {fileID: 0}
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 22.5
+      value: -29.8
       objectReference: {fileID: 0}
     - target: {fileID: 4055283279551588, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_LocalRotation.x
@@ -357,17 +367,17 @@ Prefab:
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: sceneToLoad
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: spawnPoint.z
-      value: -5
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: spawnPoint.x
-      value: 30
+      value: -37
       objectReference: {fileID: 0}
     - target: {fileID: 1540606532469238, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
       propertyPath: m_Name
@@ -376,7 +386,12 @@ Prefab:
     - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
         type: 2}
       propertyPath: doorToLoad
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
+        type: 2}
+      propertyPath: spawnPoint.y
+      value: 4.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
@@ -672,7 +687,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553235494}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 14.4, y: 7.2, z: -8.6}
+  m_LocalPosition: {x: 8.639996, y: 7.200001, z: -8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1976008799}
@@ -856,7 +871,7 @@ Prefab:
     - target: {fileID: 114360553010938496, guid: 9752e32a192ebed4791a74d2c84898cc,
         type: 2}
       propertyPath: neutralSpawnPoint.z
-      value: 45
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114360553010938496, guid: 9752e32a192ebed4791a74d2c84898cc,
         type: 2}
@@ -1087,7 +1102,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1976008797}
   m_LocalRotation: {x: 0.0000002745428, y: 0.6974837, z: 0.000000233684, w: 0.7166007}
-  m_LocalPosition: {x: 0, y: 0, z: -11.5}
+  m_LocalPosition: {x: -1.492218, y: -0.00004196167, z: 43.679832}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 1553235495}
