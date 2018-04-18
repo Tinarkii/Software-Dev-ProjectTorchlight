@@ -230,32 +230,31 @@ public class GameControl : MonoBehaviour {
 
 	public Image fadeImagePrefab;
 	private Image fadeImage;
-	/** Loads a scene with a fading effect */
+	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
-		SceneManager.LoadScene(scene);// Load scene
-		return;// The rest of this function isn't ready yet
-
-		if (fadeImage == null)
+		// For first instantiation
+		if (fadeImage == null) {
 			fadeImage = (Image) Instantiate(fadeImagePrefab);
+			DontDestroyOnLoad(fadeImage);// Doesn't seem to work...
+		}
 
-		fadeImage.color = new Color(1f, 1f, 1f, 0);// make it black and transparent
 		// Add to canvas, which makes it visible
-		fadeImage.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
+		//fadeImage.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
 
-		Time.timeScale = 0;// Pause
-		//StartCoroutine("Fade", true);// Fade out
+		//StartCoroutine("Fade");
 		SceneManager.LoadScene(scene);// Load scene
-		// Fade in
-		//StartCoroutine("Fade", false);// Fade out
-		Time.timeScale = 1;// Un-pause
 	}
 	
-	private IEnumerator Fade(bool inOut) {
-		for (float f = 0; f < 1; f += float.MinValue)
-			fadeImage.color = new Color(1f, 1f, 1f, f);
-		for (float f = 1; f > 0; f -= float.MinValue)
-			fadeImage.color = new Color(1f, 1f, 1f, f);
-		yield return null;
+	/* Coroutine to provide the fading effect */
+	private IEnumerator Fade() {
+		for (float f = 0; f < 1; f += Time.deltaTime) {
+			fadeImage.color = new Color(0f, 0f, 0f, f);
+			yield return null;
+		}
+		for (float f = 1; f > 0; f -= Time.deltaTime) {
+			fadeImage.color = new Color(0f, 0f, 0f, f);
+			yield return null;
+		}
 	}
 
 	/*
