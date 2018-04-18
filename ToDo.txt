@@ -1,6 +1,5 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
-	->Fade Transtions (Joel) 
 ->End Condition (Joel & Drew) 
 ->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
