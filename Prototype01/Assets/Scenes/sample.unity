@@ -732,6 +732,11 @@ Prefab:
       propertyPath: spawnPoint.y
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114673176646643512, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1,
+        type: 2}
+      propertyPath: doorToLoad
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
   m_IsPrefabParent: 0

@@ -2,17 +2,18 @@
 ->Scene transitions & save-states - (Jeffery) 
 	->Fade Transtions (Joel) 
 ->End Condition (Joel & Drew) 
-->More rooms/levels (Luke and then Jeffery) 
+->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
-->Don't move towrads menu button (Zach) -> Mini Work Session 
+->Don't move towards menu button (Zach) -> Mini Work Session 
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
 ->More items (ones that will show up in the final version of the game) (Drew) 
 ->Saving for Items (Jeffery) 
-->Show Item obtained/used (Zach) 
-->Add all items (luke & paul)
-	->Equipping??
+->Show Item obtained/used (Zach)
+->Add all items (Luke(unless there are specific items that other people want me to add, I may be done here) & Paul)
+	->make something that shows the item's effect
+	->Equipping ??
 
 /*Report*/
 ->Take Screenshots of main pages that show the functionality (Everyone) 
