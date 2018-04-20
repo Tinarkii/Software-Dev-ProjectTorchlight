@@ -3,7 +3,7 @@
 ->End Condition (Joel & Drew) 
 ->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
-->Don't move towards menu button (Zach) -> Mini Work Session 
+->Don't move towards other buttons (Zach) -> Mini Work Session 
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
@@ -17,3 +17,4 @@
 /*Report*/
 ->Take Screenshots of main pages that show the functionality (Everyone) 
 ->Look over and update report (Everyone)
+->Make the powerpoint (Everyone)
