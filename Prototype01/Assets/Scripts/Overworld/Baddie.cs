@@ -21,10 +21,13 @@ public class Baddie : MonoBehaviour {
 
 	public bool alive = true; //if the baddy is alive
 
+    private Animator anim; //sets what animation to be active
+
 
     // Use this for initialization of enemies 
 	void Start(){
 		boy = GameControl.control.GetPlayer ().GetComponent<Rigidbody>(); //grabs the boy from GameControl.control
+        anim = gameObject.GetComponent<Animator>(); //sets what gameObect anim should control
         target = new Vector3(0, 0, 0); //starts the target as none
         self = GetComponent<Rigidbody>(); //sets the varaibales for itself
     }
@@ -38,7 +41,9 @@ public class Baddie : MonoBehaviour {
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player")
-            go = true;    
+         {
+            go = true; 
+         }   
     }
 
     /// <summary>
@@ -49,7 +54,9 @@ public class Baddie : MonoBehaviour {
     /// in update
     void OnTriggerExit(Collider other){
         if (other.gameObject.tag == "Player")
-            go = false; 
+        {
+            go = false;
+        }
     }
 
     /// <summary>
@@ -89,9 +96,12 @@ public class Baddie : MonoBehaviour {
             self.velocity = veloc; // set his velocity to the speed and direction 
 
             if (veloc.magnitude > .1){ //if the vector is greater than .1
+                anim.SetTrigger("Walking");
                 Vector3 lookto = new Vector3(target.x, self.position.y + angle, target.z); //look at the player
                 self.transform.LookAt(lookto); //turn to look at the boy 
             }
         }
+        else 
+            anim.SetTrigger("Standing");
     }
 }
