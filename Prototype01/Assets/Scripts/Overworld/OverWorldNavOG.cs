@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
 public class OverWorldNavOG : MonoBehaviour {
@@ -60,7 +61,10 @@ public class OverWorldNavOG : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
+    // NOTE: I changed this from FixedUpdate to Update to make UI detection
+    // work properly. If we need it was FixedUpdate (say, for phsyics reasons)
+    // the functionality should be split up into two methods
     {
 
 		usedCamera = Camera.main;
@@ -69,13 +73,23 @@ public class OverWorldNavOG : MonoBehaviour {
 			return;
 		}
 
-        
+        // Do not take new raycast position if UI element selected
+        // Touch input
+        bool inputUI = false;
+        foreach (Touch touch in Input.touches) {
+            int id = touch.fingerId;
+            if (EventSystem.current.IsPointerOverGameObject(id))
+                inputUI = true;
+        }
+        // Mouse input
+        if (EventSystem.current.IsPointerOverGameObject())
+            inputUI = true;
+
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !inputUI)
         {
 			if (Physics.Raycast (ray, out hitPoint, 1000, (1 << 9)) && bufferFrame < 1) {
                 target = hitPoint.point;
-
             } else {
 				bufferFrame--;
 			}
@@ -107,13 +121,14 @@ public class OverWorldNavOG : MonoBehaviour {
                 integral = 0;
             }
         }
-        if (speed > minSpeedForWalkingAnimation)
+        if (speed > minSpeedForWalkingAnimation) //Mathf.Abs((target - self.position).x) > 0.2f && Mathf.Abs((target - self.position).z) > 0.2f)
         {
             //anim.SetTrigger("ImprovedWalking");
             anim.SetTrigger("ImprovedWalking");
         }
         else
         {
+            //Debug.Log((target - self.position).x + ", " + (target - self.position).y + ", " + (target - self.position).z);
             anim.SetTrigger("Standing");
         }
     }
