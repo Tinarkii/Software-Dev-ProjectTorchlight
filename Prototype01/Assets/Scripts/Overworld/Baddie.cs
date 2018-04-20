@@ -21,7 +21,7 @@ public class Baddie : MonoBehaviour {
 
 	public bool alive = true; //if the baddy is alive
 
-    private Animator anim; //sets what animation to be active
+    private Animator anim = null; //sets what animation to be active
 
 
     // Use this for initialization of enemies 
