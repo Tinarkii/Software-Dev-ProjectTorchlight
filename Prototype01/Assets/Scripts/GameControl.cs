@@ -228,6 +228,11 @@ public class GameControl : MonoBehaviour {
 
 	}
 
+	/* Allows calls from elsewhere to load a new scene */
+	public static void LoadScene(string scene) {
+		control.LoadWithFade(scene);
+	}
+
 	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
 		// Following block to create image on canvas largely was copied from:
