@@ -58,7 +58,7 @@ public class ItemsMenu : MonoBehaviour
 
 			Button button = t.gameObject.GetComponent<Button> ();
 
-			button.GetComponentInChildren<Text>().text = i.Name() + " (" + i.GetQuantity() + ")";
+			button.GetComponentInChildren<Text>().text = i.Name() + " (" + i.GetQuantity() + ")\n(" + i.Description() + ")";
 
 			button.onClick.AddListener(delegate { i.UseItem(); });
 			button.onClick.AddListener(delegate { UpdateInventoryMenu(); }); // so that the inventory is kept up-to-date while items are being used
