@@ -22,7 +22,7 @@ public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
 	private GameObject player;
-	public static string[] scenes = new string[]{"TitleScreen","sample","Room01", "Room02", "Room03"};
+	public static string[] scenes = new string[]{"TitleScreen","sample","Room01", "Room02", "Room03", "Room04"};
 	private LevelData[] levels = new LevelData[12];
 	public GameObject playerPrefab;
 
@@ -216,6 +216,17 @@ public class GameControl : MonoBehaviour {
 			Debug.Log ("Load() was called, but there is no saved game to load");
 		}
 	}
+
+	/**
+	 * Load with making sure that control has been initialized
+	 */
+	public static void LoadNew()
+	{
+		if (control == null)
+			control = new GameControl ();
+
+		control.Load ();
+	}
 		
 	/*
 	 * Swaps Scenes, for use when entering doors between two overworld scenes
@@ -228,33 +239,43 @@ public class GameControl : MonoBehaviour {
 
 	}
 
-	public Image fadeImagePrefab;
-	private Image fadeImage;
+	/* Allows calls from elsewhere to load a new scene */
+	public static void LoadScene(string scene) {
+		control.LoadWithFade(scene);
+	}
+
 	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
-		// For first instantiation
-		if (fadeImage == null) {
-			fadeImage = (Image) Instantiate(fadeImagePrefab);
-			DontDestroyOnLoad(fadeImage);// Doesn't seem to work...
-		}
+		// Following block to create image on canvas largely was copied from:
+		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html
+		GameObject newCanvas = new GameObject("Canvas");
+		Canvas imageCanvas = newCanvas.AddComponent<Canvas>();
+		imageCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+		newCanvas.AddComponent<CanvasScaler>();
+		newCanvas.AddComponent<GraphicRaycaster>();
+		GameObject panel = new GameObject("Panel");
+		panel.AddComponent<CanvasRenderer>();
+		Image fadeImage = panel.AddComponent<Image>();
+		panel.transform.SetParent(newCanvas.transform, false);
+		// End copied //
 
-		// Add to canvas, which makes it visible
-		//fadeImage.transform.SetParent(GameObject.Find("OverworldCanvas").transform, false);
-
-		//StartCoroutine("Fade");
-		SceneManager.LoadScene(scene);// Load scene
+		imageCanvas.scaleFactor = 10f;// A bit of a hack to make the image cover the screen
+		DontDestroyOnLoad(imageCanvas);// keep canvas between scenes
+		StartCoroutine(Fade(fadeImage, scene));
 	}
 	
 	/* Coroutine to provide the fading effect */
-	private IEnumerator Fade() {
+	private IEnumerator Fade(Image fadeImage, string scene) {
 		for (float f = 0; f < 1; f += Time.deltaTime) {
 			fadeImage.color = new Color(0f, 0f, 0f, f);
 			yield return null;
 		}
+		SceneManager.LoadScene(scene);
 		for (float f = 1; f > 0; f -= Time.deltaTime) {
 			fadeImage.color = new Color(0f, 0f, 0f, f);
 			yield return null;
 		}
+		Destroy(fadeImage);// Manually destroy image/canvas
 	}
 
 	/*
@@ -268,13 +289,13 @@ public class GameControl : MonoBehaviour {
 		currentScene = SceneManager.GetActiveScene ().name;
 
 		CacheLevelData ();
-		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
-		if (baddie.tag == "armorBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
-		else if (baddie.tag == "crystalBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
-		else
-			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+
+		try {
+			EncounterControl.enemyPrefab = Resources.Load(baddie.tag) as GameObject;
+		} catch (Exception e) {
+			Debug.LogError("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+			Debug.LogError("Error was: " + e);
+		}
 
 		LoadWithFade("encounter"); //loads scenes 
 	}
@@ -282,7 +303,11 @@ public class GameControl : MonoBehaviour {
 	public void ExitEncounter (){
 		doorQuery = false;
 		levels [Array.IndexOf (scenes, currentScene)].bitBaddies &= (short)(~(1 << baddieToDie));
-		SceneManager.LoadScene (currentScene);
+		SceneManager.LoadScene(currentScene);
+		// @TODO: Would be nice to replace above line with below line,
+		// but this function is called while EncounterControl runs and
+		// the baddie is defeated, so this function gets called repeatedly
+		//LoadWithFade(currentScene);
 	}
 
 

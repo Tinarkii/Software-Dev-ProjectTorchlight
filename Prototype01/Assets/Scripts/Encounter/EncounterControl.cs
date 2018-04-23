@@ -59,8 +59,6 @@ public class EncounterControl : MonoBehaviour {
 		}
 
 		if (attackScript.BaddieDefeated())
-		{	
 			GameControl.control.ExitEncounter();
-		}
 	}
 }
