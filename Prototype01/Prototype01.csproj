@@ -316,13 +316,17 @@
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfPlayer.cs" />
     <Compile Include="Assets\Scripts\Encounter\MouseOverStuff.cs" />
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
+    <Compile Include="Assets\Scripts\Inventory\AttackItem.cs" />
     <Compile Include="Assets\Scripts\Inventory\ButtonIntermediate.cs" />
     <Compile Include="Assets\Scripts\Inventory\ConfidenceItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\DefenseItem.cs" />
     <Compile Include="Assets\Scripts\Inventory\FruitSnacks.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemsMenu.cs" />
-    <Compile Include="Assets\Scripts\Inventory\SampleItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\LetterBlock.cs" />
+    <Compile Include="Assets\Scripts\Inventory\RubiksCube.cs" />
     <Compile Include="Assets\Scripts\LightingRoomScript.cs" />
     <Compile Include="Assets\Scripts\Overworld\AnchorTo.cs" />
     <Compile Include="Assets\Scripts\Overworld\Baddie.cs" />
@@ -334,7 +338,6 @@
     <Compile Include="Assets\Scripts\Overworld\OverWorldNavOG.cs" />
     <Compile Include="Assets\Scripts\Overworld\SceneControl.cs" />
     <Compile Include="Assets\Scripts\Overworld\TracePath.cs" />
-    <Compile Include="Assets\Scripts\SaveLoad\GameControl.cs" />
     <Compile Include="Assets\Scripts\TitleScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
