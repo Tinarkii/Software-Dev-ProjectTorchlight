@@ -1,16 +1,17 @@
 fileFormatVersion: 2
 guid: 5958de9202aedee4fa4b2ac450467300
-timeCreated: 1524497273
+timeCreated: 1524497593
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Milk_Carton
+    2100000: Milk_text
+    2100002: Milk_Carton
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube_002
+    4300000: Milk_003
     9500000: //RootNode
   externalObjects:
   - first:
@@ -18,6 +19,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Milk_Carton
     second: {fileID: 2100000, guid: 81b26d4ad5245794fa2c0bc8c79e814b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Milk_text
+    second: {fileID: 2100000, guid: 2c9b06b1cbb5daa449e6dc61b67ed5ce, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
