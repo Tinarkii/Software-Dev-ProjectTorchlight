@@ -1,8 +1,10 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
-->End Condition (Joel & Drew) 
+->Add glass of milk (Drew) 
 ->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
+->Don't move towards other buttons (Zach)
+	-> Sounds like we'll actually delete those buttons
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/

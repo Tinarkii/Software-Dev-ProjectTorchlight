@@ -216,6 +216,17 @@ public class GameControl : MonoBehaviour {
 			Debug.Log ("Load() was called, but there is no saved game to load");
 		}
 	}
+
+	/**
+	 * Load with making sure that control has been initialized
+	 */
+	public static void LoadNew()
+	{
+		if (control == null)
+			control = new GameControl ();
+
+		control.Load ();
+	}
 		
 	/*
 	 * Swaps Scenes, for use when entering doors between two overworld scenes
@@ -226,6 +237,11 @@ public class GameControl : MonoBehaviour {
 		doorQuery = true;
 		LoadWithFade(scenes [sceneToLoad]);
 
+	}
+
+	/* Allows calls from elsewhere to load a new scene */
+	public static void LoadScene(string scene) {
+		control.LoadWithFade(scene);
 	}
 
 	/* Loads a scene with a fading effect */
@@ -273,13 +289,13 @@ public class GameControl : MonoBehaviour {
 		currentScene = SceneManager.GetActiveScene ().name;
 
 		CacheLevelData ();
-		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
-		if (baddie.tag == "armorBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
-		else if (baddie.tag == "crystalBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
-		else
-			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+
+		try {
+			EncounterControl.enemyPrefab = Resources.Load(baddie.tag) as GameObject;
+		} catch (Exception e) {
+			Debug.LogError("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+			Debug.LogError("Error was: " + e);
+		}
 
 		LoadWithFade("encounter"); //loads scenes 
 	}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1060888126}
-  m_LocalRotation: {x: 0.22770743, y: 0.41507488, z: -0.21544991, w: 0.8540746}
+  m_LocalRotation: {x: 0.22770745, y: 0.4150749, z: -0.21544993, w: 0.85407466}
   m_LocalPosition: {x: 2.38, y: 5.67, z: -4.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1037,7 +1037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Midnight Milk
+  m_Text: Hero's Epic Quest to Get a Glass of Milk
 --- !u!222 &1481302803
 CanvasRenderer:
   m_ObjectHideFlags: 0

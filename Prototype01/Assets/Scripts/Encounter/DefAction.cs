@@ -94,7 +94,13 @@ public class DefAction : MonoBehaviour {
 
 			if (touches[i].phase == TouchPhase.Ended){
 				Vector2 temp;
-				tracked.TryGetValue(touches[i].fingerId, out temp);// @TODO: Needs error handling
+				bool found = tracked.TryGetValue(touches[i].fingerId, out temp);
+
+				// This should never happen, but in case it does...
+				if (!found) {
+					Debug.Log("fingerId not found in Dictionary. Problem.");
+					continue;
+				}
 				
 				// Calculates whether the touch happened on the left side of the screen
 				bool side = touches[i].position.x < Screen.width/2;
@@ -150,8 +156,7 @@ public class DefAction : MonoBehaviour {
 			GameControl.control.AdjustConfidenceBy(-GameControl.control.DamageToPlayer());
 			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
-			// Push player on top of block so he doesn't get stuck
-			// @TODO: Should really round down before adding
+			// Push player on top of block so he doesn't get stuck (should probably round it)
 			float pos = self.position.y + (6.5f/4);// Fix magic numbers; also in Defense.cs
 			self.position = new Vector3(self.position.x, pos, self.position.z);
 		}
