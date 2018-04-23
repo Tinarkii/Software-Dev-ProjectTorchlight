@@ -38,9 +38,6 @@ public class DefAction : MonoBehaviour {
 
 	// Whether the player is in a state to allow jumping
 	private bool canJump;
-
-	// The amount of confidence the player loses per hit
-	private int hitAmount;
 		
 	// The delay until the player can perform a certain action again
 	private float shieldDelayLeft = 0;
@@ -54,7 +51,6 @@ public class DefAction : MonoBehaviour {
 		anim = boyo.GetComponent<Animator>();
 		confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 		self = GetComponent<Rigidbody>();
-		hitAmount = -5;
 	}
 
 	/* Reset tracked finger inputs */
@@ -98,7 +94,13 @@ public class DefAction : MonoBehaviour {
 
 			if (touches[i].phase == TouchPhase.Ended){
 				Vector2 temp;
-				tracked.TryGetValue(touches[i].fingerId, out temp);// @TODO: Needs error handling
+				bool found = tracked.TryGetValue(touches[i].fingerId, out temp);
+
+				// This should never happen, but in case it does...
+				if (!found) {
+					Debug.Log("fingerId not found in Dictionary. Problem.");
+					continue;
+				}
 				
 				// Calculates whether the touch happened on the left side of the screen
 				bool side = touches[i].position.x < Screen.width/2;
@@ -136,7 +138,7 @@ public class DefAction : MonoBehaviour {
 	/* Handles when the player is hit with a enemy blast or shield */
 	protected void OnTriggerEnter(Collider col) {
 		if (col.gameObject.name == "ShieldBad(Clone)" || col.gameObject.name == "BlastBad(Clone)") {
-			GameControl.control.AdjustConfidenceBy(hitAmount);
+			GameControl.control.AdjustConfidenceBy(-GameControl.control.DamageToPlayer());
 			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
 			Destroy(col.gameObject);
@@ -151,11 +153,10 @@ public class DefAction : MonoBehaviour {
 		
 		
 		if (canHit == 0) {// Only cause damage once
-			GameControl.control.AdjustConfidenceBy(hitAmount);
+			GameControl.control.AdjustConfidenceBy(-GameControl.control.DamageToPlayer());
 			confidenceText.text = "Player's Confidence: " + GameControl.control.Confidence();
 
-			// Push player on top of block so he doesn't get stuck
-			// @TODO: Should really round down before adding
+			// Push player on top of block so he doesn't get stuck (should probably round it)
 			float pos = self.position.y + (6.5f/4);// Fix magic numbers; also in Defense.cs
 			self.position = new Vector3(self.position.x, pos, self.position.z);
 		}
@@ -261,7 +262,7 @@ public class DefAction : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.D))
 			tap(true);
 	}
-	IEnumerator<WaitForSeconds> Wait()
+	private IEnumerator<WaitForSeconds> Wait()
 	{
 		Debug.Log("Waiting");
     	yield return new WaitForSeconds(0.1f);

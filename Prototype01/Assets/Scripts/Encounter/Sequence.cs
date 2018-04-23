@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,20 +55,74 @@ public class Sequence {
 
 	/* Create the moves for an attack sequence */
 	public Queue<Attack> getMoves(string enemy) {
-		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
+		// For random sets of attacks
+		System.Random r = new System.Random();
+
+		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed).
+		// Is there a better way of doing it?
 		switch (enemy) {
+
 			case "armorBaddie":
-				//return Blocks();
-				return ArmorOG();
+				int rVal = r.Next(0, 3);
+				if (rVal == 0)
+					return Shields();
+				else if (rVal == 1)
+					return Blocks();
+				else if (rVal == 2)
+					return ArmorOG();
+				else
+					throw new IndexOutOfRangeException();// Should never happen; checking for coding errors
+
 			case "crystalBaddie":
-				return CrystalOG();
+				if (r.Next(0, 2) == 0)
+					return Blasts();
+				else
+					return CrystalOG();
+
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemys", "enemy");
 		}
 	}
 
 	// # Begin region of builders for enemy attack sequences
-	//@TODO: I really should construct the queues inside a for loop over a text file or something.
+
+	private Queue<Attack> Blasts() {
+		Queue<Attack> attacks = new Queue<Attack>();
+
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 0, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 2, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 3, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 3, 5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 4, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 0f, 4, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 1.8f, 0, -5));
+
+		attacks.Enqueue(new Attack(enemyBlast, 3.2f, 1, -5));
+		attacks.Enqueue(new Attack(enemyBlast, 3.5f, 1, 5));
+
+		return attacks;
+	}
+
+	private Queue<Attack> Shields() {
+		Queue<Attack> attacks = new Queue<Attack>();
+
+		attacks.Enqueue(new Attack(enemyShield, 0f, 0, -5));
+		attacks.Enqueue(new Attack(enemyShield, 0f, 0, 5));
+		attacks.Enqueue(new Attack(enemyShield, 0f, 2, -5));
+		attacks.Enqueue(new Attack(enemyShield, 0f, 2, 5));
+
+		attacks.Enqueue(new Attack(enemyBlock, 1.8f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.1f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.4f, 0, -5));
+		attacks.Enqueue(new Attack(enemyBlock, 2.7f, 0, -5));
+
+		attacks.Enqueue(new Attack(enemyShield, 3.2f, 2, -5));
+
+		return attacks;
+	}
 
 	private Queue<Attack> Blocks() {
 		Queue<Attack> attacks = new Queue<Attack>();

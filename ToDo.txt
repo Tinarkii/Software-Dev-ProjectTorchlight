@@ -1,21 +1,21 @@
 /*Universal fixes*/
-->Scene transitions & save-states - Mostly Done
-->Slight graphical overhaul - Sort of Done
-->Cleanup movement
-->Level Design - 1 room
+->Scene transitions & save-states - (Jeffery) 
+->Add glass of milk (Drew) 
+->More rooms/levels (Luke(Done) and then Jeffery) 
+->Click on lamp/door to use (Zach) 
+->Don't move towards other buttons (Zach)
+	-> Sounds like we'll actually delete those buttons
+->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
-->More items (ones that will show up in the final version of the game)
+->More items (ones that will show up in the final version of the game) (Drew) 
+->Saving for Items (Jeffery) 
+->Show Item obtained/used (Zach)
+->Add all items (Luke(unless there are specific items that other people want me to add, I may be done here) & Paul)
+	->make something that shows the item's effect
+	->Equipping ??
 
-/*Encounter System setup stuff*/
-->Refine defensive phase
-
-
-/*Complete*/
-->Dynamically receive info from OverWorld - Done, I think
-->Refine offensive phase - Done, unless people have stuff to add
-->Make save-lamps and save system (saving should be set up by Wednesday) - Done
-->Combat resolution - Done
-->Clean up Warnings - Done
-->Inventory needs to be completed - Done
-->Item that actually does stuff - Done
+/*Report*/
+->Take Screenshots of main pages that show the functionality (Everyone) 
+->Look over and update report (Everyone)
+->Make the powerpoint (Everyone)

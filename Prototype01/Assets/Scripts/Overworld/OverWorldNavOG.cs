@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
 public class OverWorldNavOG : MonoBehaviour {
@@ -27,7 +28,7 @@ public class OverWorldNavOG : MonoBehaviour {
         self = GetComponent<Rigidbody>();
 		anim = boy.GetComponent<Animator>();
         p = 1.75f;//original value 6.5f / 7.0f;
-        i = 0.5f;
+        i = 0.3f;
         integral = 0f;
     }
 
@@ -56,12 +57,14 @@ public class OverWorldNavOG : MonoBehaviour {
         float iOut = 0;
         integral += Mathf.Abs(target.magnitude - current.magnitude) / 5f;
         iOut = i * integral;
-        //Debug.Log("iOut " + iOut);
         return iOut;
     }
 
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
+    // NOTE: I changed this from FixedUpdate to Update to make UI detection
+    // work properly. If we need it was FixedUpdate (say, for phsyics reasons)
+    // the functionality should be split up into two methods
     {
 
 		usedCamera = Camera.main;
@@ -70,13 +73,23 @@ public class OverWorldNavOG : MonoBehaviour {
 			return;
 		}
 
-        
+        // Do not take new raycast position if UI element selected
+        // Touch input
+        bool inputUI = false;
+        foreach (Touch touch in Input.touches) {
+            int id = touch.fingerId;
+            if (EventSystem.current.IsPointerOverGameObject(id))
+                inputUI = true;
+        }
+        // Mouse input
+        if (EventSystem.current.IsPointerOverGameObject())
+            inputUI = true;
+
         Ray ray = usedCamera.ViewportPointToRay(usedCamera.ScreenToViewportPoint(Input.mousePosition));
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !inputUI)
         {
 			if (Physics.Raycast (ray, out hitPoint, 1000, (1 << 9)) && bufferFrame < 1) {
                 target = hitPoint.point;
-
             } else {
 				bufferFrame--;
 			}
@@ -101,21 +114,21 @@ public class OverWorldNavOG : MonoBehaviour {
 
         if (!Input.GetMouseButton(0))
         {
-            //Debug.Log(target.magnitude - self.position.magnitude + "     " + veloc.magnitude);
-            if (Mathf.Abs(target.magnitude - self.position.magnitude) <= .75f)
+            if (Mathf.Abs(target.magnitude - self.position.magnitude) <= .25f && veloc.magnitude > .5f)
             {
                 self.velocity = new Vector3(0, 0, 0);
                 speed = 0f;
                 integral = 0;
             }
         }
-        if (speed > minSpeedForWalkingAnimation)
+        if (Mathf.Abs((target - self.position).x) > 0.2f && Mathf.Abs((target - self.position).z) > 0.2f)
         {
             //anim.SetTrigger("ImprovedWalking");
             anim.SetTrigger("ImprovedWalking");
         }
         else
         {
+            //Debug.Log((target - self.position).x + ", " + (target - self.position).y + ", " + (target - self.position).z);
             anim.SetTrigger("Standing");
         }
     }

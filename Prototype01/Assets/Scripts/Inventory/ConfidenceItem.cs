@@ -3,24 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * A script for items that restore confidence
+ * A superclass for items that restore confidence
  */
 
-public class ConfidenceItem : Item
+public abstract class ConfidenceItem : Item
 {
-	[Tooltip("The name of this Item")]
-	public string itemsName;
-
-	[Tooltip("How much confidence is regained when this Item is used")]
-	public int healthRegained;
-
 	/**
-	 * Initialization
+	 * How much confidence is regained when this Item is used - set in subclasses
 	 */
-	public void Start ()
-	{
-		myName = itemsName;
-	}
+	protected int healthRegained;
 
 	/**
 	 * Use the ConfidenceItem - increases the player's confidence
