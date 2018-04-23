@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,15 +55,30 @@ public class Sequence {
 
 	/* Create the moves for an attack sequence */
 	public Queue<Attack> getMoves(string enemy) {
-		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also Baddie.cs)
+		// For random sets of attacks
+		System.Random r = new System.Random();
+
+		///@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed).
+		// Is there a better way of doing it?
 		switch (enemy) {
-			case "armorBaddie"://Stuff commented out for testing various sequences
-				return Shields();
-				//return Blocks();
-				//return ArmorOG();
+
+			case "armorBaddie":
+				int rVal = r.Next(0, 3);
+				if (rVal == 0)
+					return Shields();
+				else if (rVal == 1)
+					return Blocks();
+				else if (rVal == 2)
+					return ArmorOG();
+				else
+					throw new IndexOutOfRangeException();// Should never happen; checking for coding errors
+
 			case "crystalBaddie":
-				return Blasts();
-				//return CrystalOG();
+				if (r.Next(0, 2) == 0)
+					return Blasts();
+				else
+					return CrystalOG();
+
 			default:
 				throw new System.ArgumentException("Parameter is not in range of enemys", "enemy");
 		}
