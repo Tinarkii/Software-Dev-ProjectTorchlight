@@ -121,7 +121,7 @@ public class OverWorldNavOG : MonoBehaviour {
                 integral = 0;
             }
         }
-        if (speed > minSpeedForWalkingAnimation) //Mathf.Abs((target - self.position).x) > 0.2f && Mathf.Abs((target - self.position).z) > 0.2f)
+        if (Mathf.Abs((target - self.position).x) > 0.2f && Mathf.Abs((target - self.position).z) > 0.2f)
         {
             //anim.SetTrigger("ImprovedWalking");
             anim.SetTrigger("ImprovedWalking");
