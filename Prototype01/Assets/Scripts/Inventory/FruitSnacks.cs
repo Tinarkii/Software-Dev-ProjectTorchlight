@@ -15,5 +15,6 @@ public class FruitSnacks : ConfidenceItem
 	{
 		myName = "Fruit Snacks";
 		healthRegained = 30;
+		description = "adds " + healthRegained + " to cofidence";
 	}
 }
