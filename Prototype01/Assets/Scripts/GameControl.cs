@@ -239,6 +239,11 @@ public class GameControl : MonoBehaviour {
 
 	}
 
+	/* Allows calls from elsewhere to load a new scene */
+	public static void LoadScene(string scene) {
+		control.LoadWithFade(scene);
+	}
+
 	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
 		// Following block to create image on canvas largely was copied from:
@@ -284,13 +289,13 @@ public class GameControl : MonoBehaviour {
 		currentScene = SceneManager.GetActiveScene ().name;
 
 		CacheLevelData ();
-		//@TODO: This works, but it's kinda messy (e.g., if a new enemy is made, the code here will need to be changed). Is there a better way of doing it? (see also TODO in Sequence.cs)
-		if (baddie.tag == "armorBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("armorBaddie") as GameObject;
-		else if (baddie.tag == "crystalBaddie")
-			EncounterControl.enemyPrefab = Resources.Load ("crystalBaddie") as GameObject;
-		else
-			Debug.LogError ("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+
+		try {
+			EncounterControl.enemyPrefab = Resources.Load(baddie.tag) as GameObject;
+		} catch (Exception e) {
+			Debug.LogError("This enemy's type is not recognized: " + EncounterControl.enemyPrefab.tag);
+			Debug.LogError("Error was: " + e);
+		}
 
 		LoadWithFade("encounter"); //loads scenes 
 	}
