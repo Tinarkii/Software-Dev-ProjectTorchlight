@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0803333, g: 0.047561087, b: 0.12961617, a: 1}
+  m_IndirectSpecularColor: {r: 0.08701923, g: 0.046703003, b: 0.1284925, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1879,6 +1879,11 @@ Prefab:
       propertyPath: m_Name
       value: 'Lamp (6) '
       objectReference: {fileID: 0}
+    - target: {fileID: 108936358735615872, guid: 9d18c6c22a2437a4987eb86529f31bc4,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d18c6c22a2437a4987eb86529f31bc4, type: 2}
   m_IsPrefabParent: 0
@@ -2089,6 +2094,11 @@ Prefab:
     - target: {fileID: 1533150094392472, guid: 8f5aedd6cdee9ad44b7851348739b643, type: 2}
       propertyPath: m_Name
       value: Lamp (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 108030089851658132, guid: 8f5aedd6cdee9ad44b7851348739b643,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f5aedd6cdee9ad44b7851348739b643, type: 2}

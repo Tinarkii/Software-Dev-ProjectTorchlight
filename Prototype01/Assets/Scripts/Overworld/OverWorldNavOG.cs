@@ -27,7 +27,7 @@ public class OverWorldNavOG : MonoBehaviour {
         self = GetComponent<Rigidbody>();
 		anim = boy.GetComponent<Animator>();
         p = 1.75f;//original value 6.5f / 7.0f;
-        i = 0.3f;
+        i = 0.5f;
         integral = 0f;
     }
 
@@ -56,6 +56,7 @@ public class OverWorldNavOG : MonoBehaviour {
         float iOut = 0;
         integral += Mathf.Abs(target.magnitude - current.magnitude) / 5f;
         iOut = i * integral;
+        //Debug.Log("iOut " + iOut);
         return iOut;
     }
 
@@ -82,7 +83,6 @@ public class OverWorldNavOG : MonoBehaviour {
         }
 
         veloc = calcP(target, self.position);
-        Debug.Log(target.magnitude - self.position.magnitude);
 
         float speed = Mathf.Min (Mathf.Abs(maxSpeed), Mathf.Abs(veloc.magnitude) + calcI(target, self.position));
            
@@ -101,7 +101,8 @@ public class OverWorldNavOG : MonoBehaviour {
 
         if (!Input.GetMouseButton(0))
         {
-            if (Mathf.Abs(target.magnitude - self.position.magnitude) <= .25f && veloc.magnitude > .5f)
+            //Debug.Log(target.magnitude - self.position.magnitude + "     " + veloc.magnitude);
+            if (Mathf.Abs(target.magnitude - self.position.magnitude) <= .75f)
             {
                 self.velocity = new Vector3(0, 0, 0);
                 speed = 0f;
