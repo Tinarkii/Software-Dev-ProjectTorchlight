@@ -216,6 +216,17 @@ public class GameControl : MonoBehaviour {
 			Debug.Log ("Load() was called, but there is no saved game to load");
 		}
 	}
+
+	/**
+	 * Load with making sure that control has been initialized
+	 */
+	public static void LoadNew()
+	{
+		if (control == null)
+			control = new GameControl ();
+
+		control.Load ();
+	}
 		
 	/*
 	 * Swaps Scenes, for use when entering doors between two overworld scenes

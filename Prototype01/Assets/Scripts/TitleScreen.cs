@@ -9,9 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
-	[Tooltip("A prefab for the GameControl object")]
-	public GameObject gameControlPrefab;
-
 	/**
 	 * Start a new game
 	 */
@@ -25,7 +22,6 @@ public class TitleScreen : MonoBehaviour
 	 */
 	public void ResumeGame()
 	{
-		gameControlPrefab.GetComponent<GameControl>().Load();
-		////@TODO: This works, but it seems kinda sloppy (I would like to just call GameControl.control.Load(), and not mess with any prefabs). Is there a better way of doing this?
+		GameControl.LoadNew();
 	}
 }
