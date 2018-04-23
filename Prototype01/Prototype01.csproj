@@ -296,10 +296,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Legacy Files\Legacy Scripts\Game.cs" />
+    <Compile Include="Assets\Legacy Files\Legacy Scripts\MoveToClickPoint.cs" />
     <Compile Include="Assets\Legacy Files\Legacy Scripts\OverWorldNav.cs" />
     <Compile Include="Assets\Legacy Files\Legacy Scripts\Save.cs" />
+    <Compile Include="Assets\Legacy Files\Legacy Scripts\TracePath.cs" />
     <Compile Include="Assets\Scripts\AdjustScript.cs" />
     <Compile Include="Assets\Scripts\Compatibility\V3S.cs" />
+    <Compile Include="Assets\Scripts\DisplayItemName.cs" />
+    <Compile Include="Assets\Scripts\DoorStuff.cs" />
     <Compile Include="Assets\Scripts\Drag\Draggable.cs" />
     <Compile Include="Assets\Scripts\Drag\DropZoneArmor.cs" />
     <Compile Include="Assets\Scripts\Drag\DropZoneInventory.cs" />
@@ -316,6 +320,7 @@
     <Compile Include="Assets\Scripts\Encounter\EncounterObjects\ShieldOfPlayer.cs" />
     <Compile Include="Assets\Scripts\Encounter\MouseOverStuff.cs" />
     <Compile Include="Assets\Scripts\Encounter\Sequence.cs" />
+    <Compile Include="Assets\Scripts\EndScene.cs" />
     <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\Inventory\AttackItem.cs" />
     <Compile Include="Assets\Scripts\Inventory\ButtonIntermediate.cs" />
@@ -328,16 +333,16 @@
     <Compile Include="Assets\Scripts\Inventory\LetterBlock.cs" />
     <Compile Include="Assets\Scripts\Inventory\RubiksCube.cs" />
     <Compile Include="Assets\Scripts\LightingRoomScript.cs" />
+    <Compile Include="Assets\Scripts\MilkScript.cs" />
     <Compile Include="Assets\Scripts\Overworld\AnchorTo.cs" />
     <Compile Include="Assets\Scripts\Overworld\Baddie.cs" />
     <Compile Include="Assets\Scripts\Overworld\Bob.cs" />
     <Compile Include="Assets\Scripts\Overworld\Door.cs" />
     <Compile Include="Assets\Scripts\Overworld\LampLightTest.cs" />
-    <Compile Include="Assets\Scripts\Overworld\MoveToClickPoint.cs" />
     <Compile Include="Assets\Scripts\Overworld\OverworldCameraMovement.cs" />
     <Compile Include="Assets\Scripts\Overworld\OverWorldNavOG.cs" />
     <Compile Include="Assets\Scripts\Overworld\SceneControl.cs" />
-    <Compile Include="Assets\Scripts\Overworld\TracePath.cs" />
+    <Compile Include="Assets\Scripts\TextLabel.cs" />
     <Compile Include="Assets\Scripts\TitleScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
