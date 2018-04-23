@@ -302,6 +302,7 @@
     <Compile Include="Assets\Legacy Files\Legacy Scripts\TracePath.cs" />
     <Compile Include="Assets\Scripts\AdjustScript.cs" />
     <Compile Include="Assets\Scripts\Compatibility\V3S.cs" />
+    <Compile Include="Assets\Scripts\DisplayInfo.cs" />
     <Compile Include="Assets\Scripts\DisplayItemName.cs" />
     <Compile Include="Assets\Scripts\DoorStuff.cs" />
     <Compile Include="Assets\Scripts\Drag\Draggable.cs" />
@@ -342,7 +343,6 @@
     <Compile Include="Assets\Scripts\Overworld\OverworldCameraMovement.cs" />
     <Compile Include="Assets\Scripts\Overworld\OverWorldNavOG.cs" />
     <Compile Include="Assets\Scripts\Overworld\SceneControl.cs" />
-    <Compile Include="Assets\Scripts\TextLabel.cs" />
     <Compile Include="Assets\Scripts\TitleScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

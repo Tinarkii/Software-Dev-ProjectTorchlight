@@ -4,7 +4,7 @@
 ->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
 ->Don't move towards other buttons (Zach)
-	-> Sounds like we'll actually delete those buttons
+	-> Sounds like we'll actually delete those buttons instead
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
@@ -16,6 +16,11 @@
 	->Equipping ??
 
 /*Report*/
-->Take Screenshots of main pages that show the functionality (Everyone) 
-->Look over and update report (Everyone)
 ->Make the powerpoint (Everyone)
+->Look over and update report (Everyone, specific roles below)
+	Paul: update requirements
+	Joel: update use cases, class, sequence, deployment diagrams
+	Drew: update written specifications
+	Luke: list of subsystems and roles, update subsystem interfaces
+	Zach: APIs
+	Jeffrey: screenshots for each subsystem (parts of this can be added to powerpoint)
