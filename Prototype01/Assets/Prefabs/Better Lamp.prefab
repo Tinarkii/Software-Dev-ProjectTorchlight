@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136493312532971804}
   - component: {fileID: 64022528790283470}
   - component: {fileID: 114522978891115892}
+  - component: {fileID: 114754597285962718}
   m_Layer: 0
   m_Name: Better Lamp
   m_TagString: Untagged
@@ -198,6 +199,19 @@ MonoBehaviour:
   myLight: {fileID: 108030089851658132}
   on: 0
   scene: {fileID: 0}
+--- !u!114 &114754597285962718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533150094392472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 1956506592925340, guid: 34742697844d442d194e624c5d9da48c,
+    type: 2}
 --- !u!136 &136493312532971804
 CapsuleCollider:
   m_ObjectHideFlags: 1
