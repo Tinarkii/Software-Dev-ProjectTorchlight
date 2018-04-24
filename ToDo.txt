@@ -1,9 +1,7 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
-->Add glass of milk (Drew) 
 ->More rooms/levels (Luke(Done) and then Jeffery) 
 ->Click on lamp/door to use (Zach) 
-
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
@@ -18,7 +16,7 @@
 ->Make the powerpoint (Everyone)
 ->Look over and update report (Everyone, specific roles below)
 	Paul: update requirements
-	Joel: update use cases, class, sequence, deployment diagrams
+	Joel (done or mostly done): update use cases, class, sequence, deployment diagrams
 	Drew: update written specifications
 	Luke: list of subsystems and roles, update subsystem interfaces
 	Zach: APIs
