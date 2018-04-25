@@ -300,6 +300,7 @@
     <Compile Include="Assets\Legacy Files\Legacy Scripts\OverWorldNav.cs" />
     <Compile Include="Assets\Legacy Files\Legacy Scripts\Save.cs" />
     <Compile Include="Assets\Legacy Files\Legacy Scripts\TracePath.cs" />
+    <Compile Include="Assets\Prefabs\LampSave.cs" />
     <Compile Include="Assets\Scripts\AdjustScript.cs" />
     <Compile Include="Assets\Scripts\Compatibility\V3S.cs" />
     <Compile Include="Assets\Scripts\DisplayInfo.cs" />
