@@ -83,6 +83,12 @@ public class ItemsMenu : MonoBehaviour
 	 */
 	public void ExitToTitleScreen()
 	{
+		// Destroy persistant objects so they doen't cause problems
+		Destroy (GameObject.Find("Player"));
+		Destroy (GameObject.Find("GameControl"));
+
+		Time.timeScale = 1; // Unpause the game before exiting so it is unpaused when the game is reopened
+
 		SceneManager.LoadScene("TitleScreen");
 	}
 
