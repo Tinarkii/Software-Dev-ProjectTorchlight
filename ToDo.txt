@@ -1,7 +1,6 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
 ->More rooms/levels (Luke(Done) and then Jeffery) 
-->Click on lamp/door to use (Zach) 
 ->Brighten for presentation (optional) (Jeffery) 
 
 /*Item Management*/
@@ -14,6 +13,8 @@
 
 /*Report*/
 ->Make the powerpoint (Everyone)
+	->What do we want on the powerpoint 
+	->Add that
 ->Look over and update report (Everyone, specific roles below)
 	Paul: update requirements
 	Joel (done or mostly done): update use cases, class, sequence, deployment diagrams
