@@ -1,13 +1,12 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
-->More rooms/levels (Luke(Done) and then Jeffery) 
+->Improve rooms/levels (Jeffery) 
 
 /*Item Management*/
-->Saving for Items (Jeffery) 
+->Saving for Items (Jeffery)
 ->Show Item obtained/used (Zach)
-->Add all items (Luke(unless there are specific items that other people want me to add, I may be done here) & Paul)
-	->make something that shows the item's effect
-	->Equipping ??
+->Add new items (Paul and maybe Luke)
+	->Equipping ?? - probably not
 
 /*Report*/
 ->Make the powerpoint (Everyone)
