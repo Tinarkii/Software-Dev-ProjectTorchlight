@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /**
  * A class to display and control the items menu
@@ -76,5 +77,13 @@ public class ItemsMenu : MonoBehaviour
         Time.timeScale = 1;
         Destroy(gameObject);
     }
+
+	/**
+	 * Exits the game and goes to the title screen
+	 */
+	public void ExitToTitleScreen()
+	{
+		SceneManager.LoadScene("TitleScreen");
+	}
 
 }
