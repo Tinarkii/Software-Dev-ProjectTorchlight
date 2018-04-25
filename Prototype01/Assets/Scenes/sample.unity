@@ -674,6 +674,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66ab4f5c6b4efdf45b2e4f84b30f1fa1, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &410378419 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114754597285962718, guid: 8f5aedd6cdee9ad44b7851348739b643,
+    type: 2}
+  m_PrefabInternal: {fileID: 1230133152}
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
 --- !u!1 &411996835
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +766,7 @@ GameObject:
   - component: {fileID: 540063443}
   - component: {fileID: 444823740}
   - component: {fileID: 444823739}
+  - component: {fileID: 444823741}
   - component: {fileID: 444823738}
   - component: {fileID: 444823737}
   m_Layer: 0
@@ -830,6 +837,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &444823741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444823736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &445254173 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1956506592925340, guid: 34742697844d442d194e624c5d9da48c,
@@ -904,6 +923,7 @@ GameObject:
   - component: {fileID: 112278926}
   - component: {fileID: 532795478}
   - component: {fileID: 532795477}
+  - component: {fileID: 532795479}
   - component: {fileID: 532795476}
   - component: {fileID: 532795475}
   m_Layer: 0
@@ -974,6 +994,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &532795479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 532795474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!4 &540063443
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,8 +1155,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 114392818576432820, guid: 19d76e77578c55a45b8ebd1ef6725c02,
-        type: 2}
+      objectReference: {fileID: 410378419}
     - target: {fileID: 114425857435347898, guid: 34742697844d442d194e624c5d9da48c,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1144,8 +1175,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 114392818576432820, guid: 19d76e77578c55a45b8ebd1ef6725c02,
-        type: 2}
+      objectReference: {fileID: 410378419}
     - target: {fileID: 114023625427922060, guid: 34742697844d442d194e624c5d9da48c,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1828,6 +1858,23 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1067596427 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1910538500527864, guid: 9d18c6c22a2437a4987eb86529f31bc4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1127006282}
+--- !u!114 &1067596429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1067596427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &1072167758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1886,7 @@ GameObject:
   - component: {fileID: 183288610}
   - component: {fileID: 1072167762}
   - component: {fileID: 1072167761}
+  - component: {fileID: 1072167763}
   - component: {fileID: 1072167760}
   - component: {fileID: 1072167759}
   m_Layer: 0
@@ -1909,6 +1957,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1072167763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072167758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &1083180911 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: e0fe1f7f602c1bb4587bcf92bab58cf3, type: 3}
@@ -2257,6 +2317,7 @@ GameObject:
   - component: {fileID: 798048586}
   - component: {fileID: 1244393271}
   - component: {fileID: 1244393270}
+  - component: {fileID: 1244393272}
   - component: {fileID: 1244393269}
   - component: {fileID: 1244393268}
   m_Layer: 0
@@ -2327,6 +2388,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1244393272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244393267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &1276448111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3279,7 @@ GameObject:
   - component: {fileID: 1181985351}
   - component: {fileID: 1528425884}
   - component: {fileID: 1528425883}
+  - component: {fileID: 1528425886}
   - component: {fileID: 1528425882}
   - component: {fileID: 1528425881}
   - component: {fileID: 1528425885}
@@ -3291,6 +3365,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: aa3f181246c51184a8627148cf077709, type: 3}
+--- !u!114 &1528425886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528425880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &1530301954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,6 +3998,7 @@ GameObject:
   - component: {fileID: 312272993}
   - component: {fileID: 2071627901}
   - component: {fileID: 2071627900}
+  - component: {fileID: 2071627902}
   - component: {fileID: 2071627899}
   - component: {fileID: 2071627898}
   m_Layer: 0
@@ -3982,6 +4069,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2071627902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071627897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 445254173}
 --- !u!1 &2075508401
 GameObject:
   m_ObjectHideFlags: 0
