@@ -15,5 +15,6 @@ public class RubiksCube : AttackItem
 	{
 		myName = "Rubik's Cube";
 		attackIncrease = 15;
+		description = "increases offense by " + attackIncrease;
 	}
 }

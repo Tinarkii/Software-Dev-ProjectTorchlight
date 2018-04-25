@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,11 +25,24 @@ public abstract class Item : MonoBehaviour
 	protected string myName;
 
 	/**
+	 * A description for this item; tells what it does when used
+	 */
+	protected string description;
+
+	/**
 	 * Returns the name of this Item
 	 */
 	public string Name ()
 	{
 		return myName;
+	}
+
+	/**
+	 * Gets this item's description
+	 */
+	public string Description ()
+	{
+		return description;
 	}
 
 	/**

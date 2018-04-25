@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114847122522110346}
   - component: {fileID: 114487521848875986}
   - component: {fileID: 114863144808939730}
+  - component: {fileID: 114421804321635926}
   m_Layer: 5
   m_Name: OverworldCanvas
   m_TagString: Untagged
@@ -180,6 +181,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Inventory
+--- !u!114 &114421804321635926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780933794190388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 0}
 --- !u!114 &114459321287963842
 MonoBehaviour:
   m_ObjectHideFlags: 1

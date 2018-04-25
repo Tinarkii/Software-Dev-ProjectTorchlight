@@ -15,5 +15,6 @@ public class LetterBlock : DefenceItem
 	{
 		myName = "Letter Block";
 		defenseIncrease = 1;
+		description = "increases defense by " + defenseIncrease;
 	}
 }
