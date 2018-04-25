@@ -8,6 +8,8 @@ TagManager:
   - ItemButton
   - armorBaddie
   - crystalBaddie
+  - Undefined
+  - dialogueBoxUIObject
   layers:
   - Default
   - TransparentFX

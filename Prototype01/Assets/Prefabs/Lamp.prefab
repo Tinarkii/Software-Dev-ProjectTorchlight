@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114148155060968898}
   - component: {fileID: 136910783466127844}
   - component: {fileID: 136057341482701722}
+  - component: {fileID: 114392818576432820}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -283,7 +284,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 108488445479054968}
   on: 0
-  game: {fileID: 0}
+  scene: {fileID: 0}
+--- !u!114 &114392818576432820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528802955752124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxUIObject: {fileID: 0}
 --- !u!136 &136057341482701722
 CapsuleCollider:
   m_ObjectHideFlags: 1
