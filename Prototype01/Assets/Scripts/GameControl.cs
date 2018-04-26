@@ -283,7 +283,7 @@ public class GameControl : MonoBehaviour {
 		panel.transform.SetParent(newCanvas.transform, false);
 		// End copied //
 
-		imageCanvas.scaleFactor = 10f;// A bit of a hack to make the image cover the screen
+		imageCanvas.scaleFactor = 20f;// A bit of a hack to make the image cover the screen
 		DontDestroyOnLoad(imageCanvas);// keep canvas between scenes
 		StartCoroutine(Fade(fadeImage, scene));
 	}
