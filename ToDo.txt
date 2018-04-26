@@ -1,15 +1,12 @@
 /*Universal fixes*/
 ->Scene transitions & save-states - (Jeffery) 
-->More rooms/levels (Luke(Done) and then Jeffery) 
-->Brighten for presentation (optional) (Jeffery) 
+->Improve rooms/levels (Jeffery) 
 
 /*Item Management*/
-->More items (ones that will show up in the final version of the game) (Drew) 
-->Saving for Items (Jeffery) 
+->Saving for Items (Jeffery)
 ->Show Item obtained/used (Zach)
-->Add all items (Luke(unless there are specific items that other people want me to add, I may be done here) & Paul)
-	->make something that shows the item's effect
-	->Equipping ??
+->Add new items (Paul and maybe Luke)
+	->Equipping ?? - probably not
 
 /*Report*/
 ->Make the powerpoint (Everyone)
@@ -18,7 +15,6 @@
 ->Look over and update report (Everyone, specific roles below)
 	Paul: update requirements
 	Joel (done or mostly done): update use cases, class, sequence, deployment diagrams
-	Drew: update written specifications
 	Luke: list of subsystems and roles, update subsystem interfaces
 	Zach: APIs
 	Jeffrey: screenshots for each subsystem (parts of this can be added to powerpoint)
