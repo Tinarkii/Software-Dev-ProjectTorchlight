@@ -21,6 +21,7 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour {
 
 
+	private PlayerData playerData;
 	public static GameControl control;
 	private GameObject player;
 	public static string[] scenes = new string[]{"TitleScreen","sample","Room01", "Room02", "Room03", "Room04"};
@@ -361,4 +362,13 @@ public class LevelData{
 	public short bitLamps = 0;
 	public short bitBaddies = 0;
 	public short bitItems = 0;
+}
+
+
+[Serializable]
+public class PlayerData{
+	public int confidence = 100;
+	public int maxConfidence = 100;
+	public int defense = 5;
+	public int attack = 35;
 }
