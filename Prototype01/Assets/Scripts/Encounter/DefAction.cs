@@ -27,7 +27,7 @@ public class DefAction : MonoBehaviour {
 		public const float jumpSpeed = 6f;
 		// The player's gravity (affects fall speed)
 		public const float gravity = 0.2f;
-		// The constant that defines how many pixels a swipe is (versus a tap). Currently 0; non-functional
+		// The constant that defines how many pixels a swipe is (versus a tap). Currently 0 - non-functional
 		public const int Delta = 0;
 		// How long the delay is before the player can repeat a move
 		public const float delayTime = 1f;
@@ -57,6 +57,13 @@ public class DefAction : MonoBehaviour {
 	// Other initialization
 	void OnEnable () {
 		tracked = new Dictionary<int, Vector2>();
+	}
+
+	/* Put player back in starting position on phase change */
+	void OnDisable () {
+		self.velocity = new Vector3(0, 0, 0); 
+		self.transform.position = new Vector3(0, 1, -3); 
+		canJump = false;
 	}
 
 	// Simulates a weaker gravity to increase jump time
@@ -176,7 +183,7 @@ public class DefAction : MonoBehaviour {
 
 	/* Jump if allowed */
 	private void jump(bool leftside) {
-		if (canJump)
+		if (canJump && this.enabled)
 			self.velocity = new Vector3(0, Const.jumpSpeed, 0);
 	}
 
