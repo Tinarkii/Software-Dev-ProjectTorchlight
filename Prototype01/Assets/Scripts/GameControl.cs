@@ -65,13 +65,13 @@ public class GameControl : MonoBehaviour {
 	{
 		confidence = maxConfidence;
 		damageToPlayer = 5;
-		damageToEnemy = 25;
+		damageToEnemy = 35;
 	}
 
 	/**
 	 * Gets the amount of damage that enemies cause
 	 */
-	public int DamageToPlayer() { return damageToPlayer; }
+	public int DamageToPlayer() { return damageToPlayer = playerData.defense; }
 
 	/**
 	 * Adjusts the amount of damage enemies cause
@@ -82,12 +82,14 @@ public class GameControl : MonoBehaviour {
 
 		if (damageToPlayer <= 0)
 			Debug.LogWarning ("Enemies now do 0 damage or less");
+
+		playerData.defense = damageToEnemy;
 	}
 
 	/**
 	 * Gets the amount of damage that the player causes
 	 */
-	public int DamageToEnemy() { return damageToEnemy; }
+	public int DamageToEnemy() { return damageToEnemy = playerData.attack; }
 
 	/**
 	 * Adjusts the amount of damage that the player causes
@@ -98,6 +100,21 @@ public class GameControl : MonoBehaviour {
 
 		if (damageToEnemy <= 0)
 			Debug.LogWarning ("The player now does 0 damage or less");
+
+		playerData.attack = damageToEnemy;
+	}
+
+	/**
+	 * Adjusts the amount of damage that the player causes
+	 */
+	public void AdjustMaxConfidenceBy(int adjustment)
+	{
+		maxConfidence += adjustment;
+
+		if (maxConfidence <= 0)
+			Debug.LogWarning ("The player now has 0 max confidence or less");
+
+		playerData.maxConfidence = maxConfidence;
 	}
 
 	/**
@@ -107,14 +124,18 @@ public class GameControl : MonoBehaviour {
 	{
 		confidence += confidenceChange;
 
-		if (confidence > maxConfidence)
+		if (confidence > (maxConfidence = playerData.maxConfidence))
 		{
 			confidence = maxConfidence;
 		}
 		else if (confidence <= 0)
 		{
 			Load(); // The player has lost; return to the last save point
+			return;
 		}
+
+		playerData.confidence = confidence;
+
 	}
 
 	/**
@@ -122,7 +143,7 @@ public class GameControl : MonoBehaviour {
 	 */
 	public int Confidence()
 	{
-		return confidence;
+		return confidence = playerData.confidence;
 	}
 
 
@@ -136,6 +157,7 @@ public class GameControl : MonoBehaviour {
 	void Awake () 
 	{
 		CreateEmptyLevels ();
+		playerData = new PlayerData ();
 		currentScene = SceneManager.GetActiveScene ().name;
 		if (control == null)
 		{
@@ -184,7 +206,7 @@ public class GameControl : MonoBehaviour {
 
 		data.currentScene = currentScene;
 		data.levels = CacheLevelData();
-		data.confidence = confidence;
+		data.player = playerData;
 		data.playerPosition = serPlayerPos;
 
 		bf.Serialize(file, data);
@@ -205,7 +227,7 @@ public class GameControl : MonoBehaviour {
 			doorQuery = false;
 			SceneManager.LoadScene(currentScene);
 
-			confidence = data.confidence;
+			playerData = data.player;
 			playerPosition = data.playerPosition;
 			if (PlayerPrefs.HasKey("Health"))
 				confidence = PlayerPrefs.GetInt("Health");
@@ -346,7 +368,7 @@ public class GameControl : MonoBehaviour {
 [Serializable] 
 class SaveGame
 {
-	public int confidence;
+	public PlayerData player;
 	public V3S.SerializableVector3 playerPosition;
 	public LevelData[] levels;
 	public string currentScene;

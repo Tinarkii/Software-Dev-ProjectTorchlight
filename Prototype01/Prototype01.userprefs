@@ -5,8 +5,9 @@
       <File FileName="Assets\Scripts\Inventory\ItemsMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Inventory\Item.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Inventory\LetterBlock.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameControl.cs" Line="24" Column="31" />
-      <File FileName="Assets\Scripts\Encounter\DefAction.cs" Line="141" Column="34" />
+      <File FileName="Assets\Scripts\GameControl.cs" Line="64" Column="1" />
+      <File FileName="Assets\Scripts\Encounter\DefAction.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory\RubiksCube.cs" Line="18" Column="58" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
