@@ -122,6 +122,12 @@ public abstract class Item : MonoBehaviour
 		return index;
 	}
 
+
+	public void PickYourselfUp(){
+		GameControl.control.GetPlayer().GetComponent<Inventory>().addItem (this);
+		picked = true;
+	}
+
 	/**
 	 * What happens when this Item is used
 	 */

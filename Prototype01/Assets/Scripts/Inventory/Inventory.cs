@@ -91,7 +91,7 @@ public class Inventory : MonoBehaviour
 			if (items[i] > 0) {
 				newItem = Instantiate(itemTypes[i]);
 				newItem.GetComponent<Item>().SetQuantity(items[i]);
-				addItem(newItem.GetComponent<Item>());
+				newItem.GetComponent<Item>().PickYourselfUp();
 			}
 		}
 	}
@@ -107,13 +107,10 @@ public class Inventory : MonoBehaviour
 
 			if (listItem.Name().Equals("Fruit Snacks")) {
 				array[0] += listItem.GetQuantity();
-				Debug.Log("   " + listItem.Name());
 			} else if (listItem.Name().Equals("Rubik's Cube")) {
 				array[1] += listItem.GetQuantity();
-				Debug.Log("   " + listItem.Name());
 			} else if (listItem.Name().Equals("Letter Block")) {
 				array[2] += listItem.GetQuantity();
-				Debug.Log("   " + listItem.Name());
 			}
 		}
 
