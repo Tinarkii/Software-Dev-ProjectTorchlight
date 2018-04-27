@@ -47,5 +47,6 @@ public class TitleScreen : MonoBehaviour
 	{
     	yield return new WaitForSeconds(1.5f);
 		GameControl.LoadNew();
+		SceneManager.LoadScene("Room01");
   	}
 }
