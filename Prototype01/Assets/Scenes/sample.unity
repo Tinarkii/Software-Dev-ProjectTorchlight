@@ -211,30 +211,6 @@ Transform:
   m_Father: {fileID: 887674455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &118171679 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1649510577869536, guid: 12cb5957415560b4cad0aa8d53be8973,
-    type: 2}
-  m_PrefabInternal: {fileID: 1369043682}
---- !u!54 &118171683 stripped
-Rigidbody:
-  m_PrefabParentObject: {fileID: 54715771809080460, guid: 12cb5957415560b4cad0aa8d53be8973,
-    type: 2}
-  m_PrefabInternal: {fileID: 1369043682}
---- !u!114 &118171688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 118171679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a1b7fa9a1c20424eb25c8b9cbcebb02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 118171683}
-  magnitude: 0.8
-  rate: 2
 --- !u!1 &168227926
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,19 +681,6 @@ Prefab:
     - target: {fileID: 1778308665404050, guid: 65cebc5a89c02104f9d1ef6ba0b1f473, type: 2}
       propertyPath: m_Name
       value: Baddie (0)
-      objectReference: {fileID: 0}
-    - target: {fileID: 95394392488144090, guid: 65cebc5a89c02104f9d1ef6ba0b1f473,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 656cd52380766e74da788ec6306b5155, type: 2}
-    - target: {fileID: 4906563462271504, guid: 65cebc5a89c02104f9d1ef6ba0b1f473, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5000019
-      objectReference: {fileID: 0}
-    - target: {fileID: 4906563462271504, guid: 65cebc5a89c02104f9d1ef6ba0b1f473, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.5000019
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65cebc5a89c02104f9d1ef6ba0b1f473, type: 2}
@@ -2971,33 +2934,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114738521501696086, guid: 12cb5957415560b4cad0aa8d53be8973,
-        type: 2}
-      propertyPath: boy
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 54715771809080460, guid: 12cb5957415560b4cad0aa8d53be8973,
-        type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1649510577869536, guid: 12cb5957415560b4cad0aa8d53be8973, type: 2}
       propertyPath: m_Name
       value: Baddie (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4030612925190252, guid: 12cb5957415560b4cad0aa8d53be8973, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.7500019
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030612925190252, guid: 12cb5957415560b4cad0aa8d53be8973, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95985539671002420, guid: 12cb5957415560b4cad0aa8d53be8973,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 2a1d48134ff3148f2aa171a7932da3d1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12cb5957415560b4cad0aa8d53be8973, type: 2}
   m_IsPrefabParent: 0

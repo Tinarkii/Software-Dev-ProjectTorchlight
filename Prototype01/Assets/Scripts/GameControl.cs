@@ -154,7 +154,9 @@ public class GameControl : MonoBehaviour {
 	void CreateEmptyLevels(){
 		for (int i = 0; i < levels.Length; i++) {
 			levels [i] = new LevelData ();
+			levels[i].bitLamps = 0;
 			levels [i].bitBaddies = ~0;
+			levels[i].bitItems = 0;
 		}
 	}
 
@@ -279,6 +281,9 @@ public class GameControl : MonoBehaviour {
 
 	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
+
+		currentScene = scene;
+
 		// Following block to create image on canvas largely was copied from:
 		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html
 		GameObject panel = new GameObject("Panel");
@@ -357,6 +362,7 @@ public class GameControl : MonoBehaviour {
 		level.bitLamps = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetLamps();
 		level.bitBaddies = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetBaddies();
 		level.bitItems = GameObject.Find ("SceneControl").GetComponent<SceneControl> ().GetItems();
+		levels[Array.IndexOf(scenes, currentScene)] = level;
 		return levels;
 	}
 
@@ -397,4 +403,5 @@ public class PlayerData{
 	public int maxConfidence = 100;
 	public int defense = 5;
 	public int attack = 35;
+	public int[] items;
 }
