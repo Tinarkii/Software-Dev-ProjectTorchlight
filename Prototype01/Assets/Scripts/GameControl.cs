@@ -22,7 +22,8 @@ public class GameControl : MonoBehaviour {
 
 
 	private GameObject newCanvas;
-	Canvas imageCanvas;
+	private Canvas imageCanvas;
+	private static bool loadFromSave = false;
 
 
 	private PlayerData playerData;
@@ -176,12 +177,17 @@ public class GameControl : MonoBehaviour {
 			imageCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
 			newCanvas.AddComponent<CanvasScaler>();
 			newCanvas.AddComponent<GraphicRaycaster>();
+			DontDestroyOnLoad(imageCanvas);// keep canvas between scenes
+			if (loadFromSave) {
+				control.Load();
+			}
 		}
 		else if (control != this)
 		{
 			Destroy(gameObject);
 
 		}
+
 
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach(GameObject p in players){
@@ -240,8 +246,6 @@ public class GameControl : MonoBehaviour {
 
 			playerData = data.player;
 			playerPosition = data.playerPosition;
-			if (PlayerPrefs.HasKey("Health"))
-				confidence = PlayerPrefs.GetInt("Health");
 
 			Debug.Log(data.playerPosition);
 
@@ -257,10 +261,19 @@ public class GameControl : MonoBehaviour {
 	 */
 	public static void LoadNew()
 	{
-		if (control == null)
-			control = new GameControl ();
+//		if (GameControl.control == null) {
+//			control = new GameControl();
+//		}
 
-		control.Load ();
+		loadFromSave = true;
+//		control.newCanvas = new GameObject("Canvas");
+//		control.imageCanvas = control.newCanvas.AddComponent<Canvas>();
+//		control.imageCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+//		control.newCanvas.AddComponent<CanvasScaler>();
+//		control.newCanvas.AddComponent<GraphicRaycaster>();
+//		control.panel = new GameObject();
+//		panel.AddComponent<CanvasRenderer>();
+//		control.Load();
 	}
 		
 	/*
@@ -284,10 +297,9 @@ public class GameControl : MonoBehaviour {
 
 		currentScene = scene;
 
-		// Following block to create image on canvas largely was copied from:
-		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html
-		GameObject panel = new GameObject("Panel");
-		panel.AddComponent<CanvasRenderer>();
+		// Following block to create image on canvas largely was copied from: //
+		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html //
+		GameObject panel = new GameObject();
 		Image fadeImage = panel.AddComponent<Image>();
 		panel.transform.SetParent(newCanvas.transform, false);
 		// End copied //
