@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0803333, g: 0.047561087, b: 0.12961617, a: 1}
+  m_IndirectSpecularColor: {r: 0.08701923, g: 0.046703003, b: 0.1284925, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -640,6 +640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08e10caddfce4b8fa20ca04388af187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1319822908 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1616848451206110, guid: ef7508483e116ac49bfa400064688409,
+    type: 2}
+  m_PrefabInternal: {fileID: 1478753510}
 --- !u!1001 &1478753510
 Prefab:
   m_ObjectHideFlags: 0
@@ -760,6 +765,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnNoClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616848451206110, guid: ef7508483e116ac49bfa400064688409, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef7508483e116ac49bfa400064688409, type: 2}
@@ -1033,6 +1042,11 @@ Prefab:
       propertyPath: m_Name
       value: Lamp (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 114754597285962718, guid: 8f5aedd6cdee9ad44b7851348739b643,
+        type: 2}
+      propertyPath: dialogueBoxUIObject
+      value: 
+      objectReference: {fileID: 1319822908}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f5aedd6cdee9ad44b7851348739b643, type: 2}
   m_IsPrefabParent: 0
