@@ -19,8 +19,6 @@ using UnityEngine.SceneManagement;
 /// for transitioning between different scenes.
 /// </summary>
 public class GameControl : MonoBehaviour {
-
-
 	private PlayerData playerData;
 	public static GameControl control;
 	private GameObject player;
@@ -260,7 +258,6 @@ public class GameControl : MonoBehaviour {
 		door = doorToLoad;
 		doorQuery = true;
 		LoadWithFade(scenes [sceneToLoad]);
-
 	}
 
 	/* Allows calls from elsewhere to load a new scene */

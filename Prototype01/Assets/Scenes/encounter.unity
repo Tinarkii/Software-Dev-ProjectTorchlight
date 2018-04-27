@@ -369,6 +369,12 @@ Prefab:
       value: 
       objectReference: {fileID: 1223323773107984, guid: f7a8c3bf88dff014aa3eda428d208a31,
         type: 2}
+    - target: {fileID: 114734372397659824, guid: 51afa2da398864c9e849ae4416e4b7da,
+        type: 2}
+      propertyPath: MusicToFadeIn
+      value: 
+      objectReference: {fileID: 245897252922469590, guid: e28a5db4fad174413842c86e309ca911,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51afa2da398864c9e849ae4416e4b7da, type: 2}
   m_IsPrefabParent: 0
@@ -1190,6 +1196,59 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a94d188b708b2b245a9cefe0828a2916, type: 3}
   m_PrefabInternal: {fileID: 479200848}
+--- !u!1001 &1296796297
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.2592096
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.8274508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.609873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114556463138279978, guid: a1024cc5672814a21bedccb2afbb1c6d,
+        type: 2}
+      propertyPath: MusicToFadeIn
+      value: 
+      objectReference: {fileID: 245897252922469590, guid: e28a5db4fad174413842c86e309ca911,
+        type: 2}
+    - target: {fileID: 114556463138279978, guid: a1024cc5672814a21bedccb2afbb1c6d,
+        type: 2}
+      propertyPath: bpmFadeInSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1349646303
 GameObject:
   m_ObjectHideFlags: 0

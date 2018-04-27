@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427147, b: 0.56452364, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1113,6 +1113,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0200002, y: 2.5776777, z: 1.01}
   m_Center: {x: -0.82, y: 0.28883904, z: -0.505}
+--- !u!1001 &1946339150
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.2592096
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.8274508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.609873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665661552994754, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114556463138279978, guid: a1024cc5672814a21bedccb2afbb1c6d,
+        type: 2}
+      propertyPath: bpmFadeInSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114556463138279978, guid: a1024cc5672814a21bedccb2afbb1c6d,
+        type: 2}
+      propertyPath: MusicToFadeIn
+      value: 
+      objectReference: {fileID: 245858022564431972, guid: e28a5db4fad174413842c86e309ca911,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a1024cc5672814a21bedccb2afbb1c6d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2027673255
 GameObject:
   m_ObjectHideFlags: 0
