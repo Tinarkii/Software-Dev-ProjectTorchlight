@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
     private List<Item> items;
 
 
+	public GameObject[] itemTypes = new GameObject[3];
+
     /**
 	 * Initialization
 	 */
@@ -80,5 +82,43 @@ public class Inventory : MonoBehaviour
         Transform t = Instantiate(itemsMenuPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 		t.gameObject.GetComponent<ItemsMenu> ().StartInventoryMenu (items);
     }
+
+
+	public void LoadItems(int[] items){
+
+		GameObject newItem = new GameObject();
+		for (int i = 0; i < items.Length; i++) {
+			if (items[i] > 0) {
+				newItem = Instantiate(itemTypes[i]);
+				newItem.GetComponent<Item>().SetQuantity(items[i]);
+				addItem(newItem.GetComponent<Item>());
+			}
+		}
+	}
+
+
+	public int[] GetItemsAsArray(){
+		int[] array = new int[3];
+
+		items.RemoveAll(Item => Item == null);
+
+		foreach (Item listItem in items)
+		{
+
+			if (listItem.Name().Equals("Fruit Snacks")) {
+				array[0] += listItem.GetQuantity();
+				Debug.Log("   " + listItem.Name());
+			} else if (listItem.Name().Equals("Rubik's Cube")) {
+				array[1] += listItem.GetQuantity();
+				Debug.Log("   " + listItem.Name());
+			} else if (listItem.Name().Equals("Letter Block")) {
+				array[2] += listItem.GetQuantity();
+				Debug.Log("   " + listItem.Name());
+			}
+		}
+
+
+		return array;
+	}
 
 }

@@ -472,7 +472,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1927448207577142}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 6.9, y: 3.25, z: -5}
+  m_LocalPosition: {x: -28, y: 3.25, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4078587223001426}
@@ -671,7 +671,7 @@ Animator:
   m_GameObject: {fileID: 1223042249632318}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a94d188b708b2b245a9cefe0828a2916, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 132a79285e43b45b291a779a24a10b52, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -762,8 +762,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab3669d5ab6f4babaf916389fcb481d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsMenuPrefab: {fileID: 224105233578397174, guid: 8f7219d1d602655489bd4eeb69473b11,
+  itemsMenuPrefab: {fileID: 224857337548863948, guid: 8f7219d1d602655489bd4eeb69473b11,
     type: 2}
+  itemTypes:
+  - {fileID: 1219775441870490, guid: 10d836b936033eb42afa4a5039869c57, type: 2}
+  - {fileID: 1867122960308644, guid: db8c4ef788f104243b68273247dab973, type: 2}
+  - {fileID: 1920689362035714, guid: b06ed25c91eedde4bb59f562c24ff245, type: 2}
 --- !u!114 &114927275109748814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -776,7 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 15
-  boy: {fileID: 0}
+  boy: {fileID: 1223042249632318}
   minSpeedForWalkingAnimation: 3.3
 --- !u!136 &136452201281470996
 CapsuleCollider:

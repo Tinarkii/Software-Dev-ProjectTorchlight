@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533150094392472}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 8.8, y: -14.69191, z: 60.9}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -12.5, y: -14.69191, z: -34.7}
+  m_LocalScale: {x: 3, y: 3.000002, z: 3.000002}
   m_Children:
   - {fileID: 4389010176650304}
   m_Father: {fileID: 0}
@@ -174,7 +174,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -210,8 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b0b1b236e3e46cbb2ed4e198bd4ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBoxUIObject: {fileID: 1956506592925340, guid: 34742697844d442d194e624c5d9da48c,
-    type: 2}
+  dialogueBoxUIObject: {fileID: 0}
 --- !u!136 &136493312532971804
 CapsuleCollider:
   m_ObjectHideFlags: 1

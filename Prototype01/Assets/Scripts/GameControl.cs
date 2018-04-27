@@ -202,6 +202,15 @@ public class GameControl : MonoBehaviour {
 		return player;
 	}
 
+	public PlayerData GetPlayerData(){
+		return playerData;
+	}
+
+	public PlayerData SavePlayerData(){
+		playerData.items = player.GetComponent<Inventory>().GetItemsAsArray();
+		return playerData;
+	}
+
 
 	
 	void OnGUI()
@@ -223,7 +232,7 @@ public class GameControl : MonoBehaviour {
 
 		data.currentScene = currentScene;
 		data.levels = CacheLevelData();
-		data.player = playerData;
+		data.player = SavePlayerData();
 		data.playerPosition = serPlayerPos;
 
 		bf.Serialize(file, data);
@@ -246,6 +255,8 @@ public class GameControl : MonoBehaviour {
 
 			playerData = data.player;
 			playerPosition = data.playerPosition;
+			player.GetComponent<Inventory>().LoadItems(playerData.items);
+
 
 			Debug.Log(data.playerPosition);
 
@@ -283,6 +294,7 @@ public class GameControl : MonoBehaviour {
 		CacheLevelData ();
 		door = doorToLoad;
 		doorQuery = true;
+		currentScene = scenes[sceneToLoad];
 		LoadWithFade(scenes [sceneToLoad]);
 
 	}
@@ -295,7 +307,6 @@ public class GameControl : MonoBehaviour {
 	/* Loads a scene with a fading effect */
 	private void LoadWithFade(string scene) {
 
-		currentScene = scene;
 
 		// Following block to create image on canvas largely was copied from: //
 		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html //
@@ -415,5 +426,5 @@ public class PlayerData{
 	public int maxConfidence = 100;
 	public int defense = 5;
 	public int attack = 35;
-	public int[] items;
+	public int[] items = new int[3];
 }
