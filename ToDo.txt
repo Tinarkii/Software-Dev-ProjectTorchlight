@@ -5,8 +5,8 @@
 /*Item Management*/
 ->Saving for Items (Jeffery)
 ->Show Item obtained/used (Zach)
-->Add new items (Paul and maybe Luke)
-	->Equipping ?? - probably not
+->Add all items (Luke(done) and Paul)
+	->Equipping ?? - no
 
 /*Report*/
 ->Make the powerpoint (Everyone)
@@ -15,6 +15,6 @@
 ->Look over and update report (Everyone, specific roles below)
 	Paul: update requirements
 	Joel (done or mostly done): update use cases, class, sequence, deployment diagrams
-	Luke: list of subsystems and roles, update subsystem interfaces
+	Luke (done): list of subsystems and roles, update subsystem interfaces
 	Zach: APIs
 	Jeffrey: screenshots for each subsystem (parts of this can be added to powerpoint)
