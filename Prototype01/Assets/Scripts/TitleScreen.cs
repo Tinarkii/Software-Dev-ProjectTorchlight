@@ -33,7 +33,7 @@ public class TitleScreen : MonoBehaviour
 	*/
     public void ResumeGame()
 	{
-		//loadingScreen.SetActive(true);
+		loadingScreen.SetActive(true);
 		StartCoroutine(WaitResume());
         
 	}
