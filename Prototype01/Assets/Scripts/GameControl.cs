@@ -21,6 +21,10 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour {
 
 
+	private GameObject newCanvas;
+	Canvas imageCanvas;
+
+
 	private PlayerData playerData;
 	public static GameControl control;
 	private GameObject player;
@@ -157,7 +161,6 @@ public class GameControl : MonoBehaviour {
 	void Awake () 
 	{
 		CreateEmptyLevels ();
-		playerData = new PlayerData ();
 		currentScene = SceneManager.GetActiveScene ().name;
 		if (control == null)
 		{
@@ -165,6 +168,12 @@ public class GameControl : MonoBehaviour {
 			control = this;
 			DontDestroyOnLoad (GameObject.Find ("Player"));
 			player = GameObject.Find ("Player");
+			newCanvas = new GameObject("Canvas");
+			playerData = new PlayerData ();
+			imageCanvas = newCanvas.AddComponent<Canvas>();
+			imageCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+			newCanvas.AddComponent<CanvasScaler>();
+			newCanvas.AddComponent<GraphicRaycaster>();
 		}
 		else if (control != this)
 		{
@@ -272,18 +281,13 @@ public class GameControl : MonoBehaviour {
 	private void LoadWithFade(string scene) {
 		// Following block to create image on canvas largely was copied from:
 		// https://answers.unity.com/questions/1034060/create-unity-ui-panel-via-script.html
-		GameObject newCanvas = new GameObject("Canvas");
-		Canvas imageCanvas = newCanvas.AddComponent<Canvas>();
-		imageCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-		newCanvas.AddComponent<CanvasScaler>();
-		newCanvas.AddComponent<GraphicRaycaster>();
 		GameObject panel = new GameObject("Panel");
 		panel.AddComponent<CanvasRenderer>();
 		Image fadeImage = panel.AddComponent<Image>();
 		panel.transform.SetParent(newCanvas.transform, false);
 		// End copied //
 
-		imageCanvas.scaleFactor = 20f;// A bit of a hack to make the image cover the screen
+		imageCanvas.scaleFactor = 30f;// A bit of a hack to make the image cover the screen
 		DontDestroyOnLoad(imageCanvas);// keep canvas between scenes
 		StartCoroutine(Fade(fadeImage, scene));
 	}
