@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     /**
 	 * Initialization
 	 */
-    public void Start()
+    public void Awake()
     {
         items = new List<Item>();
     }
